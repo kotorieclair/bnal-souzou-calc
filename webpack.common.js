@@ -33,7 +33,12 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: '文アル装像計算機',
-      template: './src/index.html'
+      template: './src/index.html',
+      meta: {
+        description: '文豪とアルケミスト（文アル）の装像からステータスの上昇値を計算するツール',
+        twauthor: '@kotorieclair',
+        url: 'http://kotorieclair.github.io/bnal-souzou-calc/'
+      }
     }),
     new ExtractTextPlugin('style.css')
   ]
