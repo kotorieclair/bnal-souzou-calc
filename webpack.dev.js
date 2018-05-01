@@ -12,6 +12,7 @@ module.exports = merge(common, {
   ],
   devServer: {
     contentBase: './dist',
-    port: 3000
+    port: 3000,
+    host: '0.0.0.0'
   }
 });
