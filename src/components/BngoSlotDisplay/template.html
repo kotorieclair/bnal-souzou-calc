@@ -1,0 +1,50 @@
+<div class="BngoSlotDisplay">
+  <div class="BngoSlotDisplay_info">
+    <div class="BngoSlotDisplay_info_bungo">
+      {{ bungo ? `【${weaponsData[bungoData[bungo].weapon].label}】${bungoData[bungo].name}` : '' }}
+    </div>
+    <div class="BngoSlotDisplay_info_card">
+      <template v-if="cardId && cardLv">
+        <span class="bold">{{ cardsData[cardId].rare | starify }} {{ cardsData[cardId].name }}</span>　Lv.{{ cardLv }}
+        <span v-if="!cardsData[cardId].status[cardLv]" class="text-small">※</span>
+      </template>
+    </div>
+  </div>
+
+  <table class="BngoSlotDisplay_base">
+    <tr>
+      <th v-for="label in statusData.base">
+        {{ label }}
+      </th>
+    </tr>
+    <tr>
+      <td v-for="(label, status) in statusData.base" :class="[ adjustedCardStatus[status] < 0 ? 'text-red' : 'text-blue' ]">
+        {{ adjustedCardStatus[status] || '' | addSign }}
+      </td>
+    </tr>
+  </table>
+
+  <table class="BngoSlotDisplay_battle">
+    <tr>
+      <th v-for="label in statusData.battle">
+        {{ label }}
+      </th>
+    </tr>
+    <tr>
+      <td v-for="(label, status) in statusData.battle">
+        <span :class="{ 'text-blue': increasedBattleStatus[status] }">
+          {{ increasedBattleStatus[status] || '' | addSign }}
+        </span>
+      </td>
+    </tr>
+  </table>
+
+  <table class="BngoSlotDisplay_skill">
+    <tr>
+      <th>追加効果</th>
+      <td>
+        {{ cardId && cardLv && cardsData[cardId].skill ? cardsData[cardId].skill[cardLv] : '' }}
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,84 @@
+@require 'style/variables'
+
+html
+  font-size: 6.25%
+
+body
+  font-size: $base-font-size
+
+body, div, th, td, ul, li, h1, h2, h3
+  margin: 0
+  padding: 0
+  line-height: 1
+
+h1, h2, h3
+  line-height: 1.5
+
+p, li
+  margin: 0
+  padding: 0
+  line-height: 1.7
+
+ul
+  margin-left: 1.5em
+
+a
+  color: $color-link
+
+select, input
+  background-color: #fff
+  font-size: $base-font-size - 1rem
+  vertical-align: bottom
+
+.bold
+  font-weight: bold
+
+.text-small
+  font-size: 0.8em
+
+.text-blue
+  color: $color-blue
+
+.text-red
+  color: $color-red
+
+.ex-margin-top
+  margin-top: 10px
+
+.header
+  margin: 30px 30px
+
+  h1
+    margin-bottom: 20px
+
+.help
+  margin: 50px 30px
+  background-color: $color-main-light
+  border: 1px dotted $color-main-dark
+  box-shadow: 0 0 0 4px $color-main-light
+  color: $color-gray
+  // margin: 10px 4px
+  padding: 15px 10px
+
+
+  h2
+    margin-bottom: 20px
+
+  h3
+    margin-bottom: 15px
+
+  ul
+    margin-bottom: 5px
+    margin-top: @margin-bottom
+
+  &_paragraph
+    margin-bottom: 30px
+
+    &:last-child
+      margin-bottom: 0
+
+  &_box
+    background-color: rgba(#fff, 0.8)
+    color: $color-gray
+    margin: 10px
+    padding: 10px

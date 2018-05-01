@@ -1,0 +1,41 @@
+{
+  "name": "bnal-souzou-calc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start-dev",
+    "start-dev": "webpack-dev-server --config webpack.dev.js",
+    "build-dev": "webpack --config webpack.dev.js",
+    "build-prod": "webpack --config webpack.prod.js",
+    "test": "mocha-webpack --watch --webpack-config webpack.test.js --require test/setup.js test/**/*.spec.js"
+  },
+  "author": "kotorieclair",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.13",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "gh-pages": "^1.1.0",
+    "html-webpack-plugin": "^3.1.0",
+    "jsdom": "^11.7.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.0.5",
+    "mocha-webpack": "^2.0.0-beta.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue": "^2.5.16",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1",
+    "webpack-merge": "^4.1.2",
+    "webpack-node-externals": "^1.7.2"
+  }
+}

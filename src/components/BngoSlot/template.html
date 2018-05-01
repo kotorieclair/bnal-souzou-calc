@@ -1,0 +1,13 @@
+<div class="BngoSlot">
+  <div class="BngoSlot_left">
+    <div class="BngoSlot_left_order">{{ order || '' }}</div>
+    <BngoSlotInput
+      v-bind="{ bungo, cardId, cardLv, baseStatus }"
+      @changeInputtedValue="setInputtedValue"
+    />
+  </div>
+  <div class="BngoSlot_right">
+    <BngoSlotDisplay
+      v-bind="{ bungo, cardId, cardLv, increasedBattleStatus, adjustedCardStatus }"/>
+  </div>
+</div>

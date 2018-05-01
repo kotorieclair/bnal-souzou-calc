@@ -1,0 +1,57 @@
+@require '../../style/variables'
+
+.BngoSlotDisplay
+  table
+    border-collapse: collapse
+    width: 100%
+
+  th, td
+    border: 1px solid $color-main-dark
+    height: 1em
+    text-align: center
+
+  th
+    background-color: #fff
+    padding: 5px
+
+  td
+    background-color: $color-main-light
+    font-size: $base-font-size + 2rem
+    padding: 7px 5px
+
+  &_info
+    align-items: flex-end
+    color: $color-main-light
+    display: flex
+    padding: 5px
+    margin-bottom: 7px
+    text-align: center
+
+    &_bungo
+      font-size: $base-font-size + 2rem
+      flex: 0 1 40%
+      min-height: 1em
+
+    &_card
+      font-size: $base-font-size + 2rem
+      flex: 0 1 60%
+      min-height: 1em
+
+  &_base
+    th, td
+      width: 20%
+
+  &_battle
+    th, td
+      border-top: 0
+      width: calc(100% / 3)
+
+  &_skill
+    margin-top: 10px
+
+    th
+      width: 40%
+
+    td
+      font-size: $base-font-size
+      width: 60%
