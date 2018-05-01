@@ -8,7 +8,8 @@
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build-dev": "webpack --config webpack.dev.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "test": "mocha-webpack --watch --webpack-config webpack.test.js --require test/setup.js test/**/*.spec.js"
+    "test": "mocha-webpack --watch --webpack-config webpack.test.js --require test/setup.js test/**/*.spec.js",
+    "deploy": "npm run build-prod && gh-pages -d dist"
   },
   "author": "kotorieclair",
   "license": "ISC",
