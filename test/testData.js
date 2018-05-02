@@ -38,6 +38,16 @@ const testCards = {
       3: 'スキル1-3',
     },
   },
+  102: {
+    name: 'テスト装像1-2',
+    rare: 1,
+    status: {
+      1: { tech: 30, theme: 96 },
+      2: null,
+      3: null,
+    },
+    skill: null,
+  },
   201: {
     name: 'テスト装像2',
     rare: 2,
@@ -66,6 +76,12 @@ const expectedCardStatus = {
   101: {
     base: {
       2: { theme: 224 },
+    },
+  },
+  102: {
+    base: {
+      2: { tech: 42, theme: 135 },
+      3: { tech: 60, theme: 192 },
     },
   },
   201: {

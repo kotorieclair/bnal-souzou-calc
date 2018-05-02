@@ -173,23 +173,30 @@ describe('components: BngoSlot', () => {
 
     it('throws an error when unknown cardLv is given', () => {
       wrapper.setData({
-        cardId: 101,
+        cardId: 301,
       });
       expect(() => wrapper.vm.setInputtedValue('cardLv', 'ccc')).to.throw();
       expect(() => wrapper.vm.setInputtedValue('cardLv', null)).to.throw();
-      expect(() => wrapper.vm.setInputtedValue('cardLv', 2)).to.throw();
+      expect(() => wrapper.vm.setInputtedValue('cardLv', 1)).to.throw();
+
+      wrapper.setData({
+        cardId: 102,
+      });
+      expect(() => wrapper.vm.setInputtedValue('cardLv', 2)).not.to.throw();
     });
   });
 
-  describe('methods: estimateLv2CardStatus()', () => {
+  describe('methods: estimateCardStatus()', () => {
+    const id = 102
+
     it('returns correct estimated value for unknown lv2 card status', () => {
-      const testCard = {
-        1: { tech: 96, beauty: 30 },
-        2: null,
-        3: { tech: 192, beauty: 60 },
-      };
-      const result = wrapper.vm.estimateLv2CardStatus(testCard);
-      expect(result).to.eql({ tech: 135, beauty: 42 });
+      const result = wrapper.vm.estimateCardStatus(testCards[id].status, 2);
+      expect(result).to.eql(expectedCardStatus[id].base[2]);
+    });
+
+    it('returns correct estimated value for unknown lv2 card status', () => {
+      const result = wrapper.vm.estimateCardStatus(testCards[id].status, 3);
+      expect(result).to.eql(expectedCardStatus[id].base[3]);
     });
   });
 

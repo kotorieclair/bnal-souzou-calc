@@ -71,7 +71,7 @@ export default {
       const id = parseInt(e.target.value);
       this.$emit('changeInputtedValue', 'cardId', id);
 
-      if (!this.cardsData[id].status[this.cardLv]) {
+      if (!this.cardsData[id].status.hasOwnProperty(this.cardLv)) {
         const lv = parseInt(Object.keys(this.cardsData[id].status)[0]);
         this.$emit('changeInputtedValue', 'cardLv', lv);
       }

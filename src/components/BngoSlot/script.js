@@ -28,8 +28,8 @@ export default {
       }
 
       const status = this.cardsData[this.cardId].status[this.cardLv];
-      if (status === null && this.cardLv === 2) {
-        return this.estimateLv2CardStatus(this.cardsData[this.cardId].status);
+      if (status === null) {
+        return this.estimateCardStatus(this.cardsData[this.cardId].status, this.cardLv);
       }
       return status;
     },
@@ -124,20 +124,28 @@ export default {
           throw new Error('BungoSlot: setInputtedValue - unknown cardId!');
         }
 
-        if (key === 'cardLv' && !this.cardsData[this.cardId].status[payload]) {
+        if (key === 'cardLv' && !this.cardsData[this.cardId].status.hasOwnProperty(payload)) {
           throw new Error('BungoSlot: setInputtedValue - unknown cardLv!');
         }
       }
 
       this[key] = payload;
     },
-    estimateLv2CardStatus(status) {
+    estimateCardStatus(status, lv) {
+      const adj = lv === 3 ? 2 : lv === 2 ? 1.4 : 1;
       const estimated = {};
       Object.keys(status[1]).forEach((key) => {
-        estimated[key] = Math.ceil(status[1][key] * 1.4);
+        estimated[key] = Math.ceil(status[1][key] * adj);
       });
       return estimated;
     },
+    // estimateLv2CardStatus(status) {
+    //   const estimated = {};
+    //   Object.keys(status[1]).forEach((key) => {
+    //     estimated[key] = Math.ceil(status[1][key] * 1.4);
+    //   });
+    //   return estimated;
+    // },
     calculateAtk(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
       const base = weapon === 'bow' ?
         tech + genius/2 + beauty/2 + theme/2 + truth/2 :
