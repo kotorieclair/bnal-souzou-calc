@@ -115,17 +115,41 @@ export default {
         throw new Error('BungoSlot: setInputtedValue - unappropriate key!');
       };
 
-      if (payload !== '') {
-        if (key === 'bungo' && !this.bungoData.hasOwnProperty(payload)) {
-          throw new Error('BungoSlot: setInputtedValue - unknown bungo id!');
+      if (key === 'baseStatus') {
+        if (typeof payload !== 'object') {
+          throw new Error('BungoSlot: setInputtedValue - unappropriate baseStatus type!');
         }
 
-        if (key === 'cardId' && !this.cardsData.hasOwnProperty(payload)) {
-          throw new Error('BungoSlot: setInputtedValue - unknown cardId!');
-        }
+        if (Object.keys(payload).length !== 0) {
+          const keycheck = Object.keys(payload).every((status) => {
+            return Object.keys(this.statusData.base).includes(status);
+          });
 
-        if (key === 'cardLv' && !this.cardsData[this.cardId].status.hasOwnProperty(payload)) {
-          throw new Error('BungoSlot: setInputtedValue - unknown cardLv!');
+          if (!keycheck) {
+            throw new Error('BungoSlot: setInputtedValue - unappropriate baseStatus key!');
+          }
+
+          const valcheck = Object.keys(payload).every((status) => {
+            return Number.isInteger(payload[status]);
+          });
+
+          if (!valcheck) {
+            throw new Error('BungoSlot: setInputtedValue - unappropriate baseStatus val!');
+          }
+        }
+      } else {
+        if (payload !== '') {
+          if (key === 'bungo' && !this.bungoData.hasOwnProperty(payload)) {
+            throw new Error('BungoSlot: setInputtedValue - unknown bungo id!');
+          }
+
+          if (key === 'cardId' && !this.cardsData.hasOwnProperty(payload)) {
+            throw new Error('BungoSlot: setInputtedValue - unknown cardId!');
+          }
+
+          if (key === 'cardLv' && !this.cardsData[this.cardId].status.hasOwnProperty(payload)) {
+            throw new Error('BungoSlot: setInputtedValue - unknown cardLv!');
+          }
         }
       }
 

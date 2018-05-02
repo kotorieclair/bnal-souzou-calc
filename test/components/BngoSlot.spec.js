@@ -184,6 +184,20 @@ describe('components: BngoSlot', () => {
       });
       expect(() => wrapper.vm.setInputtedValue('cardLv', 2)).not.to.throw();
     });
+
+    it('throws an error when baseStatus payload is other than an object', () => {
+      expect(() => wrapper.vm.setInputtedValue('baseStatus', '')).to.throw();
+      expect(() => wrapper.vm.setInputtedValue('baseStatus', null)).to.throw();
+      expect(() => wrapper.vm.setInputtedValue('baseStatus', 1)).to.throw();
+    });
+
+    it('throws an error when unknown baseStatus key is given', () => {
+      expect(() => wrapper.vm.setInputtedValue('baseStatus', { somekey: 1 })).to.throw();
+    });
+
+    it('throws an error when baseStatus object value other than a number is given', () => {
+      expect(() => wrapper.vm.setInputtedValue('baseStatus', { tech: 'someval' })).to.throw();
+    });
   });
 
   describe('methods: estimateCardStatus()', () => {

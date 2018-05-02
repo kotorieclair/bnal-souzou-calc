@@ -55,6 +55,7 @@ module.exports = {
       meta: {
         description: '文豪とアルケミスト（文アル）の装像からステータスの上昇値を計算するツール',
         twauthor: '@kotorieclair',
+        twcard: 'summary_large_image',
         url: 'https://kotorieclair.github.io/bnal-souzou-calc/',
         image: 'https://kotorieclair.github.io/bnal-souzou-calc/img/cover.png'
       }

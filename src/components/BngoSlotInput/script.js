@@ -20,11 +20,6 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      showStatusInput: false,
-    };
-  },
   computed: {
     groupedCardsData() {
       const grouped = {};
@@ -81,7 +76,13 @@ export default {
     },
     setBaseStatus(key, e) {
       const val = e.target.value ? parseInt(e.target.value) : '';
-      const inputs = Object.assign({}, this.baseStatus, { [key]: val });
+      let inputs;
+      if (val === '') {
+        inputs = Object.assign({}, this.baseStatus);
+        delete inputs[key];
+      } else {
+        inputs = Object.assign({}, this.baseStatus, { [key]: val });
+      }
       this.$emit('changeInputtedValue', 'baseStatus', inputs);
     },
   }
