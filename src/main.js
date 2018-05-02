@@ -2,6 +2,7 @@ import Vue from 'vue';
 import BnalSouzouCalc from './components/BnalSouzouCalc';
 import { starify, addSign } from './filters';
 import style from './style';
+import ogimage from './img/cover.png'
 
 Vue.filter('starify', starify);
 Vue.filter('addSign', addSign);

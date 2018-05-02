@@ -26,6 +26,24 @@ module.exports = {
       {
         test: /\.styl$/,
         use: ExtractTextPlugin.extract(['css-loader', 'stylus-loader'])
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'img/'
+            }
+          },
+          {
+           loader: 'image-webpack-loader',
+           options: {
+             bypassOnDebug: true
+           }
+         }
+       ]
       }
     ]
   },
@@ -37,7 +55,8 @@ module.exports = {
       meta: {
         description: '文豪とアルケミスト（文アル）の装像からステータスの上昇値を計算するツール',
         twauthor: '@kotorieclair',
-        url: 'http://kotorieclair.github.io/bnal-souzou-calc/'
+        url: 'https://kotorieclair.github.io/bnal-souzou-calc/',
+        image: 'https://kotorieclair.github.io/bnal-souzou-calc/img/cover.png'
       }
     }),
     new ExtractTextPlugin('style.css')
