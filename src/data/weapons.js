@@ -16,7 +16,7 @@ export default {
     },
   },
   bow_alt: {
-    label: '弓(永井荷風以外)',
+    label: '弓',
     adjustment: {
       atk: 1.1,
       def: 1.4,
