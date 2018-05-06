@@ -10,7 +10,7 @@
   padding: 10px;
 }
 .BngoSlot .BngoSlot_left[data-v-5cd7de85] {
-  flex: 0 1 30%;
+  flex: 0 1 33%;
 }
 .BngoSlot .BngoSlot_left_order[data-v-5cd7de85] {
   align-items: center;
@@ -30,14 +30,37 @@
   margin-top: 15px;
 }
 .BngoSlot .BngoSlot_right[data-v-5cd7de85] {
-  flex: 0 1 70%;
+  flex: 0 1 67%;
 }
 
 .BngoSlotInput_bungo[data-v-32605d1b] {
   margin-bottom: 5px;
 }
 .BngoSlotInput_card[data-v-32605d1b] {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+.BngoSlotInput_label[data-v-32605d1b] {
+  color: #fff;
+  font-size: 12rem;
+  margin-bottom: 2px;
+}
+.BngoSlotInput_status[data-v-32605d1b] {
+  display: flex;
+}
+.BngoSlotInput_status_box[data-v-32605d1b] {
+  flex: 0 1 3.5em;
+  margin-right: 3px;
+}
+.BngoSlotInput_status_name[data-v-32605d1b] {
+  background-color: rgba(255,255,255,0.5);
+  display: block;
+  font-size: 12rem;
+  padding: 3px 0;
+  text-align: center;
+}
+.BngoSlotInput_status_input[data-v-32605d1b] {
+  border-width: 1px 0 0 0;
+  width: 100%;
 }
 
 .BngoSlotDisplay table[data-v-6c851ada] {
@@ -137,8 +160,13 @@ a {
 select,
 input {
   background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
   font-size: 12rem;
   vertical-align: bottom;
+}
+input {
+  padding: 2px;
 }
 .bold {
   font-weight: bold;
