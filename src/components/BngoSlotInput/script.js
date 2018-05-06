@@ -15,10 +15,31 @@ export default {
       type: [String, Number],
       required: true,
     },
-    baseStatus: {
-      type: Object,
+    tech: {
+      type: [String, Number],
       required: true,
     },
+    genius: {
+      type: [String, Number],
+      required: true,
+    },
+    beauty: {
+      type: [String, Number],
+      required: true,
+    },
+    theme: {
+      type: [String, Number],
+      required: true,
+    },
+    truth: {
+      type: [String, Number],
+      required: true,
+    },
+  },
+  data() {
+    return {
+      displayBaseStatusInput: false,
+    };
   },
   computed: {
     groupedCardsData() {
@@ -76,14 +97,7 @@ export default {
     },
     setBaseStatus(key, e) {
       const val = e.target.value ? parseInt(e.target.value) : '';
-      let inputs;
-      if (val === '') {
-        inputs = Object.assign({}, this.baseStatus);
-        delete inputs[key];
-      } else {
-        inputs = Object.assign({}, this.baseStatus, { [key]: val });
-      }
-      this.$emit('changeInputtedValue', 'baseStatus', inputs);
+      this.$emit('changeInputtedValue', key, val);
     },
   }
 }

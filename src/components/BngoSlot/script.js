@@ -17,7 +17,11 @@ export default {
       bungo: '',
       cardId: '',
       cardLv: '',
-      baseStatus: {},
+      tech: '',
+      genius: '',
+      beauty: '',
+      theme: '',
+      truth: '',
     };
   },
   computed: {
@@ -33,7 +37,15 @@ export default {
       }
       return status;
     },
-    // baseStatus(=inputされたstatus)からの戦闘ステータス算出
+    // dataの基礎ステータスをまとめたもの
+    baseStatus() {
+      const { tech, genius, beauty, theme, truth } = this;
+      if (!tech || !genius || !beauty || !theme || !truth) {
+        return {};
+      }
+      return { tech, genius, beauty, theme, truth };
+    },
+    // baseStatusからの戦闘ステータス算出
     inputtedBattleStatus() {
       if (Object.keys(this.baseStatus).length === 0) {
         return {};

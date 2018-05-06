@@ -46,20 +46,60 @@ describe('components: BngoSlot', () => {
     });
   });
 
-  describe('computed: inputtedBattleStatus', () => {
-    it('returns an empty object when inputted baseStatus is empty', () => {
+  describe('computed: baseStatus', () => {
+    it('returns an empty object when not all baseStatus data is inputted', () => {
       wrapper.setData({
-        baseStatus: {}
+        tech: 30,
+        theme: 45,
+      });
+      expect(wrapper.vm.baseStatus).to.be.empty;
+    });
+
+    it('returns an object containig all baseStatus data', () => {
+      const status = {
+        tech: 30,
+        genius: 32,
+        beauty: 50,
+        theme: 45,
+        truth: 33,
+      };
+      wrapper.setData(status);
+      expect(wrapper.vm.baseStatus).to.eql(status);
+    });
+  });
+
+  describe('computed: inputtedBattleStatus', () => {
+    it('returns an empty object when baseStatus is not inputted', () => {
+      wrapper.setData({
+        tech: '',
+        genius: '',
+        beauty: '',
+        theme: '',
+        truth: '',
       });
       expect(wrapper.vm.inputtedBattleStatus).to.be.empty;
     });
 
+    it('returns a battle status object calculated from baseStatus', () => {
+      wrapper.setData({
+        tech: testStatus.blade.base.tech,
+        genius: testStatus.blade.base.genius,
+        beauty: testStatus.blade.base.beauty,
+        theme: testStatus.blade.base.theme,
+        truth: testStatus.blade.base.truth,
+      });
+      expect(wrapper.vm.inputtedBattleStatus).to.eql(testStatus.blade.battle);
+    });
   });
 
   describe('computed: totalBaseStatus', () => {
     it('returns an empty object when baseStatus is not inputted', () => {
       wrapper.setData({
-        baseStatus: {},
+        tech: '',
+        genius: '',
+        beauty: '',
+        theme: '',
+        truth: '',
       });
       expect(wrapper.vm.totalBaseStatus).to.be.empty;
     });
@@ -115,6 +155,8 @@ describe('components: BngoSlot', () => {
     it('returns an empty object when totalBaseStatus is empty', () => {
       expect(wrapper.vm.finalBattleStatus).to.be.empty;
     });
+
+    it('returns a battle status object calculated from totalBaseStatus');
   });
 
   describe('computed: increasedBattleStatus', () => {
