@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      displayBaseStatusInput: false,
+      displayBaseStatusInput: true,
     };
   },
   computed: {

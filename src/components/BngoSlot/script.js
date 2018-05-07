@@ -25,7 +25,8 @@ export default {
     };
   },
   computed: {
-    // 装像の実際の増減値　必要？
+    // 装像の実際の増減値
+    // 不明なレベルの装像の値を保持
     adjustedCardStatus() {
       if (!this.cardId || !this.cardLv) {
         return {};
@@ -46,31 +47,41 @@ export default {
       return { tech, genius, beauty, theme, truth };
     },
     // baseStatusからの戦闘ステータス算出
+    // baseStatus入力済み時のみ使用
     inputtedBattleStatus() {
-      if (Object.keys(this.baseStatus).length === 0) {
+      if (!this.bungo || Object.keys(this.baseStatus).length === 0) {
         return {};
       }
 
-      return '';
+      return {
+        atk: this.calculateAtk(this.bungoData[this.bungo].weapon, this.baseStatus),
+        def: this.calculateDef(this.bungoData[this.bungo].weapon, this.baseStatus),
+        avd: this.calculateAvd(this.bungoData[this.bungo].weapon, this.baseStatus),
+      };
     },
-    // カードステータスを足した結果の基礎ステータス
+    // adjustedCardStatusとbaseStatusを足した基礎ステータス
+    // baseStatus入力済み時のみ使用
     totalBaseStatus() {
-      // baseStatusとcard[id].status[lv]を足す
-      // baseStatusが未入力ならスルー
-      if (!this.bungo || !this.cardId || !this.cardLv) {
-        return {}
+      if (Object.keys(this.baseStatus).length === 0 || Object.keys(this.adjustedCardStatus).length === 0) {
+        return {};
       }
+
+      // if (!this.bungo || !this.cardId || !this.cardLv) {
+      //   return {};
+      // }
 
       const totalStatus = {};
       // Object.keys(this.statusData.base).forEach((key) => {
       //   totalStatus[key] = (this.adjustedCardStatus[key] || 0) + this.baseStatus[key];
       // });
 
-      return totalStatus;
+      // return totalStatus;
+      return '';
     },
     // 最終的な戦闘ステータス
+    // totalBaseStatusより算出
+    // baseStatus入力済み時のみ使用
     finalBattleStatus() {
-      // totalBaseStatusから算出
       if (Object.keys(this.totalBaseStatus).length === 0) {
         return {};
       }
@@ -83,7 +94,7 @@ export default {
     },
     // 装像による戦闘ステータスの増加値
     increasedBattleStatus() {
-      // baseStatus未入力ならcard[id].status[lv]からそのまま算出
+      // baseStatus未入力ならadjustedCardStatusからそのまま算出
       // baseStatus入力済みならfinalBattleStatus - inputtedBattleStatus
       if (!this.bungo || !this.cardId || !this.cardLv) {
         return {};

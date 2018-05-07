@@ -10,6 +10,16 @@ describe('components: BngoSlot', () => {
     wrapper = shallow(BngoSlot);
     wrapper.vm.bungoData = testBungo;
     wrapper.vm.cardsData = testCards;
+    wrapper.setData({
+      bungo: '',
+      cardId: '',
+      cardLv: '',
+      tech: '',
+      genius: '',
+      beauty: '',
+      theme: '',
+      truth: '',
+    });
   });
 
   describe('computed: adjustedCardStatus', () => {
@@ -36,7 +46,7 @@ describe('components: BngoSlot', () => {
       expect(wrapper.vm.adjustedCardStatus).to.eql(testCards[id].status[lv]);
     });
 
-    it('returns estimated card status when selected card\'s lv.2 status is null', () => {
+    it('returns estimated card status when selected card\'s level status is null', () => {
       const [id, lv] = [101, 2];
       wrapper.setData({
         cardId: id,
@@ -69,19 +79,17 @@ describe('components: BngoSlot', () => {
   });
 
   describe('computed: inputtedBattleStatus', () => {
+    it('returns an empty object when bungo is not set', () => {
+      expect(wrapper.vm.inputtedBattleStatus).to.be.empty;
+    });
+
     it('returns an empty object when baseStatus is not inputted', () => {
-      wrapper.setData({
-        tech: '',
-        genius: '',
-        beauty: '',
-        theme: '',
-        truth: '',
-      });
       expect(wrapper.vm.inputtedBattleStatus).to.be.empty;
     });
 
     it('returns a battle status object calculated from baseStatus', () => {
       wrapper.setData({
+        bungo: 1,
         tech: testStatus.blade.base.tech,
         genius: testStatus.blade.base.genius,
         beauty: testStatus.blade.base.beauty,
@@ -94,61 +102,57 @@ describe('components: BngoSlot', () => {
 
   describe('computed: totalBaseStatus', () => {
     it('returns an empty object when baseStatus is not inputted', () => {
+      expect(wrapper.vm.totalBaseStatus).to.be.empty;
+    });
+
+    it('returns an empty object when adjustedCardStatus is not ready', () => {
       wrapper.setData({
-        tech: '',
-        genius: '',
-        beauty: '',
-        theme: '',
-        truth: '',
+        tech: 10,
+        genius: 10,
+        beauty: 10,
+        theme: 10,
+        truth: 10,
       });
       expect(wrapper.vm.totalBaseStatus).to.be.empty;
     });
 
-    it('returns an empty object when either bungo or cardId or cardLv is not set', () => {
-      wrapper.setData({
-        bungo: 2,
-        cardId: '',
-        cardLv: '',
-      });
-      expect(wrapper.vm.totalBaseStatus).to.be.empty;
-
-      wrapper.setData({
-        bungo: '',
-        cardId: '',
-        cardLv: 1,
-      });
-      expect(wrapper.vm.totalBaseStatus).to.be.empty;
-
-      wrapper.setData({
-        bungo: '',
-        cardId: 101,
-        cardLv: '',
-      });
-      expect(wrapper.vm.totalBaseStatus).to.be.empty;
-    });
-
-    it('adds adjustedCardStatus to the inputted baseStatus when baseStatus is inputted');
-
-    // it('adds adjustedCardStatus to the selected bungo\'s default base status', () => {
-    //   const [bungo, id, lv] = [1, 201, 2];
+    it('returns an empty object when either bungo or cardId or cardLv is not set');
     //   wrapper.setData({
-    //     bungo,
-    //     cardId: id,
-    //     cardLv: lv,
+    //     bungo: 2,
+    //     cardId: '',
+    //     cardLv: '',
     //   });
-    //   const card = testCards[id].status[lv];
-    //   // const defaults = wrapper.vm.defaultBaseStatus;
-    //   const defaults = testBungo[bungo].status;
-    //   const expected = {
-    //     tech: defaults.tech,
-    //     genius: defaults.genius + card.genius,
-    //     beauty: defaults.beauty,
-    //     theme: defaults.theme + card.theme,
-    //     truth: defaults.truth,
-    //   }
+    //   expect(wrapper.vm.totalBaseStatus).to.be.empty;
     //
-    //   expect(wrapper.vm.totalBaseStatus).to.eql(expected);
+    //   wrapper.setData({
+    //     bungo: '',
+    //     cardId: '',
+    //     cardLv: 1,
+    //   });
+    //   expect(wrapper.vm.totalBaseStatus).to.be.empty;
+    //
+    //   wrapper.setData({
+    //     bungo: '',
+    //     cardId: 101,
+    //     cardLv: '',
+    //   });
+    //   expect(wrapper.vm.totalBaseStatus).to.be.empty;
     // });
+
+    it('adds adjustedCardStatus to baseStatus', () => {
+      const [bungo, id, lv] = [1, 201, 3];
+      wrapper.setData({
+        bungo,
+        cardId: id,
+        cardLv: lv,
+        tech: testStatus.blade.base.tech,
+        genius: testStatus.blade.base.genius,
+        beauty: testStatus.blade.base.beauty,
+        theme: testStatus.blade.base.theme,
+        truth: testStatus.blade.base.truth,
+      });
+      expect(wrapper.vm.totalBaseStatus).to.eql(testStatus.blade.totalBase201_3);
+    });
   });
 
   describe('computed: finalBattleStatus', () => {
@@ -156,7 +160,20 @@ describe('components: BngoSlot', () => {
       expect(wrapper.vm.finalBattleStatus).to.be.empty;
     });
 
-    it('returns a battle status object calculated from totalBaseStatus');
+    it('returns a battle status object calculated from totalBaseStatus', () => {
+      const [bungo, id, lv] = [1, 201, 3];
+      wrapper.setData({
+        bungo,
+        cardId: id,
+        cardLv: lv,
+        tech: testStatus.blade.base.tech,
+        genius: testStatus.blade.base.genius,
+        beauty: testStatus.blade.base.beauty,
+        theme: testStatus.blade.base.theme,
+        truth: testStatus.blade.base.truth,
+      });
+      expect(wrapper.vm.finalBattleStatus).to.eql(testStatus.blade.finalBattle201_3);
+    });
   });
 
   describe('computed: increasedBattleStatus', () => {
@@ -193,7 +210,24 @@ describe('components: BngoSlot', () => {
       expect(wrapper.vm.increasedBattleStatus).to.eql(expectedCardStatus[id].battle[lv]);
     });
 
-    it('returns a diff of finalBattleStatus and inputtedBattleStatus when both are ready');
+    it('returns a diff of finalBattleStatus and inputtedBattleStatus when both are ready', () => {
+      const [bungo, id, lv] = [1, 201, 3];
+      wrapper.setData({
+        bungo,
+        cardId: id,
+        cardLv: lv,
+        tech: testStatus.blade.base.tech,
+        genius: testStatus.blade.base.genius,
+        beauty: testStatus.blade.base.beauty,
+        theme: testStatus.blade.base.theme,
+        truth: testStatus.blade.base.truth,
+      });
+      expect(wrapper.vm.increasedBattleStatus).to.eql({
+        atk: testStatus.blade.battle.atk - testStatus.blade.finalBattle201_3.atk,
+        def: testStatus.blade.battle.def - testStatus.blade.finalBattle201_3.def,
+        avd: testStatus.blade.battle.avd - testStatus.blade.finalBattle201_3.avd,
+      });
+    });
   });
 
   describe('methods: setInputtedValue()', () => {

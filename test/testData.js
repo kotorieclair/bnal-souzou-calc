@@ -2,24 +2,10 @@ const testBungo = {
   1: {
     name: 'テスト文豪1',
     weapon: 'blade',
-    status: {
-      tech: 170,
-      genius: 170,
-      beauty: 162,
-      theme: 170,
-      truth: 170,
-    },
   },
   2: {
     name: 'テスト文豪2',
     weapon: 'gun',
-    status: {
-      tech: 168,
-      genius: 170,
-      beauty: 164,
-      theme: 169,
-      truth: 170,
-    },
   },
 };
 
@@ -96,6 +82,8 @@ const testStatus = {
   blade: {
     base: { tech: 168, genius: 170, beauty: 164, theme: 169, truth: 170 },
     battle: { atk: 502, def: 505, avd: 39 },
+    totalBase201_3: { tech: 168, genius: (170 + 50), beauty: 164, theme: (169 + 160), truth: 170 },
+    finalBattle201_3: { atk: 607, def: 555, avd: 46 },
   },
   // 島崎
   bow: {
