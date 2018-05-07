@@ -31,15 +31,15 @@
   <template v-if="displayBaseStatusInput">
     <p class="BngoSlotInput_label">文豪のステータス（未入力可）</p>
     <div class="BngoSlotInput_status">
-      <label v-for="(label, key) in statusData.base" :key="key" class="BngoSlotInput_status_box">
+      <label v-for="(label, statusKey) in statusData.base" :key="statusKey" class="BngoSlotInput_status_box">
         <span class="BngoSlotInput_status_name">{{ label }}</span>
         <input
-          :ref="key"
-          :value="key"
+          :ref="statusKey"
+          :value="$props[statusKey]"
           type="number"
           min="1"
           class="BngoSlotInput_status_input"
-          @input="setBaseStatus(key, $event)"
+          @input="setBaseStatus(statusKey, $event)"
         >
       </label>
     </div>

@@ -180,13 +180,6 @@ export default {
       });
       return estimated;
     },
-    // estimateLv2CardStatus(status) {
-    //   const estimated = {};
-    //   Object.keys(status[1]).forEach((key) => {
-    //     estimated[key] = Math.ceil(status[1][key] * 1.4);
-    //   });
-    //   return estimated;
-    // },
     calculateAtk(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
       const base = weapon === 'bow' ?
         tech + genius/2 + beauty/2 + theme/2 + truth/2 :

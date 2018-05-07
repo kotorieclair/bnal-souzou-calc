@@ -116,29 +116,6 @@ describe('components: BngoSlot', () => {
       expect(wrapper.vm.totalBaseStatus).to.be.empty;
     });
 
-    it('returns an empty object when either bungo or cardId or cardLv is not set');
-    //   wrapper.setData({
-    //     bungo: 2,
-    //     cardId: '',
-    //     cardLv: '',
-    //   });
-    //   expect(wrapper.vm.totalBaseStatus).to.be.empty;
-    //
-    //   wrapper.setData({
-    //     bungo: '',
-    //     cardId: '',
-    //     cardLv: 1,
-    //   });
-    //   expect(wrapper.vm.totalBaseStatus).to.be.empty;
-    //
-    //   wrapper.setData({
-    //     bungo: '',
-    //     cardId: 101,
-    //     cardLv: '',
-    //   });
-    //   expect(wrapper.vm.totalBaseStatus).to.be.empty;
-    // });
-
     it('adds adjustedCardStatus to baseStatus', () => {
       const [bungo, id, lv] = [1, 201, 3];
       wrapper.setData({
