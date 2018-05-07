@@ -66,17 +66,11 @@ export default {
         return {};
       }
 
-      // if (!this.bungo || !this.cardId || !this.cardLv) {
-      //   return {};
-      // }
-
       const totalStatus = {};
-      // Object.keys(this.statusData.base).forEach((key) => {
-      //   totalStatus[key] = (this.adjustedCardStatus[key] || 0) + this.baseStatus[key];
-      // });
-
-      // return totalStatus;
-      return '';
+      Object.keys(this.statusData.base).forEach((key) => {
+        totalStatus[key] = (this.adjustedCardStatus[key] || 0) + this.baseStatus[key];
+      });
+      return totalStatus;
     },
     // 最終的な戦闘ステータス
     // totalBaseStatusより算出
@@ -110,9 +104,9 @@ export default {
 
       if (Object.keys(this.finalBattleStatus).length !== 0 && Object.keys(this.inputtedBattleStatus).length !== 0) {
         return {
-          atk: finalBattleStatus.atk - inputtedBattleStatus.atk,
-          def: finalBattleStatus.def - inputtedBattleStatus.def,
-          avd: finalBattleStatus.avd - inputtedBattleStatus.avd,
+          atk: this.finalBattleStatus.atk - this.inputtedBattleStatus.atk,
+          def: this.finalBattleStatus.def - this.inputtedBattleStatus.def,
+          avd: this.finalBattleStatus.avd - this.inputtedBattleStatus.avd,
         };
       }
 

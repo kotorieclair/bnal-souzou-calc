@@ -223,9 +223,9 @@ describe('components: BngoSlot', () => {
         truth: testStatus.blade.base.truth,
       });
       expect(wrapper.vm.increasedBattleStatus).to.eql({
-        atk: testStatus.blade.battle.atk - testStatus.blade.finalBattle201_3.atk,
-        def: testStatus.blade.battle.def - testStatus.blade.finalBattle201_3.def,
-        avd: testStatus.blade.battle.avd - testStatus.blade.finalBattle201_3.avd,
+        atk: testStatus.blade.finalBattle201_3.atk - testStatus.blade.battle.atk,
+        def: testStatus.blade.finalBattle201_3.def - testStatus.blade.battle.def,
+        avd: testStatus.blade.finalBattle201_3.avd - testStatus.blade.battle.avd,
       });
     });
   });
