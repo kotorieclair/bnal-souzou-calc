@@ -15,11 +15,19 @@ export default {
       type: [String, Number],
       required: false,
     },
-    increasedBattleStatus: {
+    adjustedCardStatus: {
       type: Object,
       required: false,
     },
-    adjustedCardStatus: {
+    totalBaseStatus: {
+      type: Object,
+      required: false,
+    },
+    finalBattleStatus: {
+      type: Object,
+      required: false,
+    },
+    increasedBattleStatus: {
       type: Object,
       required: false,
     },

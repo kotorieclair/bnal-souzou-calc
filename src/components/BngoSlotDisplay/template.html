@@ -35,6 +35,9 @@
         <span :class="[ increasedBattleStatus[status] < 0 ? 'text-red' : 'text-blue' ]">
           {{ increasedBattleStatus[status] || '' | addSign }}
         </span>
+        <span v-if="finalBattleStatus[status]" class="text-small">
+          ({{ finalBattleStatus[status] }})
+        </span>
       </td>
     </tr>
   </table>
