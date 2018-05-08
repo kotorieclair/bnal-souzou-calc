@@ -19,6 +19,10 @@ export default {
       type: Object,
       required: false,
     },
+    inputtedBattleStatus: {
+      type: Object,
+      required: false,
+    },
     finalBattleStatus: {
       type: Object,
       required: false,
