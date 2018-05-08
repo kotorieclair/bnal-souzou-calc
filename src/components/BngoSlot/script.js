@@ -69,6 +69,9 @@ export default {
       const totalStatus = {};
       Object.keys(this.statusData.base).forEach((key) => {
         totalStatus[key] = (this.adjustedCardStatus[key] || 0) + this.baseStatus[key];
+        if (totalStatus[key] < 0) {
+          totalStatus[key] = 1;
+        }
       });
       return totalStatus;
     },

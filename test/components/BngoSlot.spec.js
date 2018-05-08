@@ -130,6 +130,21 @@ describe('components: BngoSlot', () => {
       });
       expect(wrapper.vm.totalBaseStatus).to.eql(testStatus.blade.totalBase201_3);
     });
+
+    it('adjusts values to 1 when result is less than or equal to 0', () => {
+      const [bungo, id, lv] = [1, 202, 3];
+      wrapper.setData({
+        bungo,
+        cardId: id,
+        cardLv: lv,
+        tech: testStatus.neg.base.tech,
+        genius: testStatus.neg.base.genius,
+        beauty: testStatus.neg.base.beauty,
+        theme: testStatus.neg.base.theme,
+        truth: testStatus.neg.base.truth,
+      });
+      expect(wrapper.vm.totalBaseStatus).to.eql(testStatus.neg.totalBase202_3);
+    });
   });
 
   describe('computed: finalBattleStatus', () => {
@@ -347,6 +362,4 @@ describe('components: BngoSlot', () => {
       expect(result).to.equal(testStatus.whip.battle.avd);
     });
   });
-
-
 });

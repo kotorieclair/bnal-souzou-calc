@@ -48,6 +48,16 @@ const testCards = {
       3: 'スキル2-3',
     },
   },
+  202: {
+    name: 'テスト装像2-2',
+    rare: 2,
+    status: {
+      1: { beauty: 25, truth: -40 },
+      2: { beauty: 35, truth: -56 },
+      3: { beauty: 50, truth: -80 },
+    },
+    skill: null,
+  },
   301: {
     name: 'テスト装像3',
     rare: 3,
@@ -104,6 +114,10 @@ const testStatus = {
   whip: {
     base: { tech: 185, genius: 183, beauty: 181, theme: 176, truth: 176 },
     battle: { atk: 420, def: 497, avd: 46 },
+  },
+  neg: {
+    base: { tech: 42, genius: 47, beauty: 42, theme: 47, truth: 40 },
+    totalBase202_3: { tech: 42, genius: 47, beauty: (42 + 50), theme: 47, truth: 1 },
   },
 };
 
