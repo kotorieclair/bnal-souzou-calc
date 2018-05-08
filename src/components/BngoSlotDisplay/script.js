@@ -19,10 +19,6 @@ export default {
       type: Object,
       required: false,
     },
-    totalBaseStatus: {
-      type: Object,
-      required: false,
-    },
     finalBattleStatus: {
       type: Object,
       required: false,
