@@ -28,20 +28,18 @@
     </select>
   </div>
 
-  <template v-if="displayBaseStatusInput">
-    <p class="BngoSlotInput_label">文豪のステータス（未入力可）</p>
-    <div class="BngoSlotInput_status">
-      <label v-for="(label, statusKey) in statusData.base" :key="statusKey" class="BngoSlotInput_status_box">
-        <span class="BngoSlotInput_status_name">{{ label }}</span>
-        <input
-          :ref="statusKey"
-          :value="$props[statusKey]"
-          type="number"
-          min="1"
-          class="BngoSlotInput_status_input"
-          @input="setBaseStatus(statusKey, $event)"
-        >
-      </label>
-    </div>
-  </template>
+  <p class="BngoSlotInput_label">文豪のステータス（未入力可）</p>
+  <div class="BngoSlotInput_status">
+    <label v-for="(label, statusKey) in statusData.base" :key="statusKey" class="BngoSlotInput_status_box">
+      <span class="BngoSlotInput_status_name">{{ label }}</span>
+      <input
+        :ref="statusKey"
+        :value="$props[statusKey]"
+        type="number"
+        min="1"
+        class="BngoSlotInput_status_input"
+        @input="setBaseStatus(statusKey, $event)"
+      >
+    </label>
+  </div>
 </div>

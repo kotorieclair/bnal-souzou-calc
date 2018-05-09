@@ -36,11 +36,6 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      displayBaseStatusInput: true,
-    };
-  },
   computed: {
     groupedCardsData() {
       const grouped = {};
