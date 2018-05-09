@@ -187,6 +187,11 @@ export default {
     name: '新美南吉',
     weapon: 'gun',
   },
+  57: {
+    name: '小川未明',
+    weapon: 'gun',
+  },
+
   78: {
     name: '徳田秋声',
     weapon: 'bow',
