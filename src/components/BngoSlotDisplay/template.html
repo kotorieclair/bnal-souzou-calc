@@ -33,10 +33,15 @@
     <tr>
       <td v-for="(label, status) in statusData.battle">
         <span :class="[ increasedBattleStatus[status] < 0 ? 'text-red' : 'text-blue' ]">
-          {{ increasedBattleStatus[status] || '' | addSign }}
+          {{ !increasedBattleStatus[status] && increasedBattleStatus[status] !== 0 ? '' : increasedBattleStatus[status] | addSign }}
         </span>
         <span v-if="inputtedBattleStatus[status] && finalBattleStatus[status]" class="text-small">
-          ({{ inputtedBattleStatus[status] }}→{{ finalBattleStatus[status] }})
+          <template v-if="inputtedBattleStatus[status] === finalBattleStatus[status]">
+            ({{ finalBattleStatus[status] }})
+          </template>
+          <template v-else>
+            ({{ inputtedBattleStatus[status] }}→{{ finalBattleStatus[status] }})
+          </template>
         </span>
       </td>
     </tr>
