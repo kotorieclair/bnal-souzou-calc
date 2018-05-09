@@ -329,6 +329,13 @@ export default {
       battle: { atk: 622, def: 413, avd: 239 },
     },
   },
+  57: {
+    name: '小川未明',
+    status: {
+      base: { tech: 45, genius: 45, beauty: 44, theme: 48, truth: 41 },
+      battle: { atk: 169, def: 110, avd: 64 },
+    },
+  },
   78: {
     name: '徳田秋声',
     status: {
