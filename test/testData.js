@@ -2,24 +2,10 @@ const testBungo = {
   1: {
     name: 'テスト文豪1',
     weapon: 'blade',
-    status: {
-      tech: 170,
-      genius: 170,
-      beauty: 162,
-      theme: 170,
-      truth: 170,
-    },
   },
   2: {
     name: 'テスト文豪2',
     weapon: 'gun',
-    status: {
-      tech: 168,
-      genius: 170,
-      beauty: 164,
-      theme: 169,
-      truth: 170,
-    },
   },
 };
 
@@ -62,6 +48,16 @@ const testCards = {
       3: 'スキル2-3',
     },
   },
+  202: {
+    name: 'テスト装像2-2',
+    rare: 2,
+    status: {
+      1: { beauty: 25, truth: -40 },
+      2: { beauty: 35, truth: -56 },
+      3: { beauty: 50, truth: -80 },
+    },
+    skill: null,
+  },
   301: {
     name: 'テスト装像3',
     rare: 3,
@@ -96,6 +92,8 @@ const testStatus = {
   blade: {
     base: { tech: 168, genius: 170, beauty: 164, theme: 169, truth: 170 },
     battle: { atk: 502, def: 505, avd: 39 },
+    totalBase201_3: { tech: 168, genius: (170 + 50), beauty: 164, theme: (169 + 160), truth: 170 },
+    finalBattle201_3: { atk: 607, def: 555, avd: 39 },
   },
   // 島崎
   bow: {
@@ -116,6 +114,10 @@ const testStatus = {
   whip: {
     base: { tech: 185, genius: 183, beauty: 181, theme: 176, truth: 176 },
     battle: { atk: 420, def: 497, avd: 46 },
+  },
+  neg: {
+    base: { tech: 42, genius: 47, beauty: 42, theme: 47, truth: 40 },
+    totalBase202_3: { tech: 42, genius: 47, beauty: (42 + 50), theme: 47, truth: 1 },
   },
 };
 
