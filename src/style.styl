@@ -1,68 +1,24 @@
 @require 'style/variables'
-
-html
-  font-size: 6.25%
-
-body
-  background-color: #e4e4e4
-  font-family: sans-serif
-  font-size: $base-font-size
-
-body, div, th, td, ul, li, h1, h2, h3
-  margin: 0
-  padding: 0
-  line-height: 1
-
-h1, h2, h3
-  line-height: 1.5
-
-p, li
-  margin: 0
-  padding: 0
-  line-height: 1.7
-
-ul
-  margin-left: 1.5em
-
-a
-  color: $color-link
-
-select, input
-  background-color: #fff
-  border: 1px solid $color-gray-light
-  box-sizing: border-box
-  font-size: $base-font-size - 1rem
-  vertical-align: bottom
-
-input
-  padding: 2px
-
-.bold
-  font-weight: bold
-
-.text-small
-  font-size: 0.8em
-
-.text-blue
-  color: $color-blue
-
-.text-red
-  color: $color-red
-
-.ex-margin-top
-  margin-top: 10px
-
-.ex-margin-bottom
-  margin-bottom: 10px
+@require 'style/functions'
+@require 'style/base'
 
 .wrapper
   background-color: #fff
   margin: 0 auto
-  max-width: 1000px
-  padding: 50px
+
+  @media $pc
+    max-width: 1000px
+    padding: 50px
+
+  @media $sp
+    padding: px2vw(0px)
 
 .header
-  margin: 0 30px 30px
+  @media $pc
+    margin: 0 30px 30px
+
+  @media $sp
+    margin: 0 px2vw(20px) px2vw(20px)
 
   h1
     margin-bottom: 20px
@@ -73,7 +29,6 @@ input
   border: 1px dotted $color-main-dark
   box-shadow: 0 0 0 4px $color-main-light
   color: $color-gray
-  // margin: 10px 4px
   padding: 15px 10px
 
 

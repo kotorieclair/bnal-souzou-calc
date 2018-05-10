@@ -1,13 +1,20 @@
 @require '../../style/variables'
+@require '../../style/functions'
 
 .BngoSlot
   background-color: $color-main-dark
   border: 1px solid $color-main-dark
-  display: flex
   padding: 10px
 
+  @media $pc
+    display: flex
+
+  @media $sp
+    position: relative
+
   .BngoSlot_left
-    flex: 0 1 33%
+    @media $pc
+      flex: 0 1 33%
 
     &_order
       align-items: center
@@ -27,4 +34,5 @@
       margin-top: 15px
 
   .BngoSlot_right
-    flex: 0 1 67%
+    @media $pc
+      flex: 0 1 67%
