@@ -4,6 +4,9 @@ export default {
   name: 'BnalSouzouCalc',
   components: { BngoSlot },
   data() {
-    return {};
+    return {
+      slotNum: 4,
+      spCurrent: 1,
+    };
   },
 };
