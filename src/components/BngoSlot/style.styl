@@ -1,5 +1,6 @@
 @require '../../style/variables'
 @require '../../style/functions'
+@require '../../style/mixins'
 
 .BngoSlot
   background-color: $color-main-dark
@@ -17,18 +18,10 @@
       flex: 0 1 33%
 
     &_order
-      align-items: center
-      background-color: $color-main-light
-      border: 2px solid $color-sub
-      border-radius: 20px
-      box-sizing: border-box
-      color: $color-main-dark
-      display: flex
-      font-size: 17rem
-      font-weight: bold
-      height: @border-radius * 2
-      justify-content: center
-      width: @border-radius * 2
+      num-badge()
+
+      @media $sp
+        display: none
 
     .BngoSlotInput
       margin-top: 15px

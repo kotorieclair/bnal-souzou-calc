@@ -9,4 +9,9 @@ export default {
       spCurrent: 1,
     };
   },
+  methods: {
+    setSpCurrent(payload, e) {
+      this.spCurrent = parseInt(payload);
+    },
+  },
 };
