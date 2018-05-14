@@ -31,8 +31,14 @@ select, input
   box-sizing: border-box
   vertical-align: bottom
 
+  @media $sp
+    height: 2em
+
 input
   padding: 2px
+
+  @media $sp
+    border-radius: 0
 
 .bold
   font-weight: bold

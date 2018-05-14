@@ -14,14 +14,16 @@
         border-top-right-radius: @border-top-left-radius
         display: inline-block
         margin-right: 1px
-        padding: 3px 3px 2px
+        padding: 3px 3px 1px
         vertical-align: bottom
 
-        &.sp-visible
+      &.sp-visible
+        @media $sp
           background-color: $color-main-dark
           padding-bottom: 4px
 
-        span
+      span
+        @media $sp
           num-badge()
 
   .BngoSlot

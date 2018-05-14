@@ -21,12 +21,14 @@
     padding: 7px 5px
 
   &_info
-    align-items: flex-end
     color: $color-main-light
-    display: flex
     padding: 5px
     margin-bottom: 7px
     text-align: center
+
+    @media $pc
+      align-items: flex-end
+      display: flex
 
     &_bungo
       font-size: $base-font-size + 2rem
@@ -38,6 +40,9 @@
       flex: 0 1 60%
       min-height: 1em
 
+      @media $sp
+        margin-top: 7px
+
   &_base
     th, td
       width: 20%
@@ -46,6 +51,14 @@
     th, td
       border-top: 0
       width: calc(100% / 3)
+
+      span
+        @media $sp
+          display: block
+
+        &:nth-child(2)
+          @media $sp
+            margin-top: 3px
 
   &_skill
     margin-top: 10px
