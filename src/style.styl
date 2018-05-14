@@ -11,7 +11,7 @@
     padding: 50px
 
   @media $sp
-    padding: px2vw(0px)
+    padding: 30px 0
 
 .header
   @media $pc
@@ -24,13 +24,17 @@
     margin-bottom: 20px
 
 .help
-  margin: 50px 30px 0
   background-color: $color-main-light
   border: 1px dotted $color-main-dark
   box-shadow: 0 0 0 4px $color-main-light
   color: $color-gray
   padding: 15px 10px
 
+  @media $pc
+    margin: 50px 30px 0
+
+  @media $sp
+    margin: 10px
 
   h2
     margin-bottom: 20px
@@ -52,5 +56,10 @@
     background-color: rgba(#fff, 0.8)
     border-radius: 5px
     color: $color-gray
-    margin: 10px
     padding: 10px
+
+    @media $pc
+      margin: 10px
+
+    @media $sp
+      margin: 10px 0
