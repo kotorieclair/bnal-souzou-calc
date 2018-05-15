@@ -1,3 +1,38 @@
+@require '../../style/variables'
+@require '../../style/functions'
+@require '../../style/mixins'
+
 .BnalSouzouCalc
+  &_tab
+    @media $pc
+      display: none
+
+    &_num
+      @media $sp
+        background-color: rgba($color-main-dark, 0.4)
+        border-top-left-radius: 10px
+        border-top-right-radius: @border-top-left-radius
+        display: inline-block
+        margin-right: 1px
+        padding: 3px 3px 1px
+        vertical-align: bottom
+
+      &.sp-visible
+        @media $sp
+          background-color: $color-main-dark
+          padding-bottom: 4px
+
+      span
+        @media $sp
+          num-badge()
+
   .BngoSlot
-    margin-bottom: 20px
+    @media $pc
+      margin-bottom: 20px
+
+    @media $sp
+      display: none
+
+    &.sp-visible
+      @media $sp
+        display: block

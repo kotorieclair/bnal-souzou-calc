@@ -1,30 +1,33 @@
 @require '../../style/variables'
+@require '../../style/functions'
+@require '../../style/mixins'
 
 .BngoSlot
   background-color: $color-main-dark
   border: 1px solid $color-main-dark
-  display: flex
   padding: 10px
 
-  .BngoSlot_left
-    flex: 0 1 33%
+  @media $pc
+    display: flex
+
+  @media $sp
+    position: relative
+
+  &_left
+    @media $pc
+      flex: 0 1 33%
+      margin-right: 10px
 
     &_order
-      align-items: center
-      background-color: $color-main-light
-      border: 2px solid $color-sub
-      border-radius: 20px
-      box-sizing: border-box
-      color: $color-main-dark
-      display: flex
-      font-size: 17rem
-      font-weight: bold
-      height: @border-radius * 2
-      justify-content: center
-      width: @border-radius * 2
+      num-badge()
+
+      @media $sp
+        display: none
 
     .BngoSlotInput
-      margin-top: 15px
+      @media $pc
+        margin-top: 15px
 
-  .BngoSlot_right
-    flex: 0 1 67%
+  &_right
+    @media $pc
+      flex: 0 1 67%

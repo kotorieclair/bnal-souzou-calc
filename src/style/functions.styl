@@ -1,0 +1,12 @@
+@require 'variables'
+
+px2vw($val, $width = $sp-width)
+  if unit($val) != 'px'
+    $val
+  else
+    unit($val / ($width / 100), 'vw')
+
+text-align($align)
+  text-align: $align
+  if $align == 'justify'
+    text-justify: inter-ideograph
