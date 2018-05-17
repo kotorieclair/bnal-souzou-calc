@@ -15,7 +15,7 @@ export default {
       type: [String, Number],
       required: false,
     },
-    adjustedCardStatus: {
+    cardStatus: {
       type: Object,
       required: false,
     },

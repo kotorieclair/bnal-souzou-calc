@@ -18,8 +18,8 @@
       </th>
     </tr>
     <tr>
-      <td v-for="(label, status) in statusData.base" :class="[ adjustedCardStatus[status] < 0 ? 'text-red' : 'text-blue' ]">
-        {{ adjustedCardStatus[status] || '' | addSign }}
+      <td v-for="(label, status) in statusData.base" :class="[ cardStatus[status] < 0 ? 'text-red' : 'text-blue' ]">
+        {{ cardStatus[status] || '' | addSign }}
       </td>
     </tr>
   </table>

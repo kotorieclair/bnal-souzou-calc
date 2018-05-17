@@ -27,7 +27,7 @@ export default {
   computed: {
     // 装像の実際の増減値
     // 不明なレベルの装像の値を保持
-    adjustedCardStatus() {
+    cardStatus() {
       if (!this.cardId || !this.cardLv) {
         return {};
       }
@@ -59,16 +59,16 @@ export default {
         avd: this.calculateAvd(this.bungoData[this.bungo].weapon, this.baseStatus),
       };
     },
-    // adjustedCardStatusとbaseStatusを足した基礎ステータス
+    // cardStatusとbaseStatusを足した基礎ステータス
     // baseStatus入力済み時のみ使用
     totalBaseStatus() {
-      if (Object.keys(this.baseStatus).length === 0 || Object.keys(this.adjustedCardStatus).length === 0) {
+      if (Object.keys(this.baseStatus).length === 0 || Object.keys(this.cardStatus).length === 0) {
         return {};
       }
 
       const totalStatus = {};
       Object.keys(this.statusData.base).forEach((key) => {
-        totalStatus[key] = (this.adjustedCardStatus[key] || 0) + this.baseStatus[key];
+        totalStatus[key] = (this.cardStatus[key] || 0) + this.baseStatus[key];
         if (totalStatus[key] < 0) {
           totalStatus[key] = 1;
         }
@@ -91,7 +91,7 @@ export default {
     },
     // 装像による戦闘ステータスの増加値
     increasedBattleStatus() {
-      // baseStatus未入力ならadjustedCardStatusからそのまま算出
+      // baseStatus未入力ならcardStatusからそのまま算出
       // baseStatus入力済みならfinalBattleStatus - inputtedBattleStatus
       if (!this.bungo || !this.cardId || !this.cardLv) {
         return {};
@@ -99,9 +99,9 @@ export default {
 
       if (Object.keys(this.baseStatus).length === 0) {
         return {
-          atk: this.calculateAtk(this.bungoData[this.bungo].weapon, this.adjustedCardStatus),
-          def: this.calculateDef(this.bungoData[this.bungo].weapon, this.adjustedCardStatus),
-          avd: this.calculateAvd(this.bungoData[this.bungo].weapon, this.adjustedCardStatus),
+          atk: this.calculateAtk(this.bungoData[this.bungo].weapon, this.cardStatus),
+          def: this.calculateDef(this.bungoData[this.bungo].weapon, this.cardStatus),
+          avd: this.calculateAvd(this.bungoData[this.bungo].weapon, this.cardStatus),
         };
       }
 

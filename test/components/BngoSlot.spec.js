@@ -22,19 +22,19 @@ describe('components: BngoSlot', () => {
     });
   });
 
-  describe('computed: adjustedCardStatus', () => {
+  describe('computed: cardStatus', () => {
     it('returns an empty object when either cardId or cardLv is not set', () => {
       wrapper.setData({
         cardId: '',
         cardLv: 1,
       });
-      expect(wrapper.vm.adjustedCardStatus).to.be.empty;
+      expect(wrapper.vm.cardStatus).to.be.empty;
 
       wrapper.setData({
         cardId: 101,
         cardLv: '',
       });
-      expect(wrapper.vm.adjustedCardStatus).to.be.empty;
+      expect(wrapper.vm.cardStatus).to.be.empty;
     });
 
     it('returns an object containing selected card status', () => {
@@ -43,7 +43,7 @@ describe('components: BngoSlot', () => {
         cardId: id,
         cardLv: lv,
       });
-      expect(wrapper.vm.adjustedCardStatus).to.eql(testCards[id].status[lv]);
+      expect(wrapper.vm.cardStatus).to.eql(testCards[id].status[lv]);
     });
 
     it('returns estimated card status when selected card\'s level status is null', () => {
@@ -52,7 +52,7 @@ describe('components: BngoSlot', () => {
         cardId: id,
         cardLv: lv,
       });
-      expect(wrapper.vm.adjustedCardStatus).to.eql(expectedCardStatus[id].base[lv]);
+      expect(wrapper.vm.cardStatus).to.eql(expectedCardStatus[id].base[lv]);
     });
   });
 
@@ -105,7 +105,7 @@ describe('components: BngoSlot', () => {
       expect(wrapper.vm.totalBaseStatus).to.be.empty;
     });
 
-    it('returns an empty object when adjustedCardStatus is not ready', () => {
+    it('returns an empty object when cardStatus is not ready', () => {
       wrapper.setData({
         tech: 10,
         genius: 10,
@@ -116,7 +116,7 @@ describe('components: BngoSlot', () => {
       expect(wrapper.vm.totalBaseStatus).to.be.empty;
     });
 
-    it('adds adjustedCardStatus to baseStatus', () => {
+    it('adds cardStatus to baseStatus', () => {
       const [bungo, id, lv] = [1, 201, 3];
       wrapper.setData({
         bungo,
