@@ -294,18 +294,3 @@ export default {
     },
   }
 };
-
-// 2001: {
-//   name: '',
-//   rare: 2,
-//   status: {
-//     1: { tech: , genius: , beauty: , theme: , truth:  },
-//     2: { tech: , genius: , beauty: , theme: , truth:  },
-//     3: { tech: , genius: , beauty: , theme: , truth:  },
-//   },
-//   skill: {
-//     1: '',
-//     2: '',
-//     3: '',
-//   },
-// },

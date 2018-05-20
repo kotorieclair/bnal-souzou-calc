@@ -159,23 +159,8 @@ export default {
     },
     skill: {
       1: '急所攻撃率 +5%',
-      2: '急所攻撃率 +5%（？）',
+      2: '急所攻撃率 +5%',
       3: '急所攻撃率 +10%',
     },
   },
 };
-
-// 1001: {
-//   name: '',
-//   rare: 1,
-//   status: {
-//     1: { tech: , genius: , beauty: , theme: , truth: },
-//     2: { tech: , genius: , beauty: , theme: , truth: },
-//     3: { tech: , genius: , beauty: , theme: , truth: },
-//   },
-//   skill: {
-//     1: '',
-//     2: '',
-//     3: '',
-//   },
-// },

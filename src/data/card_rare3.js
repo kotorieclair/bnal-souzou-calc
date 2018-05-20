@@ -349,19 +349,18 @@ export default {
       3: '命中率 +30%',
     },
   },
+  3026: {
+    name: '図書館ノ軍医-森鴎外',
+    rare: 3,
+    status: {
+      1: { tech: 48 },
+      2: null,
+      3: { tech: 96 },
+    },
+    skill: {
+      1: '降臨上昇率 +30%',
+      2: '降臨上昇率 +30%',
+      3: '降臨上昇率 +60%',
+    },
+  },
 };
-
-// 2001: {
-//   name: '',
-//   rare: 3,
-//   status: {
-//     1: { tech: , genius: , beauty: , theme: , truth:  },
-//     2: { tech: , genius: , beauty: , theme: , truth:  },
-//     3: { tech: , genius: , beauty: , theme: , truth:  },
-//   },
-//   skill: {
-//     1: '',
-//     2: '',
-//     3: '',
-//   },
-// },
