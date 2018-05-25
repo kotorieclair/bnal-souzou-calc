@@ -205,4 +205,4 @@ export default {
       return Math.round(base / this.weaponsData[weapon].adjustment.avd);
     },
   },
-}
+};

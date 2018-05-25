@@ -41,4 +41,4 @@ export default {
     this.weaponsData = weapons;
     this.statusData = status;
   },
-}
+};

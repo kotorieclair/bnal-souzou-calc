@@ -38,6 +38,7 @@
         type="number"
         min="1"
         @input="setBaseStatus(statusKey, $event)"
+        @change="sendBaseStatusAnalytics(statusKey)"
       >
     </label>
   </div>
