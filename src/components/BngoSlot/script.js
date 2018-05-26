@@ -1,6 +1,7 @@
 import BngoSlotInput from '../BngoSlotInput';
 import BngoSlotDisplay from '../BngoSlotDisplay';
 import { bungo, cards, weapons, status } from '../../data';
+import store from '../../store';
 
 export default {
   name: 'BngoSlot',
@@ -22,6 +23,7 @@ export default {
       beauty: '',
       theme: '',
       truth: '',
+      state: null,
     };
   },
   computed: {
@@ -121,13 +123,10 @@ export default {
     this.cardsData = cards;
     this.weaponsData = weapons;
     this.statusData = status;
-    this.defaultBaseStatus = {
-      tech: 170,
-      genius: 170,
-      beauty: 170,
-      theme: 170,
-      truth: 170,
-    };
+
+    const { actions, state } = store.add(this.order);
+    this.actions = actions;
+    this.state = state;
   },
   methods: {
     setInputtedValue(key, payload) {
@@ -174,6 +173,9 @@ export default {
       }
 
       this[key] = payload;
+    },
+    copySlot(to) {
+      this.actions.copySlot(to);
     },
     estimateCardStatus(status, lv) {
       const adj = lv === 3 ? 2 : lv === 2 ? 1.4 : 1;

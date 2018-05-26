@@ -1,4 +1,5 @@
 import { bungo, cards, weapons, status } from '../../data';
+import store from '../../store';
 
 export default {
   name: 'BngoSlotInput',
@@ -41,6 +42,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      state: null,
+    };
+  },
   computed: {
     groupedCardsData() {
       const grouped = {};
@@ -78,12 +84,17 @@ export default {
     this.cardsData = cards;
     this.weaponsData = weapons;
     this.statusData = status;
+
+    const { actions, state } = store.get(this.order);
+    this.actions = actions;
+    this.state = state;
   },
   methods: {
     setBungo(e) {
       this.$emit('changeInputtedValue', 'bungo', parseInt(e.target.value));
       this.sendAnalytics('bungo', '文豪');
-    },
+      this.actions.setBungo(parseInt(e.target.value));
+      },
     setCardId(e) {
       const id = parseInt(e.target.value);
       this.$emit('changeInputtedValue', 'cardId', id);
@@ -94,6 +105,7 @@ export default {
       }
 
       this.sendAnalytics('cardId', '装像');
+      this.actions.setCardId(id);
     },
     setCardLv(e) {
       this.$emit('changeInputtedValue', 'cardLv', parseInt(e.target.value));
