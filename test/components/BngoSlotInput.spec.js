@@ -1,11 +1,23 @@
 import { expect } from 'chai';
 import { shallow } from '@vue/test-utils';
 import BngoSlotInput from '../../src/components/BngoSlotInput';
+import Store from '../../src/store';
 import starify from '../../src/filters/starify';
+import { testBungo, testCards, expectedCardStatus, testStatus } from '../testData';
 
 describe('components: BngoSlotInput', () => {
   let wrapper;
+
+  before(() => {
+    Store.init({
+      bungo: testBungo,
+      cards: testCards,
+    });
+  });
+
   beforeEach(() => {
+    Store.add(1);
+
     wrapper = shallow(BngoSlotInput, {
       propsData: {
         bungo: '',
@@ -16,10 +28,18 @@ describe('components: BngoSlotInput', () => {
         beauty: '',
         theme: '',
         truth: '',
+        order: 1,
       },
       filters: { starify },
     });
+  });
 
+  afterEach(() => {
+    Store.delete(1);
+  });
+
+  after(() => {
+    Store.destroy();
   });
 
   describe('DOM: bungo selector', () => {

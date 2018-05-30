@@ -5,9 +5,23 @@ import testBungoData from '../testBungoData';
 import bungoData from '../../src/data/bungo';
 
 describe('data: bungo', () => {
-  const wrapper = shallow(BngoSlot);
+  let wrapper;
 
-  it('should have correct weapon types for each bungo data', () => {
+  before(() => {
+    Store.init({
+      bungo: testBungo,
+      cards: testCards,
+    });
+    Store.add(1);
+
+    wrapper = shallow(BngoSlot, {
+      propsData: {
+        order: 1,
+      },
+    });
+  });
+
+  it('has correct weapon types for each bungo data', () => {
     Object.keys(bungoData).forEach((id) => {
       const status = testBungoData[id].status;
       const weapon = bungoData[id].weapon;

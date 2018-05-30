@@ -1,15 +1,17 @@
-export default {
-  store: [],
+let store = {};
+let validData = {};
 
-  get(slotId) {
-    if (!this.store[slotId]) {
-      this.add(slotId);
-    }
-    return this.store[slotId];
+export default {
+  init({ bungo, cards }) {
+    validData = { bungo, cards };
   },
 
-  add(slotId) {
-    if (!this.store[slotId]) {
+  add(slotId, from) {
+    if (Object.keys(validData).length === 0) {
+      throw new Error('Store: add - init the store with statics before adding!');
+    }
+
+    if (!store[slotId]) {
       const state = {
         bungo: '',
         cardId: '',
@@ -23,9 +25,15 @@ export default {
 
       const actions = {
         setBungo(bungo) {
+          if (!validData.bungo.hasOwnProperty(bungo)) {
+            throw new Error('Store.action: setBungo - unknown bungo id!');
+          }
           state.bungo = bungo;
         },
         setCardId(cardId) {
+          if (!validData.cards.hasOwnProperty(cardId)) {
+            throw new Error('Store.action: setCardId - unknown cardId id!');
+          }
           state.cardId = cardId;
         },
         setCardLv(cardLv) {
@@ -46,16 +54,49 @@ export default {
         setTruth(truth) {
           state.truth = truth;
         },
-        copySlot: (to) => {
-          Object.keys(state).forEach((key) => {
-            this.store[to].state[key] = state[key];
-          });
+        copyState: (to) => {
+          let copyTo;
+          try {
+            copyTo = this.get(to);
+          } catch (e) {
+            throw new Error('Store: copyState - unknown slotId!');
+          }
+
+          copyTo.actions.setBungo(state.bungo);
+          copyTo.actions.setCardId(state.cardId);
+          copyTo.actions.setCardLv(state.cardLv);
+          copyTo.actions.setTech(state.tech);
+          copyTo.actions.setGenius(state.genius);
+          copyTo.actions.setBeauty(state.beauty);
+          copyTo.actions.setTheme(state.theme);
+          copyTo.actions.setTruth(state.truth);
         },
       };
 
-      this.store[slotId] = { state, actions };
+      store[slotId] = { state, actions };
     }
 
-    return this.store[slotId];
+    return store[slotId];
+  },
+
+  get(slotId) {
+    if (!store[slotId]) {
+      throw new Error('Store: get - unknown slotId!');
+      // this.add(slotId);
+    }
+    return store[slotId];
+  },
+
+  delete(slotId) {
+    if (!store[slotId]) {
+      throw new Error('Store: delete - unknown slotId!');
+    }
+
+    delete store[slotId];
+  },
+
+  destroy() {
+    store = {};
+    validData = {};
   },
 };

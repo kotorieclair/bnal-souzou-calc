@@ -124,7 +124,7 @@ export default {
     this.weaponsData = weapons;
     this.statusData = status;
 
-    const { actions, state } = store.add(this.order);
+    const { actions, state } = store.add(this.order, 'BngoSlot');
     this.actions = actions;
     this.state = state;
   },

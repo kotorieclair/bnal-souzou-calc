@@ -1,13 +1,25 @@
 import { expect } from 'chai';
 import { shallow } from '@vue/test-utils';
 import BngoSlot from '../../src/components/BngoSlot';
+import Store from '../../src/store';
 import { testBungo, testCards, expectedCardStatus, testStatus } from '../testData';
 
 describe('components: BngoSlot', () => {
   let wrapper;
 
+  before(() => {
+    Store.init({
+      bungo: testBungo,
+      cards: testCards,
+    });
+  });
+
   beforeEach(() => {
-    wrapper = shallow(BngoSlot);
+    wrapper = shallow(BngoSlot, {
+      propsData: {
+        order: 1,
+      },
+    });
     wrapper.vm.bungoData = testBungo;
     wrapper.vm.cardsData = testCards;
     wrapper.setData({
@@ -20,6 +32,14 @@ describe('components: BngoSlot', () => {
       theme: '',
       truth: '',
     });
+  });
+
+  afterEach(() => {
+    Store.delete(1);
+  });
+
+  after(() => {
+    Store.destroy();
   });
 
   describe('computed: adjustedCardStatus', () => {

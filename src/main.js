@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import BnalSouzouCalc from './components/BnalSouzouCalc';
 import { starify, addSign } from './filters';
+import Store from './store';
 import style from './style';
 import ogimage from './img/cover.png'
+import { bungo, cards } from './data';
 
 Vue.filter('starify', starify);
 Vue.filter('addSign', addSign);
+
+Store.init({ bungo, cards });
 
 const vm = new Vue({
   el: '#app',
