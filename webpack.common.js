@@ -53,7 +53,7 @@ module.exports = {
       title: '文アル装像計算機',
       template: './src/index.html',
       meta: {
-        description: '文豪とアルケミスト（文アル）の装像からステータスの上昇値を計算するツール',
+        description: '文豪とアルケミスト（文アル）の文豪と装像から攻撃・防御・回避の増減値をシミュレートするツール。文豪個別のステータス入力にも対応、攻撃・防御・回避の最終的な数値も出せます。さらに4人分入力できるので、会派編成にも装像比較にも使えます！',
         twauthor: '@kotorieclair',
         twcard: 'summary_large_image',
         url: 'https://kotorieclair.github.io/bnal-souzou-calc/',
