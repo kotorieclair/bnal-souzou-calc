@@ -1,3 +1,3 @@
 <template src="./template.html"></template>
 <script src="./script.js"></script>
-<style scoped lang="stylus" src="./style.styl"></style>
+<style lang="stylus" src="./style.styl"></style>

@@ -7,6 +7,8 @@ import ogimage from './img/cover.png'
 Vue.filter('starify', starify);
 Vue.filter('addSign', addSign);
 
+const eventHub = new Vue();
+
 const vm = new Vue({
   el: '#app',
   components: { BnalSouzouCalc },
