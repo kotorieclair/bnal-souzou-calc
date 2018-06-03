@@ -1,3 +1,7 @@
+import 'core-js/fn/object/assign';
+import 'core-js/fn/number/is-integer';
+import 'core-js/fn/string/repeat';
+
 import Vue from 'vue';
 import BnalSouzouCalc from './components/BnalSouzouCalc';
 import { starify, addSign } from './filters';
