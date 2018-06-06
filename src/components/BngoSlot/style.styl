@@ -7,27 +7,31 @@
   border: 1px solid $color-main-dark
   padding: 10px
 
-  @media $pc
-    display: flex
-
-  @media $sp
-    position: relative
-
-  &_left
+  &_form
     @media $pc
-      flex: 0 1 33%
-      margin-right: 10px
+      display: flex
 
-    &_order
-      num-badge()
+    @media $sp
+      position: relative
 
-      @media $sp
-        display: none
-
-    .BngoSlotInput
+    &_left
       @media $pc
-        margin-top: 15px
+        flex: 0 1 33%
+        margin-right: 10px
 
-  &_right
-    @media $pc
-      flex: 0 1 67%
+      &_order
+        num-badge()
+
+        @media $sp
+          display: none
+
+      .BngoSlotInput
+        @media $pc
+          margin-top: 15px
+
+    &_right
+      @media $pc
+        flex: 0 1 67%
+
+  &_buttons
+    margin-top: 10px

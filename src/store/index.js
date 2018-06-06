@@ -75,12 +75,12 @@ export default {
           }
           state.truth = truth;
         },
-        copyState: (to) => {
+        copyStateTo: (to) => {
           let copyTo;
           try {
             copyTo = this.get(to);
           } catch (e) {
-            throw new Error('Store: copyState - unknown slotId!');
+            throw new Error('Store: copyStateTo - unknown slotId!');
           }
 
           copyTo.actions.setBungo(state.bungo);

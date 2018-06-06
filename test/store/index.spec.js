@@ -189,13 +189,13 @@ describe('store', () => {
     });
   });
 
-  describe('actions: copyState', () => {
+  describe('actions: copyStateTo', () => {
     it('throws an error when given slotId is not set', () => {
-      expect(() => store.actions.copyState(100)).to.throw();
+      expect(() => store.actions.copyStateTo(100)).to.throw();
     });
 
     it('copies the slot store state to a given slot', () => {
-      store.actions.copyState(2);
+      store.actions.copyStateTo(2);
       expect(Store.get(2).state).to.eql(Store.get(1).state);
     });
   });

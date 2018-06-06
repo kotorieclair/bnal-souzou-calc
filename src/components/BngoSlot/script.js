@@ -12,6 +12,11 @@ export default {
       required: false,
       default: 0,
     },
+    totalSlot: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
     bungoData: {
       type: Object,
       required: false,
@@ -55,6 +60,18 @@ export default {
     };
   },
   computed: {
+    copyButtonsList() {
+      if (this.totalSlot <= 1) {
+        return 0;
+      }
+      const total = [];
+      for (let n of Array(this.totalSlot).keys()) {
+        if (n !== this.order) {
+          total.push(n + 1);
+        }
+      }
+      return total;
+    },
     // 装像の実際の増減値
     // 不明なレベルの装像の値を保持
     adjustedCardStatus() {
@@ -197,8 +214,8 @@ export default {
 
       this[key] = payload;
     },
-    copySlot(to) {
-      this.actions.copySlot(to);
+    copyStateTo(to) {
+      this.actions.copyStateTo(to);
     },
     estimateCardStatus(status, lv) {
       const adj = lv === 3 ? 2 : lv === 2 ? 1.4 : 1;

@@ -1,16 +1,22 @@
 <div class="BngoSlot">
-  <div class="BngoSlot_left">
-    <div class="BngoSlot_left_order">{{ order || '' }}</div>
-    <BngoSlotInput
-      v-bind="{ order, bungo, cardId, cardLv, tech, genius, beauty, theme, truth }"
-      @changeInputtedValue="setInputtedValue"
-    />
+  <div class="BngoSlot_form">
+    <div class="BngoSlot_form_left">
+      <div class="BngoSlot_form_left_order">{{ order || '' }}</div>
+      <BngoSlotInput
+        v-bind="{ order, bungo, cardId, cardLv, tech, genius, beauty, theme, truth }"
+        @changeInputtedValue="setInputtedValue"
+      />
+    </div>
+    <div class="BngoSlot_form_right">
+      <BngoSlotDisplay
+        v-bind="{ bungo, cardId, cardLv, adjustedCardStatus, inputtedBattleStatus, finalBattleStatus, increasedBattleStatus }"/>
+    </div>
   </div>
-  <div class="BngoSlot_right">
-    <BngoSlotDisplay
-      v-bind="{ bungo, cardId, cardLv, adjustedCardStatus, inputtedBattleStatus, finalBattleStatus, increasedBattleStatus }"/>
+  <div class="BngoSlot_buttons">
+    <button
+      v-for="n in copyButtonsList"
+      @click="copyStateTo(n)">
+        スロット{{ n }}にコピー
+    </button>
   </div>
-  <button @click="copySlot(2)">2にコピー</button>
-  <button @click="copySlot(3)">3にコピー</button>
-  <button @click="copySlot(4)">4にコピー</button>
 </div>

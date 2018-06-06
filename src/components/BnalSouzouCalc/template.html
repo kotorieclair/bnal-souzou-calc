@@ -1,7 +1,7 @@
 <div class="BnalSouzouCalc">
   <div class="BnalSouzouCalc_tab">
     <div
-      v-for="n in slotNum"
+      v-for="n in totalSlot"
       :key="n"
       class="BnalSouzouCalc_tab_num"
       :class="{ 'sp-visible': n === spCurrent }"
@@ -11,9 +11,10 @@
     </div>
   </div>
   <BngoSlot
-    v-for="n in slotNum"
+    v-for="n in totalSlot"
     :key="n"
     :order="n"
+    :totalSlot="totalSlot"
     :class="{ 'sp-visible': n === spCurrent }"
   />
 </div>
