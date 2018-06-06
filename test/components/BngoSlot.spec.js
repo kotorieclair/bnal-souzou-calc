@@ -18,10 +18,10 @@ describe('components: BngoSlot', () => {
     wrapper = shallow(BngoSlot, {
       propsData: {
         order: 1,
+        bungoData: testBungo,
+        cardsData: testCards,
       },
     });
-    wrapper.vm.bungoData = testBungo;
-    wrapper.vm.cardsData = testCards;
     wrapper.setData({
       bungo: '',
       cardId: '',

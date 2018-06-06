@@ -29,6 +29,8 @@ describe('components: BngoSlotInput', () => {
         theme: '',
         truth: '',
         order: 1,
+        bungoData: testBungo,
+        cardsData: testCards,
       },
       filters: { starify },
     });
@@ -58,14 +60,14 @@ describe('components: BngoSlotInput', () => {
     let el;
     beforeEach(() => {
       el = wrapper.find({ ref: 'cardId' });
-      el.element.value = '1001';
+      el.element.value = '101';
       el.trigger('change');
     });
 
     it('@change: emits changeInputtedValue event with cardId payload', () => {
       const payloads = wrapper.emitted().changeInputtedValue[0];
       expect(payloads[0]).to.equal('cardId')
-      expect(payloads[1]).to.equal(1001);
+      expect(payloads[1]).to.equal(101);
     });
 
     it('@change: emits changeInputtedValue event which adjusts cardlv', () => {
@@ -74,7 +76,7 @@ describe('components: BngoSlotInput', () => {
       expect(payloads[1]).to.equal(1);
 
       el = wrapper.find({ ref: 'cardId' });
-      el.element.value = '1014';
+      el.element.value = '301';
       el.trigger('change');
       const payloads2 = wrapper.emitted().changeInputtedValue[3];
       expect(payloads2[0]).to.equal('cardLv');
@@ -85,7 +87,7 @@ describe('components: BngoSlotInput', () => {
   describe('DOM: cardLv selector', () => {
     it('@change: emits changeInputtedValue event with cardLv payload', () => {
       wrapper.setProps({
-        cardId: 1001,
+        cardId: 201,
       });
 
       const el = wrapper.find({ ref: 'cardLv' });

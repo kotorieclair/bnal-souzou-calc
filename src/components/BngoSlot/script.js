@@ -12,6 +12,34 @@ export default {
       required: false,
       default: 0,
     },
+    bungoData: {
+      type: Object,
+      required: false,
+      default() {
+        return bungo;
+      },
+    },
+    cardsData: {
+      type: Object,
+      required: false,
+      default() {
+        return cards;
+      },
+    },
+    weaponsData: {
+      type: Object,
+      required: false,
+      default() {
+        return weapons;
+      },
+    },
+    statusData: {
+      type: Object,
+      required: false,
+      default() {
+        return status;
+      },
+    },
   },
   data() {
     return {
@@ -119,12 +147,7 @@ export default {
     },
   },
   created() {
-    this.bungoData = bungo;
-    this.cardsData = cards;
-    this.weaponsData = weapons;
-    this.statusData = status;
-
-    const { actions, state } = store.add(this.order, 'BngoSlot');
+    const { actions, state } = store.add(this.order);
     this.actions = actions;
     this.state = state;
   },

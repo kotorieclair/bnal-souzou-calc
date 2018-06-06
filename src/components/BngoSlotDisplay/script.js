@@ -31,14 +31,38 @@ export default {
       type: Object,
       required: false,
     },
+    bungoData: {
+      type: Object,
+      required: false,
+      default() {
+        return bungo;
+      },
+    },
+    cardsData: {
+      type: Object,
+      required: false,
+      default() {
+        return cards;
+      },
+    },
+    weaponsData: {
+      type: Object,
+      required: false,
+      default() {
+        return weapons;
+      },
+    },
+    statusData: {
+      type: Object,
+      required: false,
+      default() {
+        return status;
+      },
+    },
   },
   data() {
     return {};
   },
   created() {
-    this.bungoData = bungo;
-    this.cardsData = cards;
-    this.weaponsData = weapons;
-    this.statusData = status;
   },
 };

@@ -6,7 +6,7 @@ export default {
     validData = { bungo, cards };
   },
 
-  add(slotId, from) {
+  add(slotId) {
     if (Object.keys(validData).length === 0) {
       throw new Error('Store: add - init the store with statics before adding!');
     }
@@ -37,21 +37,42 @@ export default {
           state.cardId = cardId;
         },
         setCardLv(cardLv) {
+          if (!state.cardId) {
+            throw new Error('Store.action: setCardLv - set cardId before setting cardLv!');
+          }
+          if (!validData.cards[state.cardId].status.hasOwnProperty(cardLv)) {
+            throw new Error('Store.action: setCardLv - unknown cardLv!');
+          }
           state.cardLv = cardLv;
         },
         setTech(tech) {
+          if (!Number.isInteger(tech)) {
+            throw new Error('Store.action: setTech - tech must be an integer!');
+          }
           state.tech = tech;
         },
         setGenius(genius) {
+          if (!Number.isInteger(genius)) {
+            throw new Error('Store.action: setGenius - genius must be an integer!');
+          }
           state.genius = genius;
         },
         setBeauty(beauty) {
+          if (!Number.isInteger(beauty)) {
+            throw new Error('Store.action: setBeauty - beauty must be an integer!');
+          }
           state.beauty = beauty;
         },
         setTheme(theme) {
+          if (!Number.isInteger(theme)) {
+            throw new Error('Store.action: setTheme - theme must be an integer!');
+          }
           state.theme = theme;
         },
         setTruth(truth) {
+          if (!Number.isInteger(truth)) {
+            throw new Error('Store.action: setTruth - truth must be an integer!');
+          }
           state.truth = truth;
         },
         copyState: (to) => {
