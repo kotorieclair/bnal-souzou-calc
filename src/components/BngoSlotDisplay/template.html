@@ -1,12 +1,12 @@
 <div class="BngoSlotDisplay">
   <div class="BngoSlotDisplay_info">
     <div class="BngoSlotDisplay_info_bungo">
-      {{ bungo ? `【${weaponsData[bungoData[bungo].weapon].label}】${bungoData[bungo].name}` : '' }}
+      {{ state.bungo ? `【${weaponsData[bungoData[state.bungo].weapon].label}】${bungoData[state.bungo].name}` : '' }}
     </div>
     <div class="BngoSlotDisplay_info_card">
-      <template v-if="cardId && cardLv">
-        <span class="bold">{{ cardsData[cardId].rare | starify }} {{ cardsData[cardId].name }}</span>　Lv.{{ cardLv }}
-        <span v-if="!cardsData[cardId].status[cardLv]" class="text-small">※</span>
+      <template v-if="state.cardId && state.cardLv">
+        <span class="bold">{{ cardsData[state.cardId].rare | starify }} {{ cardsData[state.cardId].name }}</span>　Lv.{{ state.cardLv }}
+        <span v-if="!cardsData[state.cardId].status[state.cardLv]" class="text-small">※</span>
       </template>
     </div>
   </div>
@@ -51,7 +51,7 @@
     <tr>
       <th>追加効果</th>
       <td>
-        {{ cardId && cardLv && cardsData[cardId].skill ? cardsData[cardId].skill[cardLv] : '' }}
+        {{ state.cardId && state.cardLv && cardsData[state.cardId].skill ? cardsData[state.cardId].skill[state.cardLv] : '' }}
       </td>
     </tr>
   </table>

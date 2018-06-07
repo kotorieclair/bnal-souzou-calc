@@ -22,6 +22,10 @@ describe('data: bungo', () => {
     });
   });
 
+  after(() => {
+    Store.destroy();
+  });
+
   it('has correct weapon types for each bungo data', () => {
     Object.keys(bungo).forEach((id) => {
       const status = testBungoData[id].status;

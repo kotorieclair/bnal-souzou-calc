@@ -1,3 +1,5 @@
+import statusData from '../data/status';
+
 let store = {};
 let validData = {};
 
@@ -25,55 +27,36 @@ export default {
 
       const actions = {
         setBungo(bungo) {
-          if (!validData.bungo.hasOwnProperty(bungo)) {
+          if (bungo !== '' && !validData.bungo.hasOwnProperty(bungo)) {
             throw new Error('Store.action: setBungo - unknown bungo id!');
           }
           state.bungo = bungo;
         },
         setCardId(cardId) {
-          if (!validData.cards.hasOwnProperty(cardId)) {
+          if (cardId !== '' && !validData.cards.hasOwnProperty(cardId)) {
             throw new Error('Store.action: setCardId - unknown cardId id!');
           }
           state.cardId = cardId;
         },
         setCardLv(cardLv) {
-          if (!state.cardId) {
-            throw new Error('Store.action: setCardLv - set cardId before setting cardLv!');
-          }
-          if (!validData.cards[state.cardId].status.hasOwnProperty(cardLv)) {
-            throw new Error('Store.action: setCardLv - unknown cardLv!');
+          if (cardLv !== '') {
+            if (!state.cardId) {
+              throw new Error('Store.action: setCardLv - set cardId before setting cardLv!');
+            }
+            if (!validData.cards[state.cardId].status.hasOwnProperty(cardLv)) {
+              throw new Error('Store.action: setCardLv - unknown cardLv!');
+            }
           }
           state.cardLv = cardLv;
         },
-        setTech(tech) {
-          if (!Number.isInteger(tech)) {
-            throw new Error('Store.action: setTech - tech must be an integer!');
+        setBaseStatus(key, val) {
+          if (!statusData.base.hasOwnProperty(key)) {
+            throw new Error('Store.action: setBaseStatus - unknown baseStatus key!');
           }
-          state.tech = tech;
-        },
-        setGenius(genius) {
-          if (!Number.isInteger(genius)) {
-            throw new Error('Store.action: setGenius - genius must be an integer!');
+          if (val !== '' && !Number.isInteger(val)) {
+            throw new Error(`Store.action: setBaseStatus - ${key} must be an integer!`);
           }
-          state.genius = genius;
-        },
-        setBeauty(beauty) {
-          if (!Number.isInteger(beauty)) {
-            throw new Error('Store.action: setBeauty - beauty must be an integer!');
-          }
-          state.beauty = beauty;
-        },
-        setTheme(theme) {
-          if (!Number.isInteger(theme)) {
-            throw new Error('Store.action: setTheme - theme must be an integer!');
-          }
-          state.theme = theme;
-        },
-        setTruth(truth) {
-          if (!Number.isInteger(truth)) {
-            throw new Error('Store.action: setTruth - truth must be an integer!');
-          }
-          state.truth = truth;
+          state[key] = val;
         },
         copyStateTo: (to) => {
           let copyTo;
@@ -86,11 +69,11 @@ export default {
           copyTo.actions.setBungo(state.bungo);
           copyTo.actions.setCardId(state.cardId);
           copyTo.actions.setCardLv(state.cardLv);
-          copyTo.actions.setTech(state.tech);
-          copyTo.actions.setGenius(state.genius);
-          copyTo.actions.setBeauty(state.beauty);
-          copyTo.actions.setTheme(state.theme);
-          copyTo.actions.setTruth(state.truth);
+          copyTo.actions.setBaseStatus('tech', state.tech);
+          copyTo.actions.setBaseStatus('genius', state.genius);
+          copyTo.actions.setBaseStatus('beauty', state.beauty);
+          copyTo.actions.setBaseStatus('theme', state.theme);
+          copyTo.actions.setBaseStatus('truth', state.truth);
         },
       };
 

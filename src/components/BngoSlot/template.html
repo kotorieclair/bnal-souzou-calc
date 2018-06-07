@@ -2,14 +2,11 @@
   <div class="BngoSlot_form">
     <div class="BngoSlot_form_left">
       <div class="BngoSlot_form_left_order">{{ order || '' }}</div>
-      <BngoSlotInput
-        v-bind="{ order, bungo, cardId, cardLv, tech, genius, beauty, theme, truth }"
-        @changeInputtedValue="setInputtedValue"
-      />
+      <BngoSlotInput v-bind="{ order }"/>
     </div>
     <div class="BngoSlot_form_right">
       <BngoSlotDisplay
-        v-bind="{ bungo, cardId, cardLv, adjustedCardStatus, inputtedBattleStatus, finalBattleStatus, increasedBattleStatus }"/>
+        v-bind="{ order, adjustedCardStatus, inputtedBattleStatus, finalBattleStatus, increasedBattleStatus }"/>
     </div>
   </div>
   <div class="BngoSlot_buttons">

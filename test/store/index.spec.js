@@ -94,98 +94,34 @@ describe('store', () => {
     });
   });
 
-  describe('actions: setTech', () => {
+  describe('actions: setBaseStatus', () => {
     it('throws an error when tech other than a number is given', () => {
-      expect(() => store.actions.setTech('aaa')).to.throw();
-      expect(() => store.actions.setTech(null)).to.throw();
+      expect(() => store.actions.setBaseStatus('tech', 'aaa')).to.throw();
+      expect(() => store.actions.setBaseStatus('beauty', null)).to.throw();
     });
 
     it.skip('throws an error when tech less than 1 is given', () => {
-      expect(() => store.actions.setTech(0)).to.throw();
-      expect(() => store.actions.setTech(-10)).to.throw();
+      expect(() => store.actions.setBaseStatus('genius', 0)).to.throw();
+      expect(() => store.actions.setBaseStatus('theme', -10)).to.throw();
 
-      expect(() => store.actions.setTech(1)).not.to.throw();
+      expect(() => store.actions.setBaseStatus('truth', 1)).not.to.throw();
     });
 
-    it('sets given tech to slot store', () => {
-      store.actions.setTech(500);
+    it('sets given baseStatus val to slot store', () => {
+      store.actions.setBaseStatus('tech', 500);
       expect(store.state.tech).to.equal(500);
-    });
-  });
 
-  describe('actions: setGenius', () => {
-    it('throws an error when genius other than a number is given', () => {
-      expect(() => store.actions.setGenius('aaa')).to.throw();
-      expect(() => store.actions.setGenius(null)).to.throw();
-    });
+      store.actions.setBaseStatus('genius', 60);
+      expect(store.state.genius).to.equal(60);
 
-    it.skip('throws an error when genius less than 1 is given', () => {
-      expect(() => store.actions.setGenius(0)).to.throw();
-      expect(() => store.actions.setGenius(-10)).to.throw();
+      store.actions.setBaseStatus('beauty', 400);
+      expect(store.state.beauty).to.equal(400);
 
-      expect(() => store.actions.setGenius(1)).not.to.throw();
-    });
+      store.actions.setBaseStatus('theme', 88);
+      expect(store.state.theme).to.equal(88);
 
-    it('sets given genius to slot store', () => {
-      store.actions.setGenius(550);
-      expect(store.state.genius).to.equal(550);
-    });
-  });
-
-  describe('actions: setBeauty', () => {
-    it('throws an error when beauty other than a number is given', () => {
-      expect(() => store.actions.setBeauty('aaa')).to.throw();
-      expect(() => store.actions.setBeauty(null)).to.throw();
-    });
-
-    it.skip('throws an error when beauty less than 1 is given', () => {
-      expect(() => store.actions.setBeauty(0)).to.throw();
-      expect(() => store.actions.setBeauty(-10)).to.throw();
-
-      expect(() => store.actions.setBeauty(1)).not.to.throw();
-    });
-
-    it('sets given beauty to slot store', () => {
-      store.actions.setBeauty(700);
-      expect(store.state.beauty).to.equal(700);
-    });
-  });
-
-  describe('actions: setTheme', () => {
-    it('throws an error when theme other than a number is given', () => {
-      expect(() => store.actions.setTheme('aaa')).to.throw();
-      expect(() => store.actions.setTheme(null)).to.throw();
-    });
-
-    it.skip('throws an error when theme less than 1 is given', () => {
-      expect(() => store.actions.setTheme(0)).to.throw();
-      expect(() => store.actions.setTheme(-10)).to.throw();
-
-      expect(() => store.actions.setTheme(1)).not.to.throw();
-    });
-
-    it('sets given theme to slot store', () => {
-      store.actions.setTheme(300);
-      expect(store.state.theme).to.equal(300);
-    });
-  });
-
-  describe('actions: setTruth', () => {
-    it('throws an error when truth other than a number is given', () => {
-      expect(() => store.actions.setTruth('aaa')).to.throw();
-      expect(() => store.actions.setTruth(null)).to.throw();
-    });
-
-    it.skip('throws an error when truth less than 1 is given', () => {
-      expect(() => store.actions.setTruth(0)).to.throw();
-      expect(() => store.actions.setTruth(-10)).to.throw();
-
-      expect(() => store.actions.setTruth(1)).not.to.throw();
-    });
-
-    it('sets given truth to slot store', () => {
-      store.actions.setTruth(250);
-      expect(store.state.truth).to.equal(250);
+      store.actions.setBaseStatus('truth', 330);
+      expect(store.state.truth).to.equal(330);
     });
   });
 

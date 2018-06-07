@@ -1,19 +1,13 @@
 import { bungo, cards, weapons, status } from '../../data';
+import Store from '../../store';
 
 export default {
   name: 'BngoSlotDisplay',
   props: {
-    bungo: {
-      type: [String, Number],
+    order: {
+      type: Number,
       required: false,
-    },
-    cardId: {
-      type: [String, Number],
-      required: false,
-    },
-    cardLv: {
-      type: [String, Number],
-      required: false,
+      default: 0,
     },
     adjustedCardStatus: {
       type: Object,
@@ -61,8 +55,13 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      state: null,
+    };
   },
   created() {
+    const { actions, state } = Store.get(this.order);
+    this.actions = actions;
+    this.state = state;
   },
 };
