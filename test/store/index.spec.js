@@ -5,32 +5,42 @@ import { testBungo, testCards } from '../testData';
 describe('store', () => {
   let store;
 
-  before(() => {
-    Store.init({
-      bungo: testBungo,
-      cards: testCards,
-    });
-    store = Store.add(1);
-  });
+  // before(() => {
+  //   Store.init({
+  //     bungo: testBungo,
+  //     cards: testCards,
+  //   });
+  //   store = Store.add(1);
+  // });
+  //
+  // after(() => {
+  //   Store.destroy();
+  // });
 
-  after(() => {
-    Store.destroy();
+  describe('methods: init', () => {
+    it('throws an erro when no static data is given', () => {
+      expect(() => Store.init()).to.throw();
+    });
+
+    it('sets given static data for validation', () => {
+      const data = {
+        bungo: testBungo,
+        cards: testCards,
+      };
+      Store.init(data);
+      expect(Store._getValidData()).to.eql(data);
+    });
   });
 
   describe('methods: add', () => {
-    let store2;
-
-    before(() => {
-      store2 = Store.add(2);
-    });
-
     it('adds a new slot store with appropriate keys', () => {
-      expect(store2).to.have.property('state');
-      expect(store2).to.have.property('actions');
+      store = Store.add(1);
+      expect(store).to.have.property('state');
+      expect(store).to.have.property('actions');
     });
 
     it('adds a new slot store with appropriate state keys', () => {
-      expect(store2.state).to.have.all.keys('bungo', 'cardId', 'cardLv', 'tech', 'genius', 'beauty', 'theme', 'truth');
+      expect(store.state).to.have.all.keys('bungo', 'cardId', 'cardLv', 'tech', 'genius', 'beauty', 'theme', 'truth');
     });
   });
 
@@ -40,9 +50,57 @@ describe('store', () => {
     });
 
     it('returns a given slot store', () => {
-      const store2 = Store.get(2);
-      expect(store2).to.have.property('state');
-      expect(store2).to.have.property('actions');
+      const result = Store.get(1);
+      expect(result).to.have.property('state');
+      expect(result).to.have.property('actions');
+    });
+  });
+
+  describe('methods: delete', () => {
+    it('throws an error when unknown slotId is given', () => {
+      expect(() => Store.delete(2)).to.throw();
+    });
+
+    it('deletes a given slot store from master store', () => {
+      Store.add(2);
+      Store.delete(2);
+      expect(Store._getAllStore()[2]).to.be.undefined;
+
+    });
+  });
+
+  describe('methods: destroy', () => {
+    after(() => {
+      Store.init({
+        bungo: testBungo,
+        cards: testCards,
+      });
+      store = Store.add(1);
+    });
+
+    it('resets all store and static data', () => {
+      Store.destroy();
+      expect(Store._getAllStore()).to.be.empty;
+      expect(Store._getValidData()).to.be.empty;
+    });
+  });
+
+  describe('methods: _getAllStore', () => {
+    it('returns master store', () => {
+      Store.add(2);
+      Store.add(3);
+      const result = Store._getAllStore();
+      expect(result).to.have.all.keys('1', '2', '3');
+    });
+  });
+
+  describe('methods: _getValidData', () => {
+    it('returns static data for validation', () => {
+      const result = Store._getValidData();
+      expect(result).to.eql({
+        bungo: testBungo,
+        cards: testCards,
+      });
     });
   });
 
@@ -95,16 +153,17 @@ describe('store', () => {
   });
 
   describe('actions: setBaseStatus', () => {
-    it('throws an error when tech other than a number is given', () => {
+    it('throws an error when baseStatus val other than a number is given', () => {
       expect(() => store.actions.setBaseStatus('tech', 'aaa')).to.throw();
       expect(() => store.actions.setBaseStatus('beauty', null)).to.throw();
     });
 
-    it.skip('throws an error when tech less than 1 is given', () => {
-      expect(() => store.actions.setBaseStatus('genius', 0)).to.throw();
-      expect(() => store.actions.setBaseStatus('theme', -10)).to.throw();
+    it('corrects baseStatus val to 1 when less than 0 is given', () => {
+      store.actions.setBaseStatus('genius', 0);
+      expect(store.state.genius).to.equal(0);
 
-      expect(() => store.actions.setBaseStatus('truth', 1)).not.to.throw();
+      store.actions.setBaseStatus('genius', -1);
+      expect(store.state.genius).to.equal(1);
     });
 
     it('sets given baseStatus val to slot store', () => {

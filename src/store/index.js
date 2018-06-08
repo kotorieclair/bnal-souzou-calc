@@ -5,6 +5,9 @@ let validData = {};
 
 export default {
   init({ bungo, cards }) {
+    if (!bungo || !cards) {
+      throw new Error('Store: init - static data for validation must be provided!');
+    }
     validData = { bungo, cards };
   },
 
@@ -56,7 +59,11 @@ export default {
           if (val !== '' && !Number.isInteger(val)) {
             throw new Error(`Store.action: setBaseStatus - ${key} must be an integer!`);
           }
-          state[key] = val;
+          if (val <= -1) {
+            state[key] = 1;
+          } else {
+            state[key] = val;
+          }
         },
         copyStateTo: (to) => {
           let copyTo;
@@ -103,4 +110,12 @@ export default {
     store = {};
     validData = {};
   },
+
+  _getAllStore() {
+    return store;
+  },
+
+  _getValidData() {
+    return validData;
+  }
 };
