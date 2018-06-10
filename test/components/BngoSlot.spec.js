@@ -34,6 +34,12 @@ describe('components: BngoSlot', () => {
     Store.destroy();
   });
 
+  describe('computed: copyButtonsList', () => {
+    it('returns an empty array when totalSlot <= 1');
+
+    it('returns an array of correct slot number when totalSlot >= 2');
+  });
+
   describe('computed: adjustedCardStatus', () => {
     it('returns an empty object when either cardId or cardLv is not set', () => {
       store.state.cardId = '';
@@ -137,7 +143,7 @@ describe('components: BngoSlot', () => {
       expect(wrapper.vm.totalBaseStatus).to.eql(testStatus.blade.totalBase201_3);
     });
 
-    it('adjusts values to 1 when result is less than or equal to 0', () => {
+    it('adjusts values to 1 when result <= 0', () => {
       const [bungo, id, lv] = [1, 202, 3];
       store.state.bungo = bungo;
       store.state.cardId = id;
@@ -212,6 +218,10 @@ describe('components: BngoSlot', () => {
         avd: testStatus.blade.finalBattle201_3.avd - testStatus.blade.battle.avd,
       });
     });
+  });
+
+  describe('DOM: copyStateTo buttons', () => {
+    it('calls copyStateTo action with appropriate payload when clicked');
   });
 
   describe('methods: estimateCardStatus()', () => {

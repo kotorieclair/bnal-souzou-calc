@@ -53,10 +53,10 @@ export default {
   },
   computed: {
     copyButtonsList() {
-      if (this.totalSlot <= 1) {
-        return 0;
-      }
       const total = [];
+      if (this.totalSlot <= 1) {
+        return total;
+      }
       for (let n of Array(this.totalSlot).keys()) {
         if (n + 1 !== this.order) {
           total.push(n + 1);
@@ -163,6 +163,7 @@ export default {
   methods: {
     copyStateTo(to) {
       this.actions.copyStateTo(to);
+      this.sendAnalytics('copyStateTo', to);
     },
     estimateCardStatus(status, lv) {
       const adj = lv === 3 ? 2 : lv === 2 ? 1.4 : 1;
@@ -192,6 +193,14 @@ export default {
         tech + beauty;
 
       return Math.round(base / this.weaponsData[weapon].adjustment.avd);
+    },
+    sendAnalytics(action, label) {
+      if (process.env.NODE_ENV !== 'test') {
+        gtag('event', action, {
+          'event_category': 'button',
+          'event_label': `${this.order}→${label}`,
+        });
+      }
     },
   },
 };

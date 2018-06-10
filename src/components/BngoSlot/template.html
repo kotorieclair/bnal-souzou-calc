@@ -12,6 +12,8 @@
   <div class="BngoSlot_buttons">
     <button
       v-for="n in copyButtonsList"
+      :key="n"
+      :ref="`copyTo${n}`"
       @click="copyStateTo(n)">
         スロット{{ n }}にコピー
     </button>
