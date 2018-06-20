@@ -280,7 +280,7 @@ export default {
     },
   },
   3021: {
-    name: '	追憶ノサーカス-中原中也',
+    name: '追憶ノサーカス-中原中也',
     rare: 3,
     status: {
       1: { genius: 60 },
@@ -340,7 +340,7 @@ export default {
     rare: 3,
     status: {
       1: { tech: 24, truth: 24 },
-      2: null,
+      2: { tech: 34, truth: 34 },
       3: { tech: 48, truth: 48 },
     },
     skill: {
@@ -354,7 +354,7 @@ export default {
     rare: 3,
     status: {
       1: { tech: 48 },
-      2: null,
+      2: { tech: 68 },
       3: { tech: 96 },
     },
     skill: {
@@ -389,6 +389,20 @@ export default {
       1: '降臨上昇率 +30%',
       2: '降臨上昇率 +30%',
       3: '降臨上昇率 +60%',
+    },
+  },
+  3029: {
+    name: '青時雨ト蝸牛-幸田露伴',
+    rare: 3,
+    status: {
+      1: { theme: 192 },
+      2: null,
+      3: { theme: 384 },
+    },
+    skill: {
+      1: '命中率 +15%',
+      2: '命中率 +15%',
+      3: '命中率 +30%',
     },
   },
 };
