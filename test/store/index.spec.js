@@ -5,20 +5,8 @@ import { testBungo, testCards } from '../testData';
 describe('store', () => {
   let store;
 
-  // before(() => {
-  //   Store.init({
-  //     bungo: testBungo,
-  //     cards: testCards,
-  //   });
-  //   store = Store.add(1);
-  // });
-  //
-  // after(() => {
-  //   Store.destroy();
-  // });
-
   describe('methods: init', () => {
-    it('throws an erro when no static data is given', () => {
+    it('throws an error when no static data is given', () => {
       expect(() => Store.init()).to.throw();
     });
 

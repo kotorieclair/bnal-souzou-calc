@@ -2,10 +2,6 @@ import { expect } from 'chai';
 import addSign from '../../src/filters/addSign';
 
 describe('filter: addSign', () => {
-  // it('throws an error when the given argument is not an integer', () => {
-  //   expect(() => addSign('aaa')).to.throw();
-  // });
-
   it('returns an empty string when the given argument is not an integer', () => {
     expect(addSign('aaa')).to.equal('');
     expect(addSign()).to.equal('');

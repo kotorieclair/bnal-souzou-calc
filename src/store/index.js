@@ -93,7 +93,6 @@ export default {
   get(slotId) {
     if (!store[slotId]) {
       throw new Error('Store: get - unknown slotId!');
-      // this.add(slotId);
     }
     return store[slotId];
   },
