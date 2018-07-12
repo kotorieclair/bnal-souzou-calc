@@ -16,7 +16,7 @@ export default {
     },
     testtoggle() {
       console.log('testtoggle');
-      this.$emit('displayError', 'aaa');
+      this.$root.$emit('displayError', 'aaa');
     }
   },
 };
