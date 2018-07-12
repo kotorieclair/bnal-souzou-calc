@@ -5,7 +5,7 @@ export default {
   components: { BngoSlot },
   data() {
     return {
-      slotNum: 4,
+      totalSlot: 4,
       spCurrent: 1,
     };
   },

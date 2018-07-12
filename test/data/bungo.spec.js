@@ -1,16 +1,35 @@
 import { expect } from 'chai';
 import { shallow } from '@vue/test-utils';
 import BngoSlot from '../../src/components/BngoSlot';
+import Store from '../../src/store';
 import testBungoData from '../testBungoData';
-import bungoData from '../../src/data/bungo';
+import { bungo, cards } from '../../src/data';
 
 describe('data: bungo', () => {
-  const wrapper = shallow(BngoSlot);
+  let wrapper;
 
-  it('should have correct weapon types for each bungo data', () => {
-    Object.keys(bungoData).forEach((id) => {
+  before(() => {
+    Store.init({
+      bungo,
+      cards,
+    });
+    Store.add(1);
+
+    wrapper = shallow(BngoSlot, {
+      propsData: {
+        order: 1,
+      },
+    });
+  });
+
+  after(() => {
+    Store.destroy();
+  });
+
+  it('has correct weapon types for each bungo data', () => {
+    Object.keys(bungo).forEach((id) => {
       const status = testBungoData[id].status;
-      const weapon = bungoData[id].weapon;
+      const weapon = bungo[id].weapon;
       const result = {
         atk: wrapper.vm.calculateAtk(weapon, status.base),
         def: wrapper.vm.calculateDef(weapon, status.base),

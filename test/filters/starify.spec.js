@@ -2,10 +2,6 @@ import { expect } from 'chai';
 import starify from '../../src/filters/starify';
 
 describe('filter: starify', () => {
-  // it('throws an error when the given argument is not an integer', () => {
-  //   expect(() => starify('aaa')).to.throw();
-  // });
-
   it('returns an empty string when the given argument is not an integer', () => {
     expect(starify('aaa')).to.equal('');
     expect(starify()).to.equal('');

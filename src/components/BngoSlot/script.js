@@ -1,6 +1,7 @@
 import BngoSlotInput from '../BngoSlotInput';
 import BngoSlotDisplay from '../BngoSlotDisplay';
 import { bungo, cards, weapons, status } from '../../data';
+import Store from '../../store';
 
 export default {
   name: 'BngoSlot',
@@ -11,36 +12,74 @@ export default {
       required: false,
       default: 0,
     },
+    totalSlot: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    bungoData: {
+      type: Object,
+      required: false,
+      default() {
+        return bungo;
+      },
+    },
+    cardsData: {
+      type: Object,
+      required: false,
+      default() {
+        return cards;
+      },
+    },
+    weaponsData: {
+      type: Object,
+      required: false,
+      default() {
+        return weapons;
+      },
+    },
+    statusData: {
+      type: Object,
+      required: false,
+      default() {
+        return status;
+      },
+    },
   },
   data() {
     return {
-      bungo: '',
-      cardId: '',
-      cardLv: '',
-      tech: '',
-      genius: '',
-      beauty: '',
-      theme: '',
-      truth: '',
+      state: null,
     };
   },
   computed: {
+    copyButtonsList() {
+      const total = [];
+      if (this.totalSlot <= 1) {
+        return total;
+      }
+      for (let n of Array(this.totalSlot).keys()) {
+        if (n + 1 !== this.order) {
+          total.push(n + 1);
+        }
+      }
+      return total;
+    },
     // 装像の実際の増減値
     // 不明なレベルの装像の値を保持
     adjustedCardStatus() {
-      if (!this.cardId || !this.cardLv) {
+      if (!this.state.cardId || !this.state.cardLv) {
         return {};
       }
 
-      const status = this.cardsData[this.cardId].status[this.cardLv];
+      const status = this.cardsData[this.state.cardId].status[this.state.cardLv];
       if (status === null) {
-        return this.estimateCardStatus(this.cardsData[this.cardId].status, this.cardLv);
+        return this.estimateCardStatus(this.cardsData[this.state.cardId].status, this.state.cardLv);
       }
       return status;
     },
     // dataの基礎ステータスをまとめたもの
     baseStatus() {
-      const { tech, genius, beauty, theme, truth } = this;
+      const { tech, genius, beauty, theme, truth } = this.state;
       if (!tech || !genius || !beauty || !theme || !truth) {
         return {};
       }
@@ -49,14 +88,14 @@ export default {
     // baseStatusからの戦闘ステータス算出
     // baseStatus入力済み時のみ使用
     inputtedBattleStatus() {
-      if (!this.bungo || Object.keys(this.baseStatus).length === 0) {
+      if (!this.state.bungo || Object.keys(this.baseStatus).length === 0) {
         return {};
       }
 
       return {
-        atk: this.calculateAtk(this.bungoData[this.bungo].weapon, this.baseStatus),
-        def: this.calculateDef(this.bungoData[this.bungo].weapon, this.baseStatus),
-        avd: this.calculateAvd(this.bungoData[this.bungo].weapon, this.baseStatus),
+        atk: this.calculateAtk(this.bungoData[this.state.bungo].weapon, this.baseStatus),
+        def: this.calculateDef(this.bungoData[this.state.bungo].weapon, this.baseStatus),
+        avd: this.calculateAvd(this.bungoData[this.state.bungo].weapon, this.baseStatus),
       };
     },
     // adjustedCardStatusとbaseStatusを足した基礎ステータス
@@ -84,24 +123,24 @@ export default {
       }
 
       return {
-        atk: this.calculateAtk(this.bungoData[this.bungo].weapon, this.totalBaseStatus),
-        def: this.calculateDef(this.bungoData[this.bungo].weapon, this.totalBaseStatus),
-        avd: this.calculateAvd(this.bungoData[this.bungo].weapon, this.totalBaseStatus),
+        atk: this.calculateAtk(this.bungoData[this.state.bungo].weapon, this.totalBaseStatus),
+        def: this.calculateDef(this.bungoData[this.state.bungo].weapon, this.totalBaseStatus),
+        avd: this.calculateAvd(this.bungoData[this.state.bungo].weapon, this.totalBaseStatus),
       };
     },
     // 装像による戦闘ステータスの増加値
     increasedBattleStatus() {
       // baseStatus未入力ならadjustedCardStatusからそのまま算出
       // baseStatus入力済みならfinalBattleStatus - inputtedBattleStatus
-      if (!this.bungo || !this.cardId || !this.cardLv) {
+      if (!this.state.bungo || !this.state.cardId || !this.state.cardLv) {
         return {};
       }
 
       if (Object.keys(this.baseStatus).length === 0) {
         return {
-          atk: this.calculateAtk(this.bungoData[this.bungo].weapon, this.adjustedCardStatus),
-          def: this.calculateDef(this.bungoData[this.bungo].weapon, this.adjustedCardStatus),
-          avd: this.calculateAvd(this.bungoData[this.bungo].weapon, this.adjustedCardStatus),
+          atk: this.calculateAtk(this.bungoData[this.state.bungo].weapon, this.adjustedCardStatus),
+          def: this.calculateDef(this.bungoData[this.state.bungo].weapon, this.adjustedCardStatus),
+          avd: this.calculateAvd(this.bungoData[this.state.bungo].weapon, this.adjustedCardStatus),
         };
       }
 
@@ -117,63 +156,14 @@ export default {
     },
   },
   created() {
-    this.bungoData = bungo;
-    this.cardsData = cards;
-    this.weaponsData = weapons;
-    this.statusData = status;
-    this.defaultBaseStatus = {
-      tech: 170,
-      genius: 170,
-      beauty: 170,
-      theme: 170,
-      truth: 170,
-    };
+    const { actions, state } = Store.add(this.order);
+    this.actions = actions;
+    this.state = state;
   },
   methods: {
-    setInputtedValue(key, payload) {
-      if (!this.hasOwnProperty(key)) {
-        throw new Error('BungoSlot: setInputtedValue - unappropriate key!');
-      };
-
-      if (key === 'baseStatus') {
-        if (typeof payload !== 'object') {
-          throw new Error('BungoSlot: setInputtedValue - unappropriate baseStatus type!');
-        }
-
-        if (Object.keys(payload).length !== 0) {
-          const keycheck = Object.keys(payload).every((status) => {
-            return Object.keys(this.statusData.base).includes(status);
-          });
-
-          if (!keycheck) {
-            throw new Error('BungoSlot: setInputtedValue - unappropriate baseStatus key!');
-          }
-
-          const valcheck = Object.keys(payload).every((status) => {
-            return Number.isInteger(payload[status]);
-          });
-
-          if (!valcheck) {
-            throw new Error('BungoSlot: setInputtedValue - unappropriate baseStatus val!');
-          }
-        }
-      } else {
-        if (payload !== '') {
-          if (key === 'bungo' && !this.bungoData.hasOwnProperty(payload)) {
-            throw new Error('BungoSlot: setInputtedValue - unknown bungo id!');
-          }
-
-          if (key === 'cardId' && !this.cardsData.hasOwnProperty(payload)) {
-            throw new Error('BungoSlot: setInputtedValue - unknown cardId!');
-          }
-
-          if (key === 'cardLv' && !this.cardsData[this.cardId].status.hasOwnProperty(payload)) {
-            throw new Error('BungoSlot: setInputtedValue - unknown cardLv!');
-          }
-        }
-      }
-
-      this[key] = payload;
+    copyStateTo(to) {
+      this.actions.copyStateTo(to);
+      this.sendAnalytics('copyStateTo', to);
     },
     estimateCardStatus(status, lv) {
       const adj = lv === 3 ? 2 : lv === 2 ? 1.4 : 1;
@@ -203,6 +193,14 @@ export default {
         tech + beauty;
 
       return Math.round(base / this.weaponsData[weapon].adjustment.avd);
+    },
+    sendAnalytics(action, label) {
+      if (process.env.NODE_ENV !== 'test') {
+        gtag('event', action, {
+          'event_category': 'button',
+          'event_label': `${this.order}→${label}`,
+        });
+      }
     },
   },
 };

@@ -1,4 +1,5 @@
 import { bungo, cards, weapons, status } from '../../data';
+import Store from '../../store';
 
 export default {
   name: 'BngoSlotInput',
@@ -8,38 +9,39 @@ export default {
       required: false,
       default: 0,
     },
-    bungo: {
-      type: [String, Number],
-      required: true,
+    bungoData: {
+      type: Object,
+      required: false,
+      default() {
+        return bungo;
+      },
     },
-    cardId: {
-      type: [String, Number],
-      required: true,
+    cardsData: {
+      type: Object,
+      required: false,
+      default() {
+        return cards;
+      },
     },
-    cardLv: {
-      type: [String, Number],
-      required: true,
+    weaponsData: {
+      type: Object,
+      required: false,
+      default() {
+        return weapons;
+      },
     },
-    tech: {
-      type: [String, Number],
-      required: true,
+    statusData: {
+      type: Object,
+      required: false,
+      default() {
+        return status;
+      },
     },
-    genius: {
-      type: [String, Number],
-      required: true,
-    },
-    beauty: {
-      type: [String, Number],
-      required: true,
-    },
-    theme: {
-      type: [String, Number],
-      required: true,
-    },
-    truth: {
-      type: [String, Number],
-      required: true,
-    },
+  },
+  data() {
+    return {
+      state: null,
+    };
   },
   computed: {
     groupedCardsData() {
@@ -74,34 +76,33 @@ export default {
     },
   },
   created() {
-    this.bungoData = bungo;
-    this.cardsData = cards;
-    this.weaponsData = weapons;
-    this.statusData = status;
+    const { actions, state } = Store.get(this.order);
+    this.actions = actions;
+    this.state = state;
   },
   methods: {
     setBungo(e) {
-      this.$emit('changeInputtedValue', 'bungo', parseInt(e.target.value));
+      this.actions.setBungo(parseInt(e.target.value));
       this.sendAnalytics('bungo', '文豪');
-    },
+      },
     setCardId(e) {
       const id = parseInt(e.target.value);
-      this.$emit('changeInputtedValue', 'cardId', id);
+      this.actions.setCardId(id);
 
-      if (!this.cardsData[id].status.hasOwnProperty(this.cardLv)) {
+      if (!this.cardsData[id].status.hasOwnProperty(this.state.cardLv)) {
         const lv = parseInt(Object.keys(this.cardsData[id].status)[0]);
-        this.$emit('changeInputtedValue', 'cardLv', lv);
+        this.actions.setCardLv(lv);
       }
 
       this.sendAnalytics('cardId', '装像');
     },
     setCardLv(e) {
-      this.$emit('changeInputtedValue', 'cardLv', parseInt(e.target.value));
+      this.actions.setCardLv(parseInt(e.target.value));
       this.sendAnalytics('cardLv', '装像Lv');
     },
     setBaseStatus(key, e) {
       const val = e.target.value ? parseInt(e.target.value) : '';
-      this.$emit('changeInputtedValue', key, val);
+      this.actions.setBaseStatus(key, val);
     },
     sendBaseStatusAnalytics(key) {
       this.sendAnalytics('baseStatus', `ステータス:${this.statusData.base[key]}`);
