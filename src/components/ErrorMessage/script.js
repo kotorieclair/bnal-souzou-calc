@@ -1,3 +1,5 @@
+import { links } from '../../pageinfo';
+
 export default {
   name: 'ErrorMessage',
   data() {
@@ -7,6 +9,8 @@ export default {
     };
   },
   created() {
+    this.links = links;
+
     this.$root.$on('displayError', (message) => {
       this.visible = true;
       this.message = message;
