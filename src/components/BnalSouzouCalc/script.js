@@ -6,7 +6,7 @@ export default {
   components: { BngoSlot, ErrorMessage },
   data() {
     return {
-      slotNum: 4,
+      totalSlot: 4,
       spCurrent: 1,
     };
   },

@@ -58,6 +58,12 @@ module.exports = {
         twcard: 'summary_large_image',
         url: 'https://kotorieclair.github.io/bnal-souzou-calc/',
         image: 'https://kotorieclair.github.io/bnal-souzou-calc/img/cover.png'
+      },
+      links: {
+        twitter: 'https://twitter.com/kotorieclair/',
+        twitterInfo: 'https://twitter.com/hashtag/%E8%A3%85%E5%83%8F%E8%A8%88%E7%AE%97%E6%A9%9F?src=hash',
+        marshmallow: 'https://marshmallow-qa.com/kotorieclair?utm_medium=url_text&utm_source=promotion',
+        github: 'https://github.com/kotorieclair/bnal-souzou-calc/'
       }
     }),
     new ExtractTextPlugin('style.css')
