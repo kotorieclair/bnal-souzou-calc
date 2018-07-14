@@ -3,28 +3,58 @@
 @require '../../style/mixins'
 
 .ErrorMessage
-  align-items: center;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 50;
+  align-items: center
+  bottom: 0
+  display: flex
+  justify-content: center
+  left: 0
+  position: fixed
+  right: 0
+  top: 0
+  z-index: 50
 
   &_back
-    background-color: rgba(#000, 0.5);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 80;
+    background-color: rgba(#000, 0.7)
+    position: absolute
+    width: 100%
+    height: 100%
+    z-index: 80
 
-  &_body
-    background-color: $color-main-dark;
-    color: #fff;
-    flex: 0 0 auto;
-    height: 200px;
-    position: relative;
-    width: 300px;
-    z-index: 100;
+  &_detail
+    align-items: stretch
+    background-color: $color-main-dark
+    border-radius: 3px
+    box-sizing: border-box
+    color: #fff
+    display: flex
+    flex: 0 0 auto
+    flex-direction: column
+    padding: 20px
+    position: relative
+    z-index: 100
+
+    @media $pc
+      min-height: 400px
+      min-width: 500px
+
+    &_header
+      color: $color-main-light
+      flex: 0 0 auto
+      margin-bottom: 20px
+
+    &_body
+      background-color: $color-main-light
+      border: 1px dotted $color-main-dark
+      box-shadow: 0 0 0 4px $color-main-light
+      color: $color-gray
+      flex: 1 1 auto
+      font-family: monospace
+      margin-bottom: 20px
+      padding: 10px
+
+    &_footer
+      flex: 0 0 auto
+      text-align: center
+
+      button
+        height: 2em

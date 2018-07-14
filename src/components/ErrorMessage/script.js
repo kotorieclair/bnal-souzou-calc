@@ -2,8 +2,8 @@ export default {
   name: 'ErrorMessage',
   data() {
     return {
-      visible: false,
-      message: '',
+      visible: true,
+      message: 'aaa',
     };
   },
   created() {
