@@ -2,7 +2,7 @@ export default {
   name: 'ErrorMessage',
   data() {
     return {
-      visible: true,
+      visible: false,
       message: 'aaa',
     };
   },
