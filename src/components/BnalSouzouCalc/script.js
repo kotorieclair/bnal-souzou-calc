@@ -1,8 +1,9 @@
 import BngoSlot from '../BngoSlot';
+import ErrorMessage from '../ErrorMessage';
 
 export default {
   name: 'BnalSouzouCalc',
-  components: { BngoSlot },
+  components: { BngoSlot, ErrorMessage },
   data() {
     return {
       totalSlot: 4,
@@ -13,5 +14,9 @@ export default {
     setSpCurrent(payload, e) {
       this.spCurrent = parseInt(payload);
     },
+    testtoggle() {
+      console.log('testtoggle');
+      this.$root.$emit('displayError', 'aaa');
+    }
   },
 };

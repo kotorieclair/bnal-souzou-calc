@@ -1,0 +1,18 @@
+<transition name="ErrorMessage-fade">
+  <div v-show="visible" class="ErrorMessage">
+    <div class="ErrorMessage_back" @click="hideError"/>
+    <div class="ErrorMessage_detail">
+      <div class="ErrorMessage_detail_header">
+        エラーが発生しました。お手数ですが、下記のエラー文を以下のいずれか経由でお送りください。
+        twitter
+        マシュマロ
+      </div>
+      <div class="ErrorMessage_detail_body">
+        {{ message }}
+      </div>
+      <div class="ErrorMessage_detail_footer">
+        <button @click="hideError">閉じる</button>
+      </div>
+    </div>
+  </div>
+</transition>
