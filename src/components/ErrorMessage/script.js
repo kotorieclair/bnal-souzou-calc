@@ -14,7 +14,7 @@ export default {
     this.$root.$on('displayError', (message) => {
       this.visible = true;
       this.message = message;
-      console.log('error');
+      // console.log('error');
       console.log(message);
     });
   },
