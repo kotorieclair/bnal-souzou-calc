@@ -300,6 +300,13 @@ export default {
       battle: { atk: 446, def: 354, avd: 335 },
     },
   },
+  49: {
+    name: '直木三十五',
+    status: {
+      base: { tech: 43, genius: 46, beauty: 40, theme: 40, truth: 40 },
+      battle: { atk: 97, def: 117, avd: 10 },
+    },
+  },
   50: {
     name: '夢野久作',
     status: {

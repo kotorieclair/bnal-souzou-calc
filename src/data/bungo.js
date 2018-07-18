@@ -171,6 +171,10 @@ export default {
     name: '正宗白鳥',
     weapon: 'bow',
   },
+  49: {
+    name: '直木三十五',
+    weapon: 'whip',
+  },
   50: {
     name: '夢野久作',
     weapon: 'whip',
