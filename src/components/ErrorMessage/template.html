@@ -3,9 +3,12 @@
     <div class="ErrorMessage_back" @click="hideError"/>
     <div class="ErrorMessage_detail">
       <div class="ErrorMessage_detail_header">
-        エラーが発生しました。お手数ですが、下記のエラー文を以下のいずれか経由でお送りください。
-        twitter
-        マシュマロ
+        エラーが発生しました。お手数ですが、以下の内容を<a :href="links.twitter" target="_blank">Twitter</a>または<a :href="links.marshmallow" target="_blank">マシュマロ</a>経由でお送りください。調査いたします。<br>
+        <ul>
+          <li>お使いの環境（OS、ブラウザーなど）</li>
+          <li>エラー発生直前に行なっていた操作</li>
+          <li>下記エラー文（コピペまたはスクリーンショット）</li>
+        </ul>
       </div>
       <div class="ErrorMessage_detail_body">
         {{ message }}

@@ -34,13 +34,17 @@
     z-index: 100
 
     @media $pc
-      min-height: 400px
-      min-width: 500px
+      height: 400px
+      width: 500px
 
     &_header
-      color: $color-main-light
+      color: #fff
       flex: 0 0 auto
+      line-height: 1.7
       margin-bottom: 20px
+
+      a
+        color: $color-main-light
 
     &_body
       background-color: $color-main-light
@@ -48,8 +52,9 @@
       box-shadow: 0 0 0 4px $color-main-light
       color: $color-gray
       flex: 1 1 auto
-      font-family: monospace
+      font-family: "Courier New", Consolas, monospace
       margin-bottom: 20px
+      overflow-x: auto
       padding: 10px
 
     &_footer

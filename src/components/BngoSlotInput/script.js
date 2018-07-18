@@ -82,7 +82,11 @@ export default {
   },
   methods: {
     setBungo(e) {
-      this.actions.setBungo(parseInt(e.target.value));
+      try {
+        this.actions.setBungo(parseInt(e.target.value));
+      } catch(error) {
+        this.$root.$emit('displayError', error.message);
+      }
       this.sendAnalytics('bungo', '文豪');
       },
     setCardId(e) {
@@ -90,29 +94,49 @@ export default {
       this.actions.setCardId(id);
 
       if (!this.cardsData[id].status.hasOwnProperty(this.state.cardLv)) {
-        const lv = parseInt(Object.keys(this.cardsData[id].status)[0]);
-        this.actions.setCardLv(lv);
+        const lv = parseInt(Object.keys(this.cardsData[id].status)[0])
+        try {
+          this.actions.setCardLv(lv);
+        } catch(error) {
+          this.$root.$emit('displayError', error.message);
+        }
       }
 
-      this.sendAnalytics('cardId', '装像');
+      try {
+        this.sendAnalytics('cardId', '装像');
+      } catch(error) {
+        this.$root.$emit('displayError', error.message);
+      }
     },
     setCardLv(e) {
       this.actions.setCardLv(parseInt(e.target.value));
-      this.sendAnalytics('cardLv', '装像Lv');
+      try {
+        this.sendAnalytics('cardLv', '装像Lv');
+      } catch(error) {
+        this.$root.$emit('displayError', error.message);
+      }
     },
     setBaseStatus(key, e) {
       const val = e.target.value ? parseInt(e.target.value) : '';
-      this.actions.setBaseStatus(key, val);
+      try {
+        this.actions.setBaseStatus(key, val);
+      } catch(error) {
+        this.$root.$emit('displayError', error.message);
+      }
     },
     sendBaseStatusAnalytics(key) {
       this.sendAnalytics('baseStatus', `ステータス:${this.statusData.base[key]}`);
     },
     sendAnalytics(action, label) {
       if (process.env.NODE_ENV !== 'test') {
-        gtag('event', action, {
-          'event_category': 'input',
-          'event_label': `${label}/${this.order}`,
-        });
+        try {
+          gtag('event', action, {
+            'event_category': 'input',
+            'event_label': `${label}/${this.order}`,
+          });
+        } catch(error) {
+          this.$root.$emit('displayError', error.message);
+        }
       }
     },
   },

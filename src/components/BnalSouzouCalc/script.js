@@ -14,9 +14,5 @@ export default {
     setSpCurrent(payload, e) {
       this.spCurrent = parseInt(payload);
     },
-    testtoggle() {
-      console.log('testtoggle');
-      this.$root.$emit('displayError', 'aaa');
-    }
   },
 };

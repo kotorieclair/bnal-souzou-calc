@@ -162,7 +162,11 @@ export default {
   },
   methods: {
     copyStateTo(to) {
-      this.actions.copyStateTo(to);
+      try {
+        this.actions.copyStateTo(to);
+      } catch(error) {
+        this.$root.$emit('displayError', error.message);
+      }
       this.sendAnalytics('copyStateTo', to);
     },
     estimateCardStatus(status, lv) {
@@ -196,10 +200,14 @@ export default {
     },
     sendAnalytics(action, label) {
       if (process.env.NODE_ENV !== 'test') {
-        gtag('event', action, {
-          'event_category': 'button',
-          'event_label': `${this.order}→${label}`,
-        });
+        try {
+          gtag('event', action, {
+            'event_category': 'button',
+            'event_label': `${this.order}→${label}`,
+          });
+        } catch(error) {
+          this.$root.$emit('displayError', error.message);
+        }
       }
     },
   },
