@@ -1,21 +1,25 @@
+import { mapMutations } from 'vuex'
 import BngoSlotInput from '../BngoSlotInput';
 import BngoSlotDisplay from '../BngoSlotDisplay';
 import { bungo, cards, weapons, status } from '../../data';
-import Store from '../../store';
+import Store from '../../store/_index';
+import { INIT_SLOT, COPY_SLOT_TO } from '../../store/mutationTypes';
+import store from '../../store'
+import slotModule from '../../store/modules/slot'
 
 export default {
   name: 'BngoSlot',
   components: { BngoSlotInput, BngoSlotDisplay },
   props: {
-    order: {
+    slotId: {
       type: Number,
       required: false,
-      default: 0,
+      default: 1,
     },
     totalSlot: {
       type: Number,
       required: false,
-      default: 0,
+      default: 1,
     },
     bungoData: {
       type: Object,
@@ -58,7 +62,7 @@ export default {
         return total;
       }
       for (let n of Array(this.totalSlot).keys()) {
-        if (n + 1 !== this.order) {
+        if (n + 1 !== this.slotId) {
           total.push(n + 1);
         }
       }
@@ -156,14 +160,21 @@ export default {
     },
   },
   created() {
-    const { actions, state } = Store.add(this.order);
+    const { actions, state } = Store.add(this.slotId);
     this.actions = actions;
     this.state = state;
+    if (this.slotId > 1) {
+      store.registerModule(['slots', this.slotId], slotModule)
+    }
   },
   methods: {
+    // ...mapMutations(`slots/1`, {
+    //   copySlotTo: COPY_SLOT_TO,
+    // }),
     copyStateTo(to) {
       try {
         this.actions.copyStateTo(to);
+        // this.copySlotTo({ to });
       } catch(error) {
         this.$root.$emit('displayError', error.message);
       }
@@ -203,7 +214,7 @@ export default {
         try {
           gtag('event', action, {
             'event_category': 'button',
-            'event_label': `${this.order}→${label}`,
+            'event_label': `${this.slotId}→${label}`,
           });
         } catch(error) {
           this.$root.$emit('displayError', error.message);

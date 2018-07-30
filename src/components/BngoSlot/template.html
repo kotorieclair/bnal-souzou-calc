@@ -1,12 +1,12 @@
 <div class="BngoSlot">
   <div class="BngoSlot_form">
     <div class="BngoSlot_form_left">
-      <div class="BngoSlot_form_left_order">{{ order || '' }}</div>
-      <BngoSlotInput v-bind="{ order }"/>
+      <div class="BngoSlot_form_left_slotId">{{ slotId || '' }}</div>
+      <BngoSlotInput v-bind="{ slotId }"/>
     </div>
     <div class="BngoSlot_form_right">
       <BngoSlotDisplay
-        v-bind="{ order, adjustedCardStatus, inputtedBattleStatus, finalBattleStatus, increasedBattleStatus }"/>
+        v-bind="{ slotId, adjustedCardStatus, inputtedBattleStatus, finalBattleStatus, increasedBattleStatus }"/>
     </div>
   </div>
   <div class="BngoSlot_buttons">

@@ -1,13 +1,13 @@
+import { mapState } from 'vuex';
 import { bungo, cards, weapons, status } from '../../data';
-import Store from '../../store';
+import Store from '../../store/_index';
 
 export default {
   name: 'BngoSlotDisplay',
   props: {
-    order: {
+    slotId: {
       type: Number,
-      required: false,
-      default: 0,
+      required: true,
     },
     adjustedCardStatus: {
       type: Object,
@@ -59,8 +59,21 @@ export default {
       state: null,
     };
   },
+  computed: {
+    ...mapState('slots', {
+      bungo(state) {
+        return state[this.slotId].bungo;
+      },
+      cardId(state) {
+        return state[this.slotId].cardId;
+      },
+      cardLv(state) {
+        return state[this.slotId].cardLv;
+      },
+    }),
+  },
   created() {
-    const { actions, state } = Store.get(this.order);
+    const { actions, state } = Store.get(this.slotId);
     this.actions = actions;
     this.state = state;
   },

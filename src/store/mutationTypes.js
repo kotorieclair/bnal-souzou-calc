@@ -1,0 +1,5 @@
+export const SET_BUNGO = 'SET_BUNGO'
+export const SET_CARD_ID = 'SET_CARD_ID'
+export const SET_CARD_LV = 'SET_CARD_LV'
+export const SET_BASE_STATUS = 'SET_BASE_STATUS'
+export const COPY_SLOT_TO = 'COPY_SLOT_TO'

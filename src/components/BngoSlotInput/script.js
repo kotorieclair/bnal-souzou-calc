@@ -1,13 +1,14 @@
+import { mapMutations } from 'vuex'
 import { bungo, cards, weapons, status } from '../../data';
-import Store from '../../store';
+import Store from '../../store/_index';
+import { SET_BUNGO, SET_CARD_ID, SET_CARD_LV, SET_BASE_STATUS } from '../../store/mutationTypes';
 
 export default {
   name: 'BngoSlotInput',
   props: {
-    order: {
+    slotId: {
       type: Number,
-      required: false,
-      default: 0,
+      required: true,
     },
     bungoData: {
       type: Object,
@@ -74,52 +75,95 @@ export default {
 
       return grouped;
     },
+    bungo: {
+      get() {
+        return this.getStoreState('bungo');
+      },
+      set(val) {
+        return this.setBungo(val);
+      },
+    },
+    cardId: {
+      get() {
+        return this.getStoreState('cardId');
+      },
+      set(val) {
+        return this.setCardId(val);
+      },
+    },
+    cardLv: {
+      get() {
+        return this.getStoreState('cardLv');
+      },
+      set(val) {
+        return this.setCardLv(val);
+      },
+    },
   },
   created() {
-    const { actions, state } = Store.get(this.order);
+    const { actions, state } = Store.get(this.slotId);
     this.actions = actions;
     this.state = state;
   },
   methods: {
-    setBungo(e) {
-      try {
-        this.actions.setBungo(parseInt(e.target.value));
-      } catch(error) {
-        this.$root.$emit('displayError', error.message);
-      }
-      this.sendAnalytics('bungo', '文豪');
+    getStoreState(key) {
+      return this.$store.state.slots[this.slotId][key];
+    },
+    setStoreState(mutationType, payload) {
+      return this.$store.commit(`slots/${this.slotId}/${mutationType}`, payload);
+    },
+    dispatchAction(action, payload) {
+      return this.$store.dispatch(`slots/${this.slotId}/${action}`, payload);
+    },
+    ...mapMutations('slots', {
+      setBaseStatus(commit, payload) {
+        return commit(`${this.slotId}/${SET_BASE_STATUS}`, payload);
       },
-    setCardId(e) {
-      const id = parseInt(e.target.value);
-      this.actions.setCardId(id);
-
-      if (!this.cardsData[id].status.hasOwnProperty(this.state.cardLv)) {
-        const lv = parseInt(Object.keys(this.cardsData[id].status)[0])
-        try {
-          this.actions.setCardLv(lv);
-        } catch(error) {
-          this.$root.$emit('displayError', error.message);
-        }
-      }
-
-      try {
-        this.sendAnalytics('cardId', '装像');
-      } catch(error) {
-        this.$root.$emit('displayError', error.message);
-      }
+    }),
+    setBungo(bungo) {
+      // try {
+      //   this.actions.setBungo(parseInt(e.target.value));
+      // } catch(error) {
+      //   this.$root.$emit('displayError', error.message);
+      // }
+      this.sendAnalytics('bungo', '文豪');
+      return this.dispatchAction('setBungo', bungo);
     },
-    setCardLv(e) {
-      this.actions.setCardLv(parseInt(e.target.value));
-      try {
-        this.sendAnalytics('cardLv', '装像Lv');
-      } catch(error) {
-        this.$root.$emit('displayError', error.message);
+    setCardId(cardId) {
+      // const id = parseInt(e.target.value);
+      // this.actions.setCardId(id);
+      // this.setCardId({ cardId: id });
+
+      if (!this.cardsData[cardId].status.hasOwnProperty(this.cardLv)) {
+        const cardLv = parseInt(Object.keys(this.cardsData[cardId].status)[0]);
+        // this.setStoreState(SET_CARD_LV, { cardLv: lv });
+        this.dispatchAction('setCardLv', cardLv);
+      //   try {
+      //     this.actions.setCardLv(lv);
+      //     this.setCardLv({ cardLv: lv });
+      //   } catch(error) {
+      //     this.$root.$emit('displayError', error.message);
+      //   }
       }
+
+      this.sendAnalytics('cardId', '装像');
+
+      return this.dispatchAction('setCardId', cardId);
     },
-    setBaseStatus(key, e) {
+    setCardLv(cardLv) {
+      // this.actions.setCardLv(parseInt(e.target.value));
+      // this.setCardLv({ cardLv: parseInt(e.target.value) });
+
+      this.sendAnalytics('cardLv', '装像Lv');
+
+      return this.dispatchAction('setCardLv', cardLv);
+    },
+    changeBaseStatus(key, e) {
       const val = e.target.value ? parseInt(e.target.value) : '';
+
       try {
         this.actions.setBaseStatus(key, val);
+        this.setBaseStatus({ key, val });
       } catch(error) {
         this.$root.$emit('displayError', error.message);
       }
@@ -132,7 +176,7 @@ export default {
         try {
           gtag('event', action, {
             'event_category': 'input',
-            'event_label': `${label}/${this.order}`,
+            'event_label': `${label}/${this.slotId}`,
           });
         } catch(error) {
           this.$root.$emit('displayError', error.message);
