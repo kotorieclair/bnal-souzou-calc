@@ -1,12 +1,12 @@
 import { expect } from 'chai';
-import { shallow } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import BngoSlotInput from '../../src/components/BngoSlotInput';
 import starify from '../../src/filters/starify';
 
 describe('components: BngoSlotInput', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(BngoSlotInput, {
+    wrapper = shallowMount(BngoSlotInput, {
       propsData: {
         bungo: '',
         cardId: '',

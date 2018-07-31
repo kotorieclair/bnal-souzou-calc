@@ -228,7 +228,7 @@ export default {
     rare: 3,
     status: {
       1: { genius: 30, theme: 96 },
-      2: null,
+      2: { genius: 42, theme: 135 },
       3: { genius: 60, theme: 192 },
     },
     skill: {
@@ -382,7 +382,7 @@ export default {
     rare: 3,
     status: {
       1: { genius: 30, theme: 48, truth: 12 },
-      2: null,
+      2: { genius: 42, theme: 68, truth: 17 },
       3: { genius: 60, theme: 96, truth: 24 },
     },
     skill: {
@@ -445,6 +445,20 @@ export default {
       1: '急所攻撃率 +15%',
       2: '急所攻撃率 +15%',
       3: '急所攻撃率 +30%',
+    },
+  },
+  3033: {
+    name: '夜半ノ怪異譚-夢野久作',
+    rare: 3,
+    status: {
+      1: { tech: 48 },
+      2: null,
+      3: { tech: 96 },
+    },
+    skill: {
+      1: '降臨上昇率 +30%',
+      2: '降臨上昇率 +30%',
+      3: '降臨上昇率 +60%',
     },
   },
 };

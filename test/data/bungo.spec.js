@@ -1,11 +1,11 @@
 import { expect } from 'chai';
-import { shallow } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import BngoSlot from '../../src/components/BngoSlot';
 import testBungoData from '../testBungoData';
 import bungoData from '../../src/data/bungo';
 
 describe('data: bungo', () => {
-  const wrapper = shallow(BngoSlot);
+  const wrapper = shallowMount(BngoSlot);
 
   it('should have correct weapon types for each bungo data', () => {
     Object.keys(bungoData).forEach((id) => {

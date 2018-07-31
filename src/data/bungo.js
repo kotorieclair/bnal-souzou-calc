@@ -155,6 +155,10 @@ export default {
     name: '吉川英治',
     weapon: 'whip',
   },
+  42: {
+    name: '山本有三',
+    weapon: 'blade',
+  },
   43: {
     name: '久米正雄',
     weapon: 'blade',

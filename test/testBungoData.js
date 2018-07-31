@@ -272,6 +272,13 @@ export default {
       battle: { atk: 378, def: 447, avd: 41 },
     },
   },
+  42: {
+    name: '山本有三',
+    status: {
+      base: { tech: 42, genius: 42, beauty: 42, theme: 50, truth: 42 },
+      battle: { atk: 130, def: 126, avd: 10 },
+    },
+  },
   43: {
     name: '久米正雄',
     status: {

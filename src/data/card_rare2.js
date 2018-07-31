@@ -298,7 +298,7 @@ export default {
     rare: 2,
     status: {
       1: { theme: 96 },
-      2: null,
+      2: { theme: 135 },
       3: { theme: 192 },
     },
     skill: {
