@@ -10,6 +10,9 @@
     "baseUrl": "."
   },
   "include": [
-    "./src/**/*"
-  ]
+    "src/**/*"
+  ],
+  "files": [
+    "./src/vue-shims.d.ts"
+] 
 }

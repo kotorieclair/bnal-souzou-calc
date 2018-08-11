@@ -1,10 +1,10 @@
-import path from 'path';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import VueLoaderPlugin from 'vue-loader/lib/plugin';
-import { title, meta, links } from './src/pageinfo';
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { title, meta, links } = require('./src/pageinfo');
 
-export default {
+module.exports = {
   entry: './src/main',
   output: {
     filename: 'main.js',
