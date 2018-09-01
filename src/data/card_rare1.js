@@ -168,7 +168,7 @@ export default {
     rare: 1,
     status: {
       1: { genius: 13 },
-      2: null,
+      2: { genius: 19 },
       3: { genius: 26 },
     },
     skill: {
