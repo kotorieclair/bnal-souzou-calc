@@ -329,6 +329,13 @@ export default {
       battle: { atk: 376, def: 444, avd: 41 },
     },
   },
+  53: {
+    name: '伊藤左千夫',
+    status: {
+      base: { tech: 46, genius: 40, beauty: 40, theme: 45, truth: 46 },
+      battle: { atk: 161, def: 108, avd: 61 },
+    },
+  },
   55: {
     name: '三好達治',
     status: {
