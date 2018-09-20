@@ -313,7 +313,7 @@ export default {
     status: {
       1: { tech: 12, truth: 12 },
       2: { tech: 17, truth: 17 },
-      3: null,
+      3: { tech: 24, truth: 24 },
     },
     skill: {
       1: '急所攻撃率 +5%',
