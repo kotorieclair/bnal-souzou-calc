@@ -115,9 +115,9 @@ export default {
     getStoreState(key) {
       return this.$store.state.slots[this.slotId][key]
     },
-    setStoreState(mutationType, payload) {
-      return this.$store.commit(`slots/${this.slotId}/${mutationType}`, payload)
-    },
+    // setStoreState(mutationType, payload) {
+    //   return this.$store.commit(`slots/${this.slotId}/${mutationType}`, payload)
+    // },
     dispatchAction(action, payload) {
       return this.$store.dispatch(`slots/${this.slotId}/${action}`, payload)
     },
