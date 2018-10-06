@@ -537,12 +537,26 @@ export default {
     status: {
       1: { tech: 24, genius: 15, beauty: 15 },
       2: null,
-      3: null,
+      3: { tech: 48, genius: 30, beauty: 30 },
     },
     skill: {
       1: '降臨上昇率 +30%',
       2: '降臨上昇率 +30%',
       3: '降臨上昇率 +60%',
+    },
+  },
+  3040: {
+    name: '舞踏ノ誘イ',
+    rare: 3,
+    status: {
+      1: { genius: 21, beauty: 21 },
+      2: null,
+      3: { genius: 42, beauty: 42 },
+    },
+    skill: {
+      1: '急所攻撃率 +5%',
+      2: '急所攻撃率 +5%',
+      3: '急所攻撃率 +15%',
     },
   },
 };
