@@ -71,6 +71,12 @@ export default {
         return state[this.slotId].cardLv
       },
     }),
+    selectedBungo() {
+      return this.bungoData[this.bungo]
+    },
+    selectedCard() {
+      return this.cardsData[this.cardId]
+    }
   },
   created() {
     const { actions, state } = Store.get(this.slotId)
