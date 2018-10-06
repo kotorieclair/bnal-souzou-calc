@@ -1,6 +1,6 @@
-import { mapState } from 'vuex';
-import { bungo, cards, weapons, status } from '../../data';
-import Store from '../../store/_index';
+import { mapState } from 'vuex'
+import { bungo, cards, weapons, status } from '../../data'
+import Store from '../../store/_index'
 
 export default {
   name: 'BngoSlotDisplay',
@@ -29,52 +29,52 @@ export default {
       type: Object,
       required: false,
       default() {
-        return bungo;
+        return bungo
       },
     },
     cardsData: {
       type: Object,
       required: false,
       default() {
-        return cards;
+        return cards
       },
     },
     weaponsData: {
       type: Object,
       required: false,
       default() {
-        return weapons;
+        return weapons
       },
     },
     statusData: {
       type: Object,
       required: false,
       default() {
-        return status;
+        return status
       },
     },
   },
   data() {
     return {
       state: null,
-    };
+    }
   },
   computed: {
     ...mapState('slots', {
       bungo(state) {
-        return state[this.slotId].bungo;
+        return state[this.slotId].bungo
       },
       cardId(state) {
-        return state[this.slotId].cardId;
+        return state[this.slotId].cardId
       },
       cardLv(state) {
-        return state[this.slotId].cardLv;
+        return state[this.slotId].cardLv
       },
     }),
   },
   created() {
-    const { actions, state } = Store.get(this.slotId);
-    this.actions = actions;
-    this.state = state;
+    const { actions, state } = Store.get(this.slotId)
+    this.actions = actions
+    this.state = state
   },
-};
+}

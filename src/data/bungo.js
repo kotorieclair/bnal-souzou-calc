@@ -208,4 +208,4 @@ export default {
     name: '徳田秋声',
     weapon: 'bow',
   },
-};
+}

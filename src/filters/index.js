@@ -1,4 +1,4 @@
-import starify from './starify';
-import addSign from './addSign';
+import starify from './starify'
+import addSign from './addSign'
 
-export { starify, addSign };
+export { starify, addSign }
