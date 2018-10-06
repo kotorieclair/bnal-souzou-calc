@@ -1,5 +1,5 @@
-import BngoSlot from '../BngoSlot';
-import ErrorMessage from '../ErrorMessage';
+import BngoSlot from '../BngoSlot'
+import ErrorMessage from '../ErrorMessage'
 
 export default {
   name: 'BnalSouzouCalc',
@@ -8,11 +8,11 @@ export default {
     return {
       totalSlot: 4,
       spCurrent: 1,
-    };
+    }
   },
   methods: {
     setSpCurrent(payload) {
-      this.spCurrent = parseInt(payload);
+      this.spCurrent = parseInt(payload)
     },
   },
-};
+}

@@ -37,7 +37,7 @@ export default {
   6: {
     name: '夏目漱石',
     status: {
-      base:{ tech: 166, genius: 166, beauty: 163, theme: 167, truth: 165 },
+      base: { tech: 166, genius: 166, beauty: 163, theme: 167, truth: 165 },
       battle: { atk: 496, def: 496, avd: 39 },
     },
   },
@@ -151,7 +151,7 @@ export default {
     status: {
       base: { tech: 160, genius: 160, beauty: 160, theme: 163, truth: 160 },
       battle: { atk: 482, def: 480, avd: 38 },
-    }
+    },
   },
   24: {
     name: '二葉亭四迷',
@@ -364,4 +364,4 @@ export default {
       battle: { atk: 447, def: 354, avd: 336 },
     },
   },
-};
+}

@@ -38,5 +38,5 @@ export default {
       def: 1.1,
       avd: 8,
     },
-  }
-};
+  },
+}
