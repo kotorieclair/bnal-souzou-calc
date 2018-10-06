@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { shallow } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import { spy } from 'sinon';
 import BngoSlotInput from '../../src/components/BngoSlotInput';
 import Store from '../../src/store';
@@ -20,7 +20,7 @@ describe('components: BngoSlotInput', () => {
 
   beforeEach(() => {
     Store.add(1);
-    wrapper = shallow(BngoSlotInput, {
+    wrapper = shallowMount(BngoSlotInput, {
       propsData: {
         order: 1,
         bungoData: testBungo,
