@@ -1,8 +1,8 @@
-export default (number) => {
-  const parsed = parseInt(number);
+export default number => {
+  const parsed = parseInt(number)
   if (!Number.isInteger(parsed)) {
-    return '';
+    return ''
   }
 
-  return parsed < 0 ? parsed : `+${parsed}`;
+  return parsed < 0 ? parsed : `+${parsed}`
 }

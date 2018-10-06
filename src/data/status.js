@@ -12,4 +12,4 @@ export default {
     avd: '回避',
   },
   default: 170,
-};
+}

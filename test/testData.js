@@ -7,7 +7,7 @@ const testBungo = {
     name: 'テスト文豪2',
     weapon: 'gun',
   },
-};
+}
 
 const testCards = {
   101: {
@@ -66,7 +66,7 @@ const testCards = {
     },
     skill: null,
   },
-};
+}
 
 const expectedCardStatus = {
   101: {
@@ -85,14 +85,20 @@ const expectedCardStatus = {
       2: { atk: 74, def: 35, avd: 0 },
     },
   },
-};
+}
 
 const testStatus = {
   // 太宰
   blade: {
     base: { tech: 168, genius: 170, beauty: 164, theme: 169, truth: 170 },
     battle: { atk: 502, def: 505, avd: 39 },
-    totalBase201_3: { tech: 168, genius: (170 + 50), beauty: 164, theme: (169 + 160), truth: 170 },
+    totalBase201_3: {
+      tech: 168,
+      genius: 170 + 50,
+      beauty: 164,
+      theme: 169 + 160,
+      truth: 170,
+    },
     finalBattle201_3: { atk: 607, def: 555, avd: 39 },
   },
   // 島崎
@@ -117,8 +123,14 @@ const testStatus = {
   },
   neg: {
     base: { tech: 42, genius: 47, beauty: 42, theme: 47, truth: 40 },
-    totalBase202_3: { tech: 42, genius: 47, beauty: (42 + 50), theme: 47, truth: 1 },
+    totalBase202_3: {
+      tech: 42,
+      genius: 47,
+      beauty: 42 + 50,
+      theme: 47,
+      truth: 1,
+    },
   },
-};
+}
 
-export { testBungo, testCards, expectedCardStatus, testStatus };
+export { testBungo, testCards, expectedCardStatus, testStatus }

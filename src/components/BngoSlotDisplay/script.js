@@ -1,5 +1,5 @@
-import { bungo, cards, weapons, status } from '../../data';
-import Store from '../../store';
+import { bungo, cards, weapons, status } from '../../data'
+import Store from '../../store'
 
 export default {
   name: 'BngoSlotDisplay',
@@ -29,39 +29,39 @@ export default {
       type: Object,
       required: false,
       default() {
-        return bungo;
+        return bungo
       },
     },
     cardsData: {
       type: Object,
       required: false,
       default() {
-        return cards;
+        return cards
       },
     },
     weaponsData: {
       type: Object,
       required: false,
       default() {
-        return weapons;
+        return weapons
       },
     },
     statusData: {
       type: Object,
       required: false,
       default() {
-        return status;
+        return status
       },
     },
   },
   data() {
     return {
       state: null,
-    };
+    }
   },
   created() {
-    const { actions, state } = Store.get(this.order);
-    this.actions = actions;
-    this.state = state;
+    const { actions, state } = Store.get(this.order)
+    this.actions = actions
+    this.state = state
   },
-};
+}

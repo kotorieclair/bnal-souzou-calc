@@ -1,4 +1,4 @@
-import { links } from '../../pageinfo';
+import { links } from '../../pageinfo'
 
 export default {
   name: 'ErrorMessage',
@@ -6,22 +6,23 @@ export default {
     return {
       visible: false,
       message: 'aaa',
-    };
+    }
   },
   created() {
-    this.links = links;
+    this.links = links
 
-    this.$root.$on('displayError', (message) => {
-      this.visible = true;
-      this.message = message;
+    this.$root.$on('displayError', message => {
+      this.visible = true
+      this.message = message
       // console.log('error');
-      console.log(message);
-    });
+      // eslint-disable-next-line no-console
+      console.log(message)
+    })
   },
   methods: {
     hideError() {
-      this.visible = false;
-      this.message = '';
-    }
-  }
-};
+      this.visible = false
+      this.message = ''
+    },
+  },
+}
