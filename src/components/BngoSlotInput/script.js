@@ -1,6 +1,6 @@
 import { mapMutations } from 'vuex'
-import { bungo, cards, weapons, status } from '../../data'
-import Store from '../../store/_index'
+import { bungo, cards, weapons, status } from 'data'
+import Store from 'store/_index'
 import {
   // SET_BUNGO,
   // SET_CARD_ID,

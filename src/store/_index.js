@@ -1,4 +1,4 @@
-import statusData from '../data/status';
+import statusData from 'data/status';
 
 let store = {};
 let validData = {};

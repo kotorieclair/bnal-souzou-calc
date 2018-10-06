@@ -1,11 +1,11 @@
 // import { mapMutations } from 'vuex'
-import BngoSlotInput from '../BngoSlotInput'
-import BngoSlotDisplay from '../BngoSlotDisplay'
-import { bungo, cards, weapons, status } from '../../data'
-import Store from '../../store/_index'
+import BngoSlotInput from 'components/BngoSlotInput'
+import BngoSlotDisplay from 'components/BngoSlotDisplay'
+import { bungo, cards, weapons, status } from 'data'
+import Store from 'store/_index'
 // import { INIT_SLOT, COPY_SLOT_TO } from '../../store/mutationTypes';
-import store from '../../store'
-import slotModule from '../../store/modules/slot'
+import store from 'store'
+import slotModule from 'store/modules/slot'
 
 export default {
   name: 'BngoSlot',

@@ -1,6 +1,6 @@
 import { mapState } from 'vuex'
-import { bungo, cards, weapons, status } from '../../data'
-import Store from '../../store/_index'
+import { bungo, cards, weapons, status } from 'data'
+import Store from 'store/_index'
 
 export default {
   name: 'BngoSlotDisplay',

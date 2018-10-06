@@ -1,5 +1,5 @@
-import BngoSlot from '../BngoSlot'
-import ErrorMessage from '../ErrorMessage'
+import BngoSlot from 'components/BngoSlot'
+import ErrorMessage from 'components/ErrorMessage'
 
 export default {
   name: 'BnalSouzouCalc',

@@ -1,4 +1,4 @@
-import { links } from '../../pageinfo'
+import { links } from 'pageinfo'
 
 export default {
   name: 'ErrorMessage',

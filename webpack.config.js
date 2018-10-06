@@ -22,6 +22,7 @@ module.exports = env => {
       path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
+      modules: ['node_modules', 'src'],
       extensions: ['.js', '.vue', '.styl'],
     },
     module: {
@@ -29,15 +30,18 @@ module.exports = env => {
         {
           test: /\.vue$/,
           loader: 'vue-loader',
+          include: [path.resolve(__dirname, 'src')],
         },
         {
           test: /\.js$/,
           loader: 'babel-loader',
           exclude: /node_modules/,
+          include: [path.resolve(__dirname, 'src')],
         },
         {
           test: /\.styl$/,
-          use: node_env === 'production' ? ExtractTextPlugin.extract(['css-loader', 'stylus-loader']) : ['vue-style-loader', 'css-loader', 'stylus-loader']
+          use: node_env === 'production' ? ExtractTextPlugin.extract(['css-loader', 'stylus-loader']) : ['vue-style-loader', 'css-loader', 'stylus-loader'],
+          include: [path.resolve(__dirname, 'src')],
         },
         {
           test: /\.(png|jpg|gif)$/,
@@ -56,6 +60,7 @@ module.exports = env => {
               },
             },
           ],
+          include: [path.resolve(__dirname, 'src')],
         },
       ],
     },

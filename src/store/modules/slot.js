@@ -16,28 +16,31 @@ export default {
   },
   actions: {
     setBungo({ commit }, bungo) {
-      commit(mutationTypes.SET_BUNGO, { bungo });
+      commit(mutationTypes.SET_BUNGO, { bungo })
     },
     setCardId({ commit }, cardId) {
-      commit(mutationTypes.SET_CARD_ID, { cardId });
+      commit(mutationTypes.SET_CARD_ID, { cardId })
       // commit(mutationTypes.SET_CARD_LV);
     },
     setCardLv({ commit }, cardLv) {
-      commit(mutationTypes.SET_CARD_LV, { cardLv });
-    }
+      commit(mutationTypes.SET_CARD_LV, { cardLv })
+    },
+    setBaseStatus({ commit }, statusKey, val) {
+      commit(mutationTypes.SET_BASE_STATUS, { statusKey, val })
+    },
   },
   mutations: {
     [mutationTypes.SET_BUNGO](state, { bungo }) {
       // if (bungo !== '' && !validData.bungo.hasOwnProperty(bungo)) {
       //   throw new Error('Store.action: setBungo - unknown bungo id!');
       // }
-      state.bungo = bungo;
+      state.bungo = bungo
     },
     [mutationTypes.SET_CARD_ID](state, { cardId }) {
       // if (cardId !== '' && !validData.cards.hasOwnProperty(cardId)) {
       //   throw new Error('Store.action: setCardId - unknown cardId id!');
       // }
-      state.cardId = cardId;
+      state.cardId = cardId
     },
     [mutationTypes.SET_CARD_LV](state, { cardLv }) {
       // if (cardLv !== '') {
@@ -48,7 +51,7 @@ export default {
       //     throw new Error('Store.action: setCardLv - unknown cardLv!');
       //   }
       // }
-      state.cardLv = cardLv;
+      state.cardLv = cardLv
     },
     [mutationTypes.SET_BASE_STATUS](state, { key, val }) {
       // if (!statusData.base.hasOwnProperty(key)) {
@@ -58,14 +61,14 @@ export default {
       //   throw new Error(`Store.action: setBaseStatus - ${key} must be an integer!`);
       // }
       if (val <= -1) {
-        state[key] = 1;
+        state[key] = 1
       } else {
-        state[key] = val;
+        state[key] = val
       }
     },
-    [mutationTypes.COPY_SLOT_TO](state, { to }) {
-      console.log(to);
-      // state.slots[to] = { ...state.slots[from] };
-    }
+    // [mutationTypes.COPY_SLOT_TO](state, { to }) {
+    //   console.log(to)
+    //   // state.slots[to] = { ...state.slots[from] };
+    // },
   },
-};
+}
