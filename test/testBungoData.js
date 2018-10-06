@@ -272,6 +272,13 @@ export default {
       battle: { atk: 378, def: 447, avd: 41 },
     },
   },
+  42: {
+    name: '山本有三',
+    status: {
+      base: { tech: 42, genius: 42, beauty: 42, theme: 50, truth: 42 },
+      battle: { atk: 130, def: 126, avd: 10 },
+    },
+  },
   43: {
     name: '久米正雄',
     status: {
@@ -300,6 +307,13 @@ export default {
       battle: { atk: 446, def: 354, avd: 335 },
     },
   },
+  49: {
+    name: '直木三十五',
+    status: {
+      base: { tech: 43, genius: 46, beauty: 40, theme: 40, truth: 40 },
+      battle: { atk: 97, def: 117, avd: 10 },
+    },
+  },
   50: {
     name: '夢野久作',
     status: {
@@ -313,6 +327,13 @@ export default {
     status: {
       base: { tech: 162, genius: 164, beauty: 165, theme: 160, truth: 160 },
       battle: { atk: 376, def: 444, avd: 41 },
+    },
+  },
+  53: {
+    name: '伊藤左千夫',
+    status: {
+      base: { tech: 46, genius: 40, beauty: 40, theme: 45, truth: 46 },
+      battle: { atk: 161, def: 108, avd: 61 },
     },
   },
   55: {

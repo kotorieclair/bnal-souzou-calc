@@ -228,7 +228,7 @@ export default {
     rare: 3,
     status: {
       1: { genius: 30, theme: 96 },
-      2: null,
+      2: { genius: 42, theme: 135 },
       3: { genius: 60, theme: 192 },
     },
     skill: {
@@ -382,7 +382,7 @@ export default {
     rare: 3,
     status: {
       1: { genius: 30, theme: 48, truth: 12 },
-      2: null,
+      2: { genius: 42, theme: 68, truth: 17 },
       3: { genius: 60, theme: 96, truth: 24 },
     },
     skill: {
@@ -433,4 +433,131 @@ export default {
       3: '命中率 +30%',
     },
   },
+  3032: {
+    name: '騎手ノ手解キ-菊池寛',
+    rare: 3,
+    status: {
+      1: { genius: 30, beauty: 30 },
+      2: null,
+      3: { genius: 60, beauty: 60 },
+    },
+    skill: {
+      1: '急所攻撃率 +15%',
+      2: '急所攻撃率 +15%',
+      3: '急所攻撃率 +30%',
+    },
+  },
+  3033: {
+    name: '夜半ノ怪異譚-夢野久作',
+    rare: 3,
+    status: {
+      1: { tech: 48 },
+      2: null,
+      3: { tech: 96 },
+    },
+    skill: {
+      1: '降臨上昇率 +30%',
+      2: '降臨上昇率 +30%',
+      3: '降臨上昇率 +60%',
+    },
+  },
+  3034: {
+    name: '青ノ休暇-武者小路実篤',
+    rare: 3,
+    status: {
+      1: { tech: 16, genius: 20, beauty: 20 },
+      2: null,
+      3: { tech: 32, genius: 40, beauty: 40 },
+    },
+    skill: {
+      1: '急所攻撃率 +15%',
+      2: '急所攻撃率 +15%',
+      3: '急所攻撃率 +30%',
+    },
+  },
+  3035: {
+    name: '盛夏ノ余暇-佐藤春夫',
+    rare: 3,
+    status: {
+      1: { tech: 12, theme: 96, truth: 12 },
+      2: null,
+      3: { tech: 24, theme: 192, truth: 24 },
+    },
+    skill: {
+      1: '命中率 +15%',
+      2: '命中率 +15%',
+      3: '命中率 +30%',
+    },
+  },
+  3036: {
+    name: '月二詩情溢レ-北原白秋',
+    rare: 3,
+    status: {
+      1: { tech: 48 },
+      2: { tech: 68 },
+      3: { tech: 96 },
+    },
+    skill: {
+      1: '命中率 +15%',
+      2: '命中率 +15%',
+      3: '命中率 +30%',
+    },
+  },
+  3037: {
+    name: '蒼天ト共ニ-正岡子規',
+    rare: 3,
+    status: {
+      1: { tech: 24, beauty: 30 },
+      2: null,
+      3: { tech: 48, beauty: 60 },
+    },
+    skill: {
+      1: '降臨上昇率 +30%',
+      2: '降臨上昇率 +30%',
+      3: '降臨上昇率 +60%',
+    },
+  },
+  3038: {
+    name: '文机ヲ燈ス-小泉八雲',
+    rare: 3,
+    status: {
+      1: { genius: 60 },
+      2: null,
+      3: { genius: 120 },
+    },
+    skill: {
+      1: '急所攻撃率 +15%',
+      2: '急所攻撃率 +15%',
+      3: '急所攻撃率 +30%',
+    },
+  },
+  3039: {
+    name: '一夜ノ悪戯-尾崎紅葉',
+    rare: 3,
+    status: {
+      1: { tech: 24, genius: 15, beauty: 15 },
+      2: null,
+      3: { tech: 48, genius: 30, beauty: 30 },
+    },
+    skill: {
+      1: '降臨上昇率 +30%',
+      2: '降臨上昇率 +30%',
+      3: '降臨上昇率 +60%',
+    },
+  },
+  3040: {
+    name: '舞踏ノ誘イ',
+    rare: 3,
+    status: {
+      1: { genius: 21, beauty: 21 },
+      2: null,
+      3: { genius: 42, beauty: 42 },
+    },
+    skill: {
+      1: '急所攻撃率 +5%',
+      2: '急所攻撃率 +5%',
+      3: '急所攻撃率 +15%',
+    },
+  },
 };
+

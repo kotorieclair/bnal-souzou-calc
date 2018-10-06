@@ -194,7 +194,7 @@ describe('components: BngoSlot', () => {
       expect(wrapper.vm.increasedBattleStatus).to.be.empty;
     });
 
-    it('returns a battle status object calculated from card\'s status when baseStatus is not inputted', () => {
+    it.skip('returns a battle status object calculated from card\'s status when baseStatus is not inputted', () => {
       const [bungo, id, lv] = [1, 201, 2];
       store.state.bungo = bungo;
       store.state.cardId = id;

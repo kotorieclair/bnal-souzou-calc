@@ -155,6 +155,10 @@ export default {
     name: '吉川英治',
     weapon: 'whip',
   },
+  42: {
+    name: '山本有三',
+    weapon: 'blade',
+  },
   43: {
     name: '久米正雄',
     weapon: 'blade',
@@ -171,6 +175,10 @@ export default {
     name: '正宗白鳥',
     weapon: 'bow',
   },
+  49: {
+    name: '直木三十五',
+    weapon: 'whip',
+  },
   50: {
     name: '夢野久作',
     weapon: 'whip',
@@ -178,6 +186,10 @@ export default {
   52: {
     name: '菊池寛',
     weapon: 'whip',
+  },
+  53: {
+    name: '伊藤左千夫',
+    weapon: 'gun',
   },
   55: {
     name: '三好達治',
