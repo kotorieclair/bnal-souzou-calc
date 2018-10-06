@@ -11,7 +11,7 @@ export default {
     };
   },
   methods: {
-    setSpCurrent(payload, e) {
+    setSpCurrent(payload) {
       this.spCurrent = parseInt(payload);
     },
   },

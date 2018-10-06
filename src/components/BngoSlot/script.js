@@ -184,14 +184,14 @@ export default {
 
       return Math.round(base / this.weaponsData[weapon].adjustment.atk);
     },
-    calculateDef(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
+    calculateDef(weapon, { tech = 0, genius = 0, beauty = 0, truth = 0 }) {
       const base = weapon === 'bow' ?
         tech + genius + truth :
         tech + genius + beauty/2 + truth/2;
 
       return Math.round(base / this.weaponsData[weapon].adjustment.def);
     },
-    calculateAvd(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
+    calculateAvd(weapon, { tech = 0, beauty = 0, truth = 0 }) {
       const base = weapon === 'bow' ?
         tech + truth :
         tech + beauty;

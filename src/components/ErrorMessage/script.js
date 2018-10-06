@@ -15,6 +15,7 @@ export default {
       this.visible = true;
       this.message = message;
       // console.log('error');
+      // eslint-disable-next-line no-console
       console.log(message);
     });
   },

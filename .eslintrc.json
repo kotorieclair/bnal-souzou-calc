@@ -11,5 +11,9 @@
     "plugin:vue/essential",
     "prettier"
   ],
-  "rules": {}
+  "rules": {},
+  "globals": {
+    "process": true,
+    "gtag": true
+  }
 }
