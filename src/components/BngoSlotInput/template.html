@@ -1,6 +1,6 @@
 <div class="BngoSlotInput">
   <div class="BngoSlotInput_bungo">
-    <select ref="bungo" v-model.number="bungo">>
+    <select v-model.number="bungo">>
       <option disabled value="">文豪</option>
       <optgroup v-for="(bungos, weapon) in groupedBungoData" :key="weapon" :label="weaponsData[weapon].label">
         <option v-for="(bungo, id) in bungos" :key="id" :value="id">
@@ -11,7 +11,7 @@
   </div>
 
   <div class="BngoSlotInput_card">
-    <select ref="cardId" v-model.number="cardId">
+    <select v-model.number="cardId">
       <option disabled value="">装像</option>
       <optgroup v-for="(cards, rare) in groupedCardsData" :key="rare" :label="rare | starify">
         <option v-for="(card, id) in cards" :key="id" :value="id">
@@ -20,7 +20,7 @@
       </optgroup>
     </select>
 
-    <select v-if="cardId" ref="cardLv" v-model.number="cardLv">
+    <select v-if="cardId" v-model.number="cardLv">
       <option disabled value="">レベル</option>
       <option v-for="(status, lv) in cardsData[cardId].status" :key="lv" :value="lv">
         Lv.{{ lv }}{{ !status ? ' ※' : '' }}
@@ -33,11 +33,10 @@
     <label v-for="(label, statusKey) in statusData.base" :key="statusKey" class="BngoSlotInput_status_box">
       <span class="BngoSlotInput_status_name">{{ label }}</span>
       <input
-        :ref="statusKey"
-        :value="state[statusKey]"
+        :value="statusKey"
         type="number"
         min="1"
-        @input="changeBaseStatus(statusKey, $event)"
+        @input="setBaseStatus(statusKey, $event.target.value)"
         @change="sendBaseStatusAnalytics(statusKey)"
       >
     </label>

@@ -1,11 +1,11 @@
-import { mapMutations } from 'vuex'
+// import { mapMutations } from 'vuex'
 import { bungo, cards, weapons, status } from 'data'
-import Store from 'store/_index'
+// import Store from 'store/_index'
 import {
   // SET_BUNGO,
   // SET_CARD_ID,
   // SET_CARD_LV,
-  SET_BASE_STATUS,
+  // SET_BASE_STATUS,
 } from '../../store/mutationTypes'
 
 export default {
@@ -105,11 +105,36 @@ export default {
         return this.setCardLv(val)
       },
     },
+    tech: {
+      get() {
+        return this.getStoreState('tech')
+      }
+    },
+    genius: {
+      get() {
+        return this.getStoreState('genius')
+      }
+    },
+    beauty: {
+      get() {
+        return this.getStoreState('beauty')
+      }
+    },
+    theme: {
+      get() {
+        return this.getStoreState('theme')
+      }
+    },
+    truth: {
+      get() {
+        return this.getStoreState('truth')
+      }
+    },
   },
   created() {
-    const { actions, state } = Store.get(this.slotId)
-    this.actions = actions
-    this.state = state
+    // const { actions, state } = Store.get(this.slotId)
+    // this.actions = actions
+    // this.state = state
   },
   methods: {
     getStoreState(key) {
@@ -121,11 +146,11 @@ export default {
     dispatchAction(action, payload) {
       return this.$store.dispatch(`slots/${this.slotId}/${action}`, payload)
     },
-    ...mapMutations('slots', {
-      setBaseStatus(commit, payload) {
-        return commit(`${this.slotId}/${SET_BASE_STATUS}`, payload)
-      },
-    }),
+    // ...mapMutations('slots', {
+    //   setBaseStatus(commit, payload) {
+    //     return commit(`${this.slotId}/${SET_BASE_STATUS}`, payload)
+    //   },
+    // }),
     setBungo(bungo) {
       // try {
       //   this.actions.setBungo(parseInt(e.target.value));
@@ -164,16 +189,20 @@ export default {
 
       return this.dispatchAction('setCardLv', cardLv)
     },
-    changeBaseStatus(key, e) {
-      const val = e.target.value ? parseInt(e.target.value) : ''
-
-      try {
-        this.actions.setBaseStatus(key, val)
-        this.setBaseStatus({ key, val })
-      } catch (error) {
-        this.$root.$emit('displayError', error.message)
-      }
+    setBaseStatus(statusKey, _val) {
+      const val = _val ? parseInt(_val) : '';
+      return this.dispatchAction('setBaseStatus', { statusKey, val })
     },
+    // changeBaseStatus(key, e) {
+    //   const val = e.target.value ? parseInt(e.target.value) : ''
+
+    //   try {
+    //     this.actions.setBaseStatus(key, val)
+    //     this.setBaseStatus({ key, val })
+    //   } catch (error) {
+    //     this.$root.$emit('displayError', error.message)
+    //   }
+    // },
     sendBaseStatusAnalytics(key) {
       this.sendAnalytics(
         'baseStatus',

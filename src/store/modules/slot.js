@@ -25,7 +25,7 @@ export default {
     setCardLv({ commit }, cardLv) {
       commit(mutationTypes.SET_CARD_LV, { cardLv })
     },
-    setBaseStatus({ commit }, statusKey, val) {
+    setBaseStatus({ commit }, { statusKey, val }) {
       commit(mutationTypes.SET_BASE_STATUS, { statusKey, val })
     },
   },
@@ -53,7 +53,7 @@ export default {
       // }
       state.cardLv = cardLv
     },
-    [mutationTypes.SET_BASE_STATUS](state, { key, val }) {
+    [mutationTypes.SET_BASE_STATUS](state, { statusKey, val }) {
       // if (!statusData.base.hasOwnProperty(key)) {
       //   throw new Error('Store.action: setBaseStatus - unknown baseStatus key!');
       // }
@@ -61,9 +61,9 @@ export default {
       //   throw new Error(`Store.action: setBaseStatus - ${key} must be an integer!`);
       // }
       if (val <= -1) {
-        state[key] = 1
+        state[statusKey] = 1
       } else {
-        state[key] = val
+        state[statusKey] = val
       }
     },
     // [mutationTypes.COPY_SLOT_TO](state, { to }) {
