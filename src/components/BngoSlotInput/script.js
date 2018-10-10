@@ -7,6 +7,7 @@ import {
   // SET_CARD_LV,
   // SET_BASE_STATUS,
 } from '../../store/mutationTypes'
+import { actionTypes } from 'store/modules/slot'
 
 export default {
   name: 'BngoSlotInput',
@@ -158,7 +159,7 @@ export default {
       //   this.$root.$emit('displayError', error.message);
       // }
       this.sendAnalytics('bungo', '文豪')
-      return this.dispatchAction('setBungo', bungo)
+      return this.dispatchAction(actionTypes.setBungo, bungo)
     },
     setCardId(cardId) {
       // const id = parseInt(e.target.value);
@@ -168,7 +169,7 @@ export default {
       if (!this.cardsData[cardId].status.hasOwnProperty(this.cardLv)) {
         const cardLv = parseInt(Object.keys(this.cardsData[cardId].status)[0])
         // this.setStoreState(SET_CARD_LV, { cardLv: lv });
-        this.dispatchAction('setCardLv', cardLv)
+        this.dispatchAction(actionTypes.setCardLv, cardLv)
         //   try {
         //     this.actions.setCardLv(lv);
         //     this.setCardLv({ cardLv: lv });
@@ -179,7 +180,7 @@ export default {
 
       this.sendAnalytics('cardId', '装像')
 
-      return this.dispatchAction('setCardId', cardId)
+      return this.dispatchAction(actionTypes.setCardId, cardId)
     },
     setCardLv(cardLv) {
       // this.actions.setCardLv(parseInt(e.target.value));
@@ -187,11 +188,11 @@ export default {
 
       this.sendAnalytics('cardLv', '装像Lv')
 
-      return this.dispatchAction('setCardLv', cardLv)
+      return this.dispatchAction(actionTypes.setCardLv, cardLv)
     },
     setBaseStatus(statusKey, _val) {
       const val = _val ? parseInt(_val) : '';
-      return this.dispatchAction('setBaseStatus', { statusKey, val })
+      return this.dispatchAction(actionTypes.setBaseStatus, { statusKey, val })
     },
     // changeBaseStatus(key, e) {
     //   const val = e.target.value ? parseInt(e.target.value) : ''

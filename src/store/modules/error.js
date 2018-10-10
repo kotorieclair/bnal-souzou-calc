@@ -1,4 +1,12 @@
-import * as mutationTypes from '../mutationTypes'
+// import * as mutationTypes from '../mutationTypes'
+
+export const actionTypes = {
+  showErrorMes: 'showErrorMes',
+}
+
+export const mutationTypes = {
+  SHOW_ERROR_MES: 'SHOW_ERROR_MES'
+}
 
 export default {
   namespaced: true,
@@ -6,9 +14,14 @@ export default {
     errtype: null,
     message: null,
   },
+  actions: {
+    [actionTypes.showErrorMes]({ commit }, message) {
+      commit(mutationTypes.SHOW_ERROR_MES, { message })
+    },
+  },
   mutations: {
-    seterrType(state, mes) {
-      state.errtype = mes;
-    }
-  }
+    [mutationTypes.SHOW_ERROR_MES](state, { message }) {
+      state.message = message
+    },
+  },
 }

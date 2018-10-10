@@ -1,4 +1,21 @@
-import * as mutationTypes from '../mutationTypes'
+// import * as mutationTypes from '../mutationTypes'
+import * as validData from 'data'
+import { actionTypes as errorActionTypes } from 'store/modules/error'
+
+export const actionTypes = {
+  setBungo: 'setBungo',
+  setCardId: 'setCardId',
+  setCardLv: 'setCardLv',
+  setBaseStatus: 'setBaseStatus',
+}
+
+export const mutationTypes = {
+  SET_BUNGO: 'SET_BUNGO',
+  SET_CARD_ID:'SET_CARD_ID',
+  SET_CARD_LV: 'SET_CARD_LV',
+  SET_BASE_STATUS: 'SET_BASE_STATUS',
+  COPY_SLOT_TO: 'COPY_SLOT_TO',
+}
 
 export default {
   namespaced: true,
@@ -15,25 +32,27 @@ export default {
     }
   },
   actions: {
-    setBungo({ commit }, bungo) {
-      commit(mutationTypes.SET_BUNGO, { bungo })
+    [actionTypes.setBungo]({ dispatch, commit }, bungo) {
+      if (bungo !== '' && !validData.bungo.hasOwnProperty(bungo)) {
+        dispatch(errorActionTypes.showErrorMes, 'Store.action: setBungo - unknown bungo id!')
+        // throw new Error('Store.action: setBungo - unknown bungo id!');
+      } else {
+        commit(mutationTypes.SET_BUNGO, { bungo })
+      }
     },
-    setCardId({ commit }, cardId) {
+    [actionTypes.setCardId]({ commit }, cardId) {
       commit(mutationTypes.SET_CARD_ID, { cardId })
       // commit(mutationTypes.SET_CARD_LV);
     },
-    setCardLv({ commit }, cardLv) {
+    [actionTypes.setCardLv]({ commit }, cardLv) {
       commit(mutationTypes.SET_CARD_LV, { cardLv })
     },
-    setBaseStatus({ commit }, { statusKey, val }) {
+    [actionTypes.setBaseStatus]({ commit }, { statusKey, val }) {
       commit(mutationTypes.SET_BASE_STATUS, { statusKey, val })
     },
   },
   mutations: {
     [mutationTypes.SET_BUNGO](state, { bungo }) {
-      // if (bungo !== '' && !validData.bungo.hasOwnProperty(bungo)) {
-      //   throw new Error('Store.action: setBungo - unknown bungo id!');
-      // }
       state.bungo = bungo
     },
     [mutationTypes.SET_CARD_ID](state, { cardId }) {
