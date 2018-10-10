@@ -1,118 +1,4 @@
 
-@media screen and (min-width: 751px) {
-.BnalSouzouCalc_tab[data-v-602b1f34] {
-    display: none;
-}
-}
-@media screen and (max-width: 750px) {
-.BnalSouzouCalc_tab_num[data-v-602b1f34] {
-    background-color: rgba(119,84,76,0.4);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: inline-block;
-    margin-right: 1px;
-    padding: 3px 3px 1px;
-    vertical-align: bottom;
-}
-}
-@media screen and (max-width: 750px) {
-.BnalSouzouCalc_tab_num.sp-visible[data-v-602b1f34] {
-    background-color: #77544c;
-    padding-bottom: 4px;
-}
-}
-@media screen and (max-width: 750px) {
-.BnalSouzouCalc_tab_num span[data-v-602b1f34] {
-    -ms-flex-align: center;
-        align-items: center;
-    background-color: #f5ece2;
-    border: 2px solid #c1a34e;
-    border-radius: 20px;
-    box-sizing: border-box;
-    color: #77544c;
-    display: -ms-flexbox;
-    display: flex;
-    font-size: 17rem;
-    font-weight: bold;
-    height: 40px;
-    -ms-flex-pack: center;
-        justify-content: center;
-    width: 40px;
-}
-}
-@media screen and (min-width: 751px) {
-.BnalSouzouCalc .BngoSlot[data-v-602b1f34] {
-    margin-bottom: 20px;
-}
-}
-@media screen and (max-width: 750px) {
-.BnalSouzouCalc .BngoSlot[data-v-602b1f34] {
-    display: none;
-}
-}
-@media screen and (max-width: 750px) {
-.BnalSouzouCalc .BngoSlot.sp-visible[data-v-602b1f34] {
-    display: block;
-}
-}
-
-.BngoSlot[data-v-5cd7de85] {
-  background-color: #77544c;
-  border: 1px solid #77544c;
-  padding: 10px;
-}
-@media screen and (min-width: 751px) {
-.BngoSlot[data-v-5cd7de85] {
-    display: -ms-flexbox;
-    display: flex;
-}
-}
-@media screen and (max-width: 750px) {
-.BngoSlot[data-v-5cd7de85] {
-    position: relative;
-}
-}
-@media screen and (min-width: 751px) {
-.BngoSlot_left[data-v-5cd7de85] {
-    -ms-flex: 0 1 33%;
-        flex: 0 1 33%;
-    margin-right: 10px;
-}
-}
-.BngoSlot_left_order[data-v-5cd7de85] {
-  -ms-flex-align: center;
-      align-items: center;
-  background-color: #f5ece2;
-  border: 2px solid #c1a34e;
-  border-radius: 20px;
-  box-sizing: border-box;
-  color: #77544c;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 17rem;
-  font-weight: bold;
-  height: 40px;
-  -ms-flex-pack: center;
-      justify-content: center;
-  width: 40px;
-}
-@media screen and (max-width: 750px) {
-.BngoSlot_left_order[data-v-5cd7de85] {
-    display: none;
-}
-}
-@media screen and (min-width: 751px) {
-.BngoSlot_left .BngoSlotInput[data-v-5cd7de85] {
-    margin-top: 15px;
-}
-}
-@media screen and (min-width: 751px) {
-.BngoSlot_right[data-v-5cd7de85] {
-    -ms-flex: 0 1 67%;
-        flex: 0 1 67%;
-}
-}
-
 .BngoSlotInput input[data-v-32605d1b],
 .BngoSlotInput select[data-v-32605d1b] {
   font-size: 12rem;
@@ -129,7 +15,6 @@
   margin-bottom: 2px;
 }
 .BngoSlotInput_status[data-v-32605d1b] {
-  display: -ms-flexbox;
   display: flex;
 }
 @media screen and (max-width: 750px) {
@@ -145,14 +30,12 @@
 }
 @media screen and (min-width: 751px) {
 .BngoSlotInput_status_box[data-v-32605d1b] {
-    -ms-flex: 0 1 3.5em;
-        flex: 0 1 3.5em;
+    flex: 0 1 3.5em;
 }
 }
 @media screen and (max-width: 750px) {
 .BngoSlotInput_status_box[data-v-32605d1b] {
-    -ms-flex: 0 1 20%;
-        flex: 0 1 20%;
+    flex: 0 1 20%;
 }
 }
 .BngoSlotInput_status_name[data-v-32605d1b] {
@@ -194,22 +77,18 @@
 }
 @media screen and (min-width: 751px) {
 .BngoSlotDisplay_info[data-v-6c851ada] {
-    -ms-flex-align: end;
-        align-items: flex-end;
-    display: -ms-flexbox;
+    align-items: flex-end;
     display: flex;
 }
 }
 .BngoSlotDisplay_info_bungo[data-v-6c851ada] {
   font-size: 15rem;
-  -ms-flex: 0 1 40%;
-      flex: 0 1 40%;
+  flex: 0 1 40%;
   min-height: 1em;
 }
 .BngoSlotDisplay_info_card[data-v-6c851ada] {
   font-size: 15rem;
-  -ms-flex: 0 1 60%;
-      flex: 0 1 60%;
+  flex: 0 1 60%;
   min-height: 1em;
 }
 @media screen and (max-width: 750px) {
@@ -247,6 +126,111 @@
 .BngoSlotDisplay_skill td[data-v-6c851ada] {
   font-size: 13rem;
   width: 60%;
+}
+
+.BngoSlot[data-v-5cd7de85] {
+  background-color: #77544c;
+  border: 1px solid #77544c;
+  padding: 10px;
+}
+@media screen and (min-width: 751px) {
+.BngoSlot[data-v-5cd7de85] {
+    display: flex;
+}
+}
+@media screen and (max-width: 750px) {
+.BngoSlot[data-v-5cd7de85] {
+    position: relative;
+}
+}
+@media screen and (min-width: 751px) {
+.BngoSlot_left[data-v-5cd7de85] {
+    flex: 0 1 33%;
+    margin-right: 10px;
+}
+}
+.BngoSlot_left_order[data-v-5cd7de85] {
+  align-items: center;
+  background-color: #f5ece2;
+  border: 2px solid #c1a34e;
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #77544c;
+  display: flex;
+  font-size: 17rem;
+  font-weight: bold;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+@media screen and (max-width: 750px) {
+.BngoSlot_left_order[data-v-5cd7de85] {
+    display: none;
+}
+}
+@media screen and (min-width: 751px) {
+.BngoSlot_left .BngoSlotInput[data-v-5cd7de85] {
+    margin-top: 15px;
+}
+}
+@media screen and (min-width: 751px) {
+.BngoSlot_right[data-v-5cd7de85] {
+    flex: 0 1 67%;
+}
+}
+
+@media screen and (min-width: 751px) {
+.BnalSouzouCalc_tab[data-v-602b1f34] {
+    display: none;
+}
+}
+@media screen and (max-width: 750px) {
+.BnalSouzouCalc_tab_num[data-v-602b1f34] {
+    background-color: rgba(119,84,76,0.4);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: inline-block;
+    margin-right: 1px;
+    padding: 3px 3px 1px;
+    vertical-align: bottom;
+}
+}
+@media screen and (max-width: 750px) {
+.BnalSouzouCalc_tab_num.sp-visible[data-v-602b1f34] {
+    background-color: #77544c;
+    padding-bottom: 4px;
+}
+}
+@media screen and (max-width: 750px) {
+.BnalSouzouCalc_tab_num span[data-v-602b1f34] {
+    align-items: center;
+    background-color: #f5ece2;
+    border: 2px solid #c1a34e;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #77544c;
+    display: flex;
+    font-size: 17rem;
+    font-weight: bold;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+}
+}
+@media screen and (min-width: 751px) {
+.BnalSouzouCalc .BngoSlot[data-v-602b1f34] {
+    margin-bottom: 20px;
+}
+}
+@media screen and (max-width: 750px) {
+.BnalSouzouCalc .BngoSlot[data-v-602b1f34] {
+    display: none;
+}
+}
+@media screen and (max-width: 750px) {
+.BnalSouzouCalc .BngoSlot.sp-visible[data-v-602b1f34] {
+    display: block;
+}
 }
 html {
   font-size: 6.25%;
