@@ -1,3 +1,11 @@
+export const options = {
+  blade: '刃',
+  bow: '弓',
+  gun: '銃',
+  whip: '鞭',
+  special: 'コラボキャラ',  
+}
+
 export default {
   blade: {
     label: '刃',
@@ -7,6 +15,7 @@ export default {
       avd: 8.5,
     },
   },
+  // 自然主義弓
   bow: {
     label: '弓',
     adjustment: {
@@ -15,6 +24,7 @@ export default {
       avd: 1,
     },
   },
+  // 自然主義以外の弓
   bow_alt: {
     label: '弓',
     adjustment: {
@@ -38,5 +48,13 @@ export default {
       def: 1.1,
       avd: 8,
     },
-  }
+  },
+  alchemy: {
+    label: '錬',
+    as: 'bow',
+  },
+  fight: {
+    label: '闘',
+    as: 'blade',
+  },
 };

@@ -183,26 +183,36 @@ export default {
       });
       return estimated;
     },
+    getWeaponCalcType(weapon) {
+      const calcType = this.weaponsData[weapon];
+      return calcType.as || calcType.as;
+    },
     calculateAtk(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
-      const base = weapon === 'bow' ?
+      const calcType = this.weaponsData[weapon].as || weapon;
+
+      const base = calcType === 'bow' ?
         tech + genius/2 + beauty/2 + theme/2 + truth/2 :
         tech + genius/2 + beauty + theme/2;
-
-      return Math.round(base / this.weaponsData[weapon].adjustment.atk);
+      
+      return Math.round(base / this.weaponsData[calcType].adjustment.atk);
     },
     calculateDef(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
-      const base = weapon === 'bow' ?
+      const calcType = this.weaponsData[weapon].as || weapon;
+
+      const base = calcType === 'bow' ?
         tech + genius + truth :
         tech + genius + beauty/2 + truth/2;
 
-      return Math.round(base / this.weaponsData[weapon].adjustment.def);
+      return Math.round(base / this.weaponsData[calcType].adjustment.def);
     },
     calculateAvd(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
-      const base = weapon === 'bow' ?
+      const calcType = this.weaponsData[weapon].as || weapon;
+
+      const base = calcType === 'bow' ?
         tech + truth :
         tech + beauty;
 
-      return Math.round(base / this.weaponsData[weapon].adjustment.avd);
+      return Math.round(base / this.weaponsData[calcType].adjustment.avd);
     },
   },
 };

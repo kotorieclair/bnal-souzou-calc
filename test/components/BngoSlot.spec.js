@@ -307,6 +307,16 @@ describe('components: BngoSlot', () => {
       const result = wrapper.vm.calculateAtk('whip', testStatus.whip.base);
       expect(result).to.equal(testStatus.whip.battle.atk);
     });
+
+    it('returns correct atk value for alchemy', () => {
+      const result = wrapper.vm.calculateAtk('alchemy', testStatus.alchemy.base);
+      expect(result).to.equal(testStatus.alchemy.battle.atk);
+    });
+
+    it('returns correct atk value for fight', () => {
+      const result = wrapper.vm.calculateAtk('fight', testStatus.fight.base);
+      expect(result).to.equal(testStatus.fight.battle.atk);
+    });
   });
 
   describe('methods: calculateDef()', () => {
@@ -334,6 +344,16 @@ describe('components: BngoSlot', () => {
       const result = wrapper.vm.calculateDef('whip', testStatus.whip.base);
       expect(result).to.equal(testStatus.whip.battle.def);
     });
+
+    it('returns correct def value for alchemy', () => {
+      const result = wrapper.vm.calculateDef('alchemy', testStatus.alchemy.base);
+      expect(result).to.equal(testStatus.alchemy.battle.def);
+    });
+
+    it('returns correct def value for fight', () => {
+      const result = wrapper.vm.calculateDef('fight', testStatus.fight.base);
+      expect(result).to.equal(testStatus.fight.battle.def);
+    });
   });
 
   describe('methods: calculateAvd()', () => {
@@ -360,6 +380,16 @@ describe('components: BngoSlot', () => {
     it('returns correct avd value for whip', () => {
       const result = wrapper.vm.calculateAvd('whip', testStatus.whip.base);
       expect(result).to.equal(testStatus.whip.battle.avd);
+    });
+
+    it('returns correct avd value for alchemy', () => {
+      const result = wrapper.vm.calculateAvd('alchemy', testStatus.alchemy.base);
+      expect(result).to.equal(testStatus.alchemy.battle.avd);
+    });
+
+    it('returns correct avd value for fight', () => {
+      const result = wrapper.vm.calculateAvd('fight', testStatus.fight.base);
+      expect(result).to.equal(testStatus.fight.battle.avd);
     });
   });
 });
