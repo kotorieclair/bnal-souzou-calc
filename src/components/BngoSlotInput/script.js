@@ -1,4 +1,4 @@
-import { bungo, cards, weapons, status } from '../../data';
+import { bungo, cards, weapons, weaponOptions, status } from '../../data';
 
 export default {
   name: 'BngoSlotInput',
@@ -62,8 +62,8 @@ export default {
 
       Object.keys(this.bungoData).map(id => {
         const currentBungo = this.bungoData[id];
-        const currentWeapon = currentBungo.weapon === 'bow_alt' ? 'bow' : currentBungo.weapon;
-
+        const currentWeapon = this.getOptionLabel(currentBungo);
+        
         if (!grouped[currentWeapon]) {
           grouped[currentWeapon] = {};
         }
@@ -77,9 +77,21 @@ export default {
     this.bungoData = bungo;
     this.cardsData = cards;
     this.weaponsData = weapons;
+    this.weaponOptions = weaponOptions;
     this.statusData = status;
   },
   methods: {
+    getOptionLabel(bungo) {
+      switch (bungo.weapon) {
+        case 'bow_alt':
+          return 'bow';
+        case 'alchemy':
+        case 'fight':
+          return 'special';
+        default:
+          return bungo.weapon;
+      }
+    },
     setBungo(e) {
       this.$emit('changeInputtedValue', 'bungo', parseInt(e.target.value));
       this.sendAnalytics('bungo', '文豪');

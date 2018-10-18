@@ -2,7 +2,7 @@
   <div class="BngoSlotInput_bungo">
     <select ref="bungo" :value="bungo" @change="setBungo">
       <option disabled value="">文豪</option>
-      <optgroup v-for="(bungos, weapon) in groupedBungoData" :key="weapon" :label="weaponsData[weapon].label">
+      <optgroup v-for="(bungos, weapon) in groupedBungoData" :key="weapon" :label="weaponOptions[weapon]">
         <option v-for="(bungo, id) in bungos" :key="id" :value="id">
           {{ bungo.name }}
         </option>
