@@ -550,7 +550,7 @@ export default {
     rare: 3,
     status: {
       1: { genius: 21, beauty: 21 },
-      2: null,
+      2: { genius: 30, beauty: 30 },
       3: { genius: 42, beauty: 42 },
     },
     skill: {
