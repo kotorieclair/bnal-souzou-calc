@@ -587,5 +587,19 @@ export default {
       3: '急所攻撃率 +30%',
     },
   },
+  3043: {
+    name: '笑ミノ眉開ク-堀辰雄',
+    rare: 3,
+    status: {
+      1: { tech: 12, genius: 15, beauty: 15, theme: 48 },
+      2: null,
+      3: { tech: 24, genius: 30, beauty: 30, theme: 96 },
+    },
+    skill: {
+      1: '急所攻撃率 +15%',
+      2: '急所攻撃率 +15%',
+      3: '急所攻撃率 +30%',
+    },
+  },
 };
 
