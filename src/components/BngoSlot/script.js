@@ -225,29 +225,36 @@ export default {
       })
       return estimated
     },
-    calculateAtk(
-      weapon,
-      { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }
-    ) {
-      const base =
-        weapon === 'bow'
-          ? tech + genius / 2 + beauty / 2 + theme / 2 + truth / 2
-          : tech + genius / 2 + beauty + theme / 2
-
-      return Math.round(base / this.weaponsData[weapon].adjustment.atk)
+    getWeaponCalcType(weapon) {
+      const calcType = this.weaponsData[weapon]
+      return calcType.as || calcType.as
     },
-    calculateDef(weapon, { tech = 0, genius = 0, beauty = 0, truth = 0 }) {
-      const base =
-        weapon === 'bow'
-          ? tech + genius + truth
-          : tech + genius + beauty / 2 + truth / 2
+    calculateAtk(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
+      const calcType = this.weaponsData[weapon].as || weapon
 
-      return Math.round(base / this.weaponsData[weapon].adjustment.def)
+      const base = calcType === 'bow' ?
+        tech + genius/2 + beauty/2 + theme/2 + truth/2 :
+        tech + genius/2 + beauty + theme/2
+        
+      return Math.round(base / this.weaponsData[calcType].adjustment.atk)
     },
-    calculateAvd(weapon, { tech = 0, beauty = 0, truth = 0 }) {
-      const base = weapon === 'bow' ? tech + truth : tech + beauty
+    calculateDef(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
+      const calcType = this.weaponsData[weapon].as || weapon
 
-      return Math.round(base / this.weaponsData[weapon].adjustment.avd)
+      const base = calcType === 'bow' ?
+        tech + genius + truth :
+        tech + genius + beauty/2 + truth/2
+
+      return Math.round(base / this.weaponsData[calcType].adjustment.def)
+    },
+    calculateAvd(weapon, { tech = 0, genius = 0, beauty = 0, theme = 0, truth = 0 }) {
+      const calcType = this.weaponsData[weapon].as || weapon
+
+      const base = calcType === 'bow' ?
+        tech + truth :
+        tech + beauty
+
+      return Math.round(base / this.weaponsData[calcType].adjustment.avd)
     },
     sendAnalytics(action, label) {
       if (process.env.NODE_ENV !== 'test') {

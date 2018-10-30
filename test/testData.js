@@ -121,6 +121,16 @@ const testStatus = {
     base: { tech: 185, genius: 183, beauty: 181, theme: 176, truth: 176 },
     battle: { atk: 420, def: 497, avd: 46 },
   },
+  // 自然弓（島崎）と同じ
+  alchemy: {
+    base: { tech: 175, genius: 175, beauty: 168, theme: 171, truth: 177 },
+    battle: { atk: 473, def: 376, avd: 352 },
+  },
+  // 刃（太宰）と同じ
+  fight: {
+    base: { tech: 168, genius: 170, beauty: 164, theme: 169, truth: 170 },
+    battle: { atk: 502, def: 505, avd: 39 },
+  },
   neg: {
     base: { tech: 42, genius: 47, beauty: 42, theme: 47, truth: 40 },
     totalBase202_3: {

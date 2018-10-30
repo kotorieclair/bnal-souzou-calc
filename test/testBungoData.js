@@ -364,4 +364,18 @@ export default {
       battle: { atk: 447, def: 354, avd: 336 },
     },
   },
+  1000: {
+    name: 'エド',
+    status: {
+      base: { tech: 86, genius: 82, beauty: 81, theme: 93, truth: 85 },
+      battle: { atk: 233, def: 181, avd: 171 },
+    },
+  },
+  1001: {
+    name: 'アル',
+    status: {
+      base: { tech: 87, genius: 87, beauty: 83, theme: 100, truth: 80 },
+      battle: { atk: 264, def: 256, avd: 20 },
+    },
+  },
 }

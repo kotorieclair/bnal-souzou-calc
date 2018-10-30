@@ -1,5 +1,5 @@
 // import { mapMutations } from 'vuex'
-import { bungo, cards, weapons, status } from 'data'
+import { bungo, cards, weapons, weaponOptions, status } from 'data'
 // import Store from 'store/_index'
 import {
   // SET_BUNGO,
@@ -70,10 +70,9 @@ export default {
       const grouped = {}
 
       Object.keys(this.bungoData).map(id => {
-        const currentBungo = this.bungoData[id]
-        const currentWeapon =
-          currentBungo.weapon === 'bow_alt' ? 'bow' : currentBungo.weapon
-
+        const currentBungo = this.bungoData[id];
+        const currentWeapon = this.getOptionLabel(currentBungo);
+        
         if (!grouped[currentWeapon]) {
           grouped[currentWeapon] = {}
         }
@@ -138,6 +137,17 @@ export default {
     // this.state = state
   },
   methods: {
+    getOptionLabel(bungo) {
+      switch (bungo.weapon) {
+        case 'bow_alt':
+          return 'bow';
+        case 'alchemy':
+        case 'fight':
+          return 'special';
+        default:
+          return bungo.weapon;
+      }
+    },
     getStoreState(key) {
       return this.$store.state.slots[this.slotId][key]
     },

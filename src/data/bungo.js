@@ -203,9 +203,16 @@ export default {
     name: '小川未明',
     weapon: 'gun',
   },
-
   78: {
     name: '徳田秋声',
     weapon: 'bow',
   },
-}
+  1000: {
+    name: 'エド',
+    weapon: 'alchemy',
+  },
+  1001: {
+    name: 'アル',
+    weapon: 'fight',
+  }
+};
