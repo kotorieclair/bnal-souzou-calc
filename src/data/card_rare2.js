@@ -327,12 +327,12 @@ export default {
     status: {
       1: { tech: 17, theme: 67 },
       2: { tech: 24, theme: 94 },
-      3: null,
+      3: { tech: 34, theme: 134 },
     },
     skill: {
       1: '命中率 +5%',
       2: '命中率 +5%',
-      3: '命中率 +10%',
+      3: '命中率 +15%',
     },
   },
   2025: {
@@ -341,12 +341,12 @@ export default {
     status: {
       1: { tech: 17, genius: 21 },
       2: { tech: 24, genius: 30 },
-      3: null,
+      3: { tech: 34, genius: 42 },
     },
     skill: {
       1: '降臨上昇率 +10%',
       2: '降臨上昇率 +10%',
-      3: '降臨上昇率 +20%',
+      3: '降臨上昇率 +30%',
     },
   },
   2026: {
