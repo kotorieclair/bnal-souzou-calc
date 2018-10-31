@@ -3,7 +3,7 @@ export const options = {
   bow: '弓',
   gun: '銃',
   whip: '鞭',
-  special: 'コラボキャラ',  
+  special: 'コラボキャラ',
 }
 
 export default {

@@ -214,5 +214,5 @@ export default {
   1001: {
     name: 'アル',
     weapon: 'fight',
-  }
-};
+  },
+}

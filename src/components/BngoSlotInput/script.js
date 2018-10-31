@@ -1,12 +1,11 @@
 // import { mapMutations } from 'vuex'
 import { bungo, cards, weapons, weaponOptions, status } from 'data'
 // import Store from 'store/_index'
-import {
-  // SET_BUNGO,
-  // SET_CARD_ID,
-  // SET_CARD_LV,
-  // SET_BASE_STATUS,
-} from '../../store/mutationTypes'
+// import // SET_BUNGO,
+// // SET_CARD_ID,
+// // SET_CARD_LV,
+// // SET_BASE_STATUS,
+// '../../store/mutationTypes'
 import { actionTypes } from 'store/modules/slot'
 
 export default {
@@ -35,6 +34,13 @@ export default {
       required: false,
       default() {
         return weapons
+      },
+    },
+    weaponOptions: {
+      type: Object,
+      required: false,
+      default() {
+        return weaponOptions
       },
     },
     statusData: {
@@ -70,9 +76,9 @@ export default {
       const grouped = {}
 
       Object.keys(this.bungoData).map(id => {
-        const currentBungo = this.bungoData[id];
-        const currentWeapon = this.getOptionLabel(currentBungo);
-        
+        const currentBungo = this.bungoData[id]
+        const currentWeapon = this.getOptionLabel(currentBungo)
+
         if (!grouped[currentWeapon]) {
           grouped[currentWeapon] = {}
         }
@@ -108,26 +114,46 @@ export default {
     tech: {
       get() {
         return this.getStoreState('tech')
-      }
+      },
+      set(val) {
+        this.setBaseStatus('tech', val)
+      },
     },
     genius: {
       get() {
         return this.getStoreState('genius')
-      }
+      },
+      set(val) {
+        return this.setBaseStatus('genius', val)
+      },
     },
     beauty: {
       get() {
         return this.getStoreState('beauty')
-      }
+      },
+      set(val) {
+        return this.setBaseStatus('beauty', val)
+      },
     },
     theme: {
       get() {
         return this.getStoreState('theme')
-      }
+      },
+      set(val) {
+        return this.setBaseStatus('theme', val)
+      },
     },
     truth: {
       get() {
         return this.getStoreState('truth')
+      },
+      set(val) {
+        return this.setBaseStatus('truth', val)
+      },
+    },
+    baseStatusMap() {
+      return {
+        tech: this.tech,
       }
     },
   },
@@ -140,12 +166,12 @@ export default {
     getOptionLabel(bungo) {
       switch (bungo.weapon) {
         case 'bow_alt':
-          return 'bow';
+          return 'bow'
         case 'alchemy':
         case 'fight':
-          return 'special';
+          return 'special'
         default:
-          return bungo.weapon;
+          return bungo.weapon
       }
     },
     getStoreState(key) {
@@ -201,7 +227,7 @@ export default {
       return this.dispatchAction(actionTypes.setCardLv, cardLv)
     },
     setBaseStatus(statusKey, _val) {
-      const val = _val ? parseInt(_val) : '';
+      const val = _val ? parseInt(_val) : ''
       return this.dispatchAction(actionTypes.setBaseStatus, { statusKey, val })
     },
     // changeBaseStatus(key, e) {

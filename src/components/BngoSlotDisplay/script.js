@@ -76,7 +76,7 @@ export default {
     },
     selectedCard() {
       return this.cardsData[this.cardId]
-    }
+    },
   },
   created() {
     const { actions, state } = Store.get(this.slotId)
