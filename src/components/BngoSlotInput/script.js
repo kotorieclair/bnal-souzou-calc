@@ -111,50 +111,69 @@ export default {
         return this.setCardLv(val)
       },
     },
-    tech: {
-      get() {
-        return this.getStoreState('tech')
-      },
-      set(val) {
-        this.setBaseStatus('tech', val)
-      },
-    },
-    genius: {
-      get() {
-        return this.getStoreState('genius')
-      },
-      set(val) {
-        return this.setBaseStatus('genius', val)
-      },
-    },
-    beauty: {
-      get() {
-        return this.getStoreState('beauty')
-      },
-      set(val) {
-        return this.setBaseStatus('beauty', val)
-      },
-    },
-    theme: {
-      get() {
-        return this.getStoreState('theme')
-      },
-      set(val) {
-        return this.setBaseStatus('theme', val)
-      },
-    },
-    truth: {
-      get() {
-        return this.getStoreState('truth')
-      },
-      set(val) {
-        return this.setBaseStatus('truth', val)
-      },
-    },
-    baseStatusMap() {
-      return {
-        tech: this.tech,
-      }
+    // tech: {
+    //   get() {
+    //     return this.getStoreState('tech')
+    //   },
+    //   set(val) {
+    //     this.setBaseStatus('tech', val)
+    //   },
+    // },
+    // genius: {
+    //   get() {
+    //     return this.getStoreState('genius')
+    //   },
+    //   set(val) {
+    //     return this.setBaseStatus('genius', val)
+    //   },
+    // },
+    // beauty: {
+    //   get() {
+    //     return this.getStoreState('beauty')
+    //   },
+    //   set(val) {
+    //     return this.setBaseStatus('beauty', val)
+    //   },
+    // },
+    // theme: {
+    //   get() {
+    //     return this.getStoreState('theme')
+    //   },
+    //   set(val) {
+    //     return this.setBaseStatus('theme', val)
+    //   },
+    // },
+    // truth: {
+    //   get() {
+    //     return this.getStoreState('truth')
+    //   },
+    //   set(val) {
+    //     return this.setBaseStatus('truth', val)
+    //   },
+    // },
+    // baseStatusMap() {
+    //   const _this = this
+    //   return {
+    //     get tech() {
+    //       return _this.getStoreState('tech')
+    //     },
+    //     set tech(val) {
+    //       _this.setBaseStatus('tech', val)
+    //     },
+    //     genius: this.genius,
+    //     beauty: this.beauty,
+    //     theme: this.theme,
+    //     truth: this.truth,
+    //   }
+    // },
+    baseStatus() {
+      return Object.keys(this.statusData.base).reduce((acc, statusKey) => {
+        Object.defineProperty(acc, statusKey, {
+          get: () => this.getStoreState(statusKey),
+          set: val => this.setBaseStatus(statusKey, val),
+        })
+        return acc
+      }, {})
     },
   },
   created() {
@@ -226,8 +245,8 @@ export default {
 
       return this.dispatchAction(actionTypes.setCardLv, cardLv)
     },
-    setBaseStatus(statusKey, _val) {
-      const val = _val ? parseInt(_val) : ''
+    setBaseStatus(statusKey, val) {
+      // const val = _val ? parseInt(_val) : ''
       return this.dispatchAction(actionTypes.setBaseStatus, { statusKey, val })
     },
     // changeBaseStatus(key, e) {

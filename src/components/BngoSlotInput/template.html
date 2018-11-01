@@ -33,7 +33,7 @@
     <label v-for="(label, statusKey) in statusData.base" :key="statusKey" class="BngoSlotInput_status_box">
       <span class="BngoSlotInput_status_name">{{ label }}</span>
       <input
-        v-model.number="baseStatusMap[statusKey]"
+        v-model.number="baseStatus[statusKey]"
         type="number"
         min="1"
         @change="sendBaseStatusAnalytics(statusKey)"

@@ -3,7 +3,7 @@ import Vuex, { Store } from 'vuex'
 import slot from './modules/slot'
 import error from './modules/error'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 const store = new Store({
   strict: process.env.NODE_ENV !== 'production',
@@ -17,6 +17,6 @@ const store = new Store({
     },
     error,
   },
-});
+})
 
 export default store

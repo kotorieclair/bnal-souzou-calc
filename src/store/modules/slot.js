@@ -11,7 +11,7 @@ export const actionTypes = {
 
 export const mutationTypes = {
   SET_BUNGO: 'SET_BUNGO',
-  SET_CARD_ID:'SET_CARD_ID',
+  SET_CARD_ID: 'SET_CARD_ID',
   SET_CARD_LV: 'SET_CARD_LV',
   SET_BASE_STATUS: 'SET_BASE_STATUS',
   COPY_SLOT_TO: 'COPY_SLOT_TO',
@@ -34,7 +34,10 @@ export default {
   actions: {
     [actionTypes.setBungo]({ dispatch, commit }, bungo) {
       if (bungo !== '' && !validData.bungo.hasOwnProperty(bungo)) {
-        dispatch(errorActionTypes.showErrorMes, 'Store.action: setBungo - unknown bungo id!')
+        dispatch(
+          errorActionTypes.showErrorMes,
+          'Store.action: setBungo - unknown bungo id!'
+        )
         // throw new Error('Store.action: setBungo - unknown bungo id!');
       } else {
         commit(mutationTypes.SET_BUNGO, { bungo })
