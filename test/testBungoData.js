@@ -357,6 +357,20 @@ export default {
       battle: { atk: 169, def: 110, avd: 64 },
     },
   },
+  74: {
+    name: '高浜虚子',
+    status: {
+      base: { tech: 40, genius: 40, beauty: 50, theme: 42, truth: 42 },
+      battle: { atk: 164, def: 105, avd: 64 },
+    },
+  },
+  75: {
+    name: '河東碧梧桐',
+    status: {
+      base: { tech: 45, genius: 45, beauty: 44, theme: 40, truth: 40 },
+      battle: { atk: 164, def: 110, avd: 64 },
+    },
+  },
   78: {
     name: '徳田秋声',
     status: {

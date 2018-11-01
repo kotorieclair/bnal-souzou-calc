@@ -203,6 +203,14 @@ export default {
     name: '小川未明',
     weapon: 'gun',
   },
+  74: {
+    name: '高浜虚子',
+    weapon: 'gun',
+  },
+  75: {
+    name: '河東碧梧桐',
+    weapon: 'gun',
+  },
   78: {
     name: '徳田秋声',
     weapon: 'bow',
