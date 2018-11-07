@@ -354,7 +354,7 @@ export default {
     rare: 2,
     status: {
       1: { beauty: 30 },
-      2: null,
+      2: { beauty: 42 },
       3: { beauty: 60 },
     },
     skill: {
@@ -368,7 +368,7 @@ export default {
     rare: 2,
     status: {
       1: { tech: 12, genius: 15 },
-      2: null,
+      2: { tech: 17, genius: 21 },
       3: { tech: 24, genius: 30 },
     },
     skill: {
