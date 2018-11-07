@@ -4,9 +4,9 @@
       {{ bungo ? `【${weaponsData[selectedBungo.weapon].label}】${selectedBungo.name}` : '' }}
     </div>
     <div class="BngoSlotDisplay_info_card">
-      <template v-if="state.cardId && state.cardLv">
+      <template v-if="cardId && cardLv">
         <span class="bold">{{ selectedCard.rare | starify }} {{ selectedCard.name }}</span>　Lv.{{ cardLv }}
-        <span v-if="!cardsData[state.cardId].status[state.cardLv]" class="text-small">※</span>
+        <span v-if="!selectedCard.status[cardLv]" class="text-small">※</span>
       </template>
     </div>
   </div>

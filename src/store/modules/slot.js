@@ -17,6 +17,14 @@ export const mutationTypes = {
   COPY_SLOT_TO: 'COPY_SLOT_TO',
 }
 
+export const getStoreState = (key, vm) => {
+  return vm.$store.state.slots[vm.slotId][key]
+}
+
+export const dispatchAction = (action, payload, vm) => {
+  return vm.$store.dispatch(`slots/${vm.slotId}/${action}`, payload)
+}
+
 export default {
   namespaced: true,
   state() {
@@ -31,6 +39,7 @@ export default {
       truth: '',
     }
   },
+  getters: {},
   actions: {
     [actionTypes.setBungo]({ dispatch, commit }, bungo) {
       if (bungo !== '' && !validData.bungo.hasOwnProperty(bungo)) {

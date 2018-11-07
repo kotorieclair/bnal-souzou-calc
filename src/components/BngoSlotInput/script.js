@@ -6,7 +6,7 @@ import { bungo, cards, weapons, weaponOptions, status } from 'data'
 // // SET_CARD_LV,
 // // SET_BASE_STATUS,
 // '../../store/mutationTypes'
-import { actionTypes } from 'store/modules/slot'
+import { actionTypes, getStoreState, dispatchAction } from 'store/modules/slot'
 
 export default {
   name: 'BngoSlotInput',
@@ -51,11 +51,16 @@ export default {
       },
     },
   },
-  data() {
-    return {
-      state: null,
-    }
-  },
+  // data() {
+  //   return {
+  //     state: null,
+  //   }
+  // },
+  // mixins: [
+  //   {
+  //     methods: createMixins(this),
+  //   },
+  // ],
   computed: {
     groupedCardsData() {
       const grouped = {}
@@ -176,11 +181,11 @@ export default {
       }, {})
     },
   },
-  created() {
-    // const { actions, state } = Store.get(this.slotId)
-    // this.actions = actions
-    // this.state = state
-  },
+  // created() {
+  //   const { actions, state } = Store.get(this.slotId)
+  //   this.actions = actions
+  //   this.state = state
+  // },
   methods: {
     getOptionLabel(bungo) {
       switch (bungo.weapon) {
@@ -193,14 +198,17 @@ export default {
           return bungo.weapon
       }
     },
+    // getStoreState(key) {
+    //   return this.$store.state.slots[this.slotId][key]
+    // },
     getStoreState(key) {
-      return this.$store.state.slots[this.slotId][key]
+      return getStoreState(key, this)
     },
     // setStoreState(mutationType, payload) {
     //   return this.$store.commit(`slots/${this.slotId}/${mutationType}`, payload)
     // },
     dispatchAction(action, payload) {
-      return this.$store.dispatch(`slots/${this.slotId}/${action}`, payload)
+      return dispatchAction(action, payload, this)
     },
     // ...mapMutations('slots', {
     //   setBaseStatus(commit, payload) {
