@@ -300,6 +300,13 @@ export default {
       battle: { atk: 501, def: 496, avd: 40 },
     },
   },
+  46: {
+    name: '岩野泡鳴',
+    status: {
+      base: { tech: 41, genius: 43, beauty: 40, theme: 42, truth: 50 },
+      battle: { atk: 117, def: 96, avd: 91 },
+    },
+  },
   47: {
     name: '正宗白鳥',
     status: {

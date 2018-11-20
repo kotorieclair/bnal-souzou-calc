@@ -171,6 +171,10 @@ export default {
     name: '中野重治',
     weapon: 'blade',
   },
+  46: {
+    name: '岩野泡鳴',
+    weapon: 'bow',
+  },
   47: {
     name: '正宗白鳥',
     weapon: 'bow',
