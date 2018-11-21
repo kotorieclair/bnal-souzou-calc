@@ -7,15 +7,23 @@
     "es6": true
   },
   "plugins": ["prettier"],
-  "extends": ["eslint:recommended", "plugin:vue/essential", "prettier"],
+  "extends": ["eslint:recommended", "plugin:import/errors", "plugin:vue/essential", "prettier"],
   "rules": {
     "prettier/prettier": "error"
   },
   "globals": {
     "process": true,
-    "gtag": true
+    "gtag": true,
+    "describe": true,
+    "it": true,
+    "after": true
   },
   "settings": {
-    "import/resolver": "webpack"
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["src"]
+      }
+    }
   }
 }
