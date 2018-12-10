@@ -197,7 +197,7 @@ export default {
     status: {
       1: { tech: 12 },
       2: { tech: 17 },
-      3: null,
+      3: { tech: 24 },
     },
     skill: {
       1: '降臨上昇率 +10%',
