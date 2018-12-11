@@ -690,7 +690,7 @@ export default {
     rare: 3,
     status: {
       1: { genius: 60 },
-      2: null,
+      2: { genius: 84 },
       3: { genius: 120 },
     },
     skill: {
