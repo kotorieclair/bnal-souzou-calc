@@ -207,6 +207,10 @@ export default {
     name: '小川未明',
     weapon: 'gun',
   },
+  58: {
+    name: '吉井勇',
+    weapon: 'gun',
+  },
   74: {
     name: '高浜虚子',
     weapon: 'gun',

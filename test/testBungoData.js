@@ -364,6 +364,13 @@ export default {
       battle: { atk: 169, def: 110, avd: 64 },
     },
   },
+  58: {
+    name: '吉井勇',
+    status: {
+      base: { tech: 46, genius: 43, beauty: 47, theme: 40, truth: 40 },
+      battle: { atk: 168, def: 110, avd: 66 },
+    },
+  },
   74: {
     name: '高浜虚子',
     status: {
