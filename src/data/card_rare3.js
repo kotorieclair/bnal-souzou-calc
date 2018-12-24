@@ -564,7 +564,7 @@ export default {
     rare: 3,
     status: {
       1: { beauty: 60 },
-      2: null,
+      2: { beauty: 84 },
       3: { beauty: 120 },
     },
     skill: {
@@ -704,13 +704,27 @@ export default {
     rare: 3,
     status: {
       1: { tech: 24, truth: 24 },
-      2: null,
+      2: { tech: 34, truth: 34 },
       3: { tech: 48, truth: 48 },
     },
     skill: {
       1: '急所攻撃率 +15%',
       2: '急所攻撃率 +15%',
       3: '急所攻撃率 +30%',
+    },
+  },
+  3052: {
+    name: '歳末ノ煤払イ-三好達治',
+    rare: 3,
+    status: {
+      1: { beauty: 30, theme: 96 },
+      2: { beauty: 42, theme: 135 },
+      3: { beauty: 60, theme: 192 },
+    },
+    skill: {
+      1: '降臨上昇率 +30%',
+      2: '降臨上昇率 +30%',
+      3: '降臨上昇率 +60%',
     },
   },
 };
