@@ -200,7 +200,7 @@ export default {
     rare: 3,
     status: {
       1: { theme: 192 },
-      2: null,
+      2: { theme: 269 },
       3: { theme: 384 },
     },
     skill: {
@@ -326,7 +326,7 @@ export default {
     rare: 3,
     status: {
       1: { tech: 24, genius: 30 },
-      2: null,
+      2: { tech: 34, genius: 42 },
       3: { tech: 48, genius: 60 },
     },
     skill: {
@@ -396,7 +396,7 @@ export default {
     rare: 3,
     status: {
       1: { theme: 192 },
-      2: null,
+      2: { theme: 269 },
       3: { theme: 384 },
     },
     skill: {
@@ -466,7 +466,7 @@ export default {
     rare: 3,
     status: {
       1: { tech: 16, genius: 20, beauty: 20 },
-      2: null,
+      2: { tech: 23, genius: 28, beauty: 28 },
       3: { tech: 32, genius: 40, beauty: 40 },
     },
     skill: {
@@ -508,7 +508,7 @@ export default {
     rare: 3,
     status: {
       1: { tech: 24, beauty: 30 },
-      2: null,
+      2: { tech: 34, beauty: 42 },
       3: { tech: 48, beauty: 60 },
     },
     skill: {
@@ -725,6 +725,76 @@ export default {
       1: '降臨上昇率 +30%',
       2: '降臨上昇率 +30%',
       3: '降臨上昇率 +60%',
+    },
+  },
+  3053: {
+    name: '新春來福-梶井基次郎',
+    rare: 3,
+    status: {
+      1: { tech: 12, genius: 30, truth: 12 },
+      2: { tech: 17, genius: 42, truth: 17 },
+      3: { tech: 24, genius: 60, truth: 24 },
+    },
+    skill: {
+      1: '降臨上昇率 +30%',
+      2: '降臨上昇率 +30%',
+      3: '降臨上昇率 +60%',
+    },
+  },
+  3054: {
+    name: '新春來福-中島敦',
+    rare: 3,
+    status: {
+      1: { tech: 24, theme: 96 },
+      2: { tech: 34, theme: 135 },
+      3: { tech: 48, theme: 192 },
+    },
+    skill: {
+      1: '命中率 +15%',
+      2: '命中率 +15%',
+      3: '命中率 +30%',
+    },
+  },
+  3055: {
+    name: '新春來福-若山牧水',
+    rare: 3,
+    status: {
+      1: { tech: 24, theme: 96 },
+      2: { tech: 34, theme: 135 },
+      3: { tech: 48, theme: 192 },
+    },
+    skill: {
+      1: '急所攻撃率 +15%',
+      2: '急所攻撃率 +15%',
+      3: '急所攻撃率 +30%',
+    },
+  },
+  3056: {
+    name: '百戦錬磨ノ二人',
+    rare: 3,
+    status: {
+      1: { tech: 17, theme: 67 },
+      2: { tech: 24, theme: 94 },
+      3: { tech: 34, theme: 134 },
+    },
+    skill: {
+      1: '急所攻撃率 +5%',
+      2: '急所攻撃率 +5%',
+      3: '急所攻撃率 +15%',
+    },
+  },
+  3057: {
+    name: '真椿二細雪-永井荷風',
+    rare: 3,
+    status: {
+      1: { tech: 12, beauty: 30, truth: 12 },
+      2: null,
+      3: { tech: 24, beauty: 60, truth: 24 },
+    },
+    skill: {
+      1: '命中率 +15%',
+      2: '命中率 +15%',
+      3: '命中率 +30%',
     },
   },
 };
