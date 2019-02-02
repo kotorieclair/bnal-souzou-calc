@@ -314,6 +314,13 @@ export default {
       battle: { atk: 446, def: 354, avd: 335 },
     },
   },
+  48: {
+    name: '徳冨蘆花',
+    status: {
+      base: { tech: 43, genius: 43, beauty: 42, theme: 41, truth: 40 },
+      battle: { atk: 98, def: 115, avd: 11 },
+    },
+  },
   49: {
     name: '直木三十五',
     status: {

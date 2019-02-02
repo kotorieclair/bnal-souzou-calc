@@ -179,6 +179,10 @@ export default {
     name: '正宗白鳥',
     weapon: 'bow',
   },
+  48: {
+    name: '徳冨蘆花',
+    weapon: 'whip',
+  },
   49: {
     name: '直木三十五',
     weapon: 'whip',
