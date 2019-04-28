@@ -336,6 +336,13 @@ export default {
       battle: { atk: 99, def: 117, avd: 11 },
     },
   },
+  51: {
+    name: '中里介山',
+    status: {
+      base: { tech: 40, genius: 44, beauty: 40, theme: 46, truth: 40 },
+      battle: { atk: 96, def: 113, avd: 10 },
+    },
+  },
   52: {
     name: '菊池寛',
     status: {

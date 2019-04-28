@@ -191,6 +191,10 @@ export default {
     name: '夢野久作',
     weapon: 'whip',
   },
+  51: {
+    name: '中里介山',
+    weapon: 'whip',
+  },
   52: {
     name: '菊池寛',
     weapon: 'whip',
