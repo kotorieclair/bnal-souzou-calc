@@ -203,6 +203,10 @@ export default {
     name: '伊藤左千夫',
     weapon: 'gun',
   },
+  54: {
+    name: '三木露風',
+    weapon: 'gun',
+  },
   55: {
     name: '三好達治',
     weapon: 'gun',
