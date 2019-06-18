@@ -1,0 +1,39 @@
+@require 'style/variables'
+@require 'style/functions'
+@require 'style/base'
+
+.wrapper
+  align-items: center
+  display: flex
+  min-height: 100vh
+  justify-content: center
+  width: 100%
+
+.box
+  background-color: #fff
+  border-radius: 5px
+  color: $color-gray
+  text-align: center
+
+  @media $pc
+    padding: 20px 40px
+    width: 500px
+
+  @media $sp
+    padding: 20px
+    margin: 0 10px
+    width: 100%
+
+h1
+  margin-bottom: 30px
+
+p
+  margin-top: 20px
+
+.larger-text
+  background-color: $color-main-light
+  border: 1px dotted $color-link
+  box-shadow: 0 0 0 4px $color-main-light
+  font-size: 1.2em
+  padding: 15px 10px
+

@@ -5,17 +5,17 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
 const pageInfo =  require('./src/pageinfo');
 
 module.exports = env => {
   const node_env = env.NODE_ENV;
-  const mode = node_env === 'test' ? 'production' : node_env;
+  const mode = node_env === 'test' || node_env === 'productionRedirect' ? 'production' : node_env;
    return {
     mode: mode,
     devtool: node_env === 'development' ? 'inline-source-map' : node_env === 'test' ? 'inline-cheap-module-source-map' : undefined,
-    entry: './src/main',
+    entry: node_env === 'productionRedirect' ? './src/main_redirect' : './src/main',
     output: {
       filename: 'main.js',
       path: path.resolve(__dirname, 'dist'),
@@ -36,7 +36,16 @@ module.exports = env => {
         },
         {
           test: /\.styl$/,
-          use: node_env === 'production' ? ExtractTextPlugin.extract(['css-loader', 'stylus-loader']) : ['vue-style-loader', 'css-loader', 'stylus-loader']
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: mode === 'production',
+              },
+            },
+            'css-loader',
+            'stylus-loader',
+          ]
         },
         {
           test: /\.(png|jpg|gif)$/,
@@ -65,16 +74,18 @@ module.exports = env => {
       new CleanWebpackPlugin(['dist']),
       new VueLoaderPlugin(),
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: node_env === 'productionRedirect' ? './src/index_redirect.html' : './src/index.html',
         title: pageInfo.title,
         meta: pageInfo.meta,
         links: pageInfo.links,
       }),
-      new ExtractTextPlugin('style.css'),
+      new MiniCssExtractPlugin({
+        filename: 'style.css',
+      }),
     ],
     devServer: {
       contentBase: './dist',
-      port: 3000,
+      port: 3001,
       host: '0.0.0.0',
     },
     externals: node_env === 'test' ? [nodeExternals()] : undefined,
